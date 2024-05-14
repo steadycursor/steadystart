@@ -1,3 +1,7 @@
+# Ignored folders
 node_modules
 dist
 generated
+
+# Ignored files
+.env
