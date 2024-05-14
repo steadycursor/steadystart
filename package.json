@@ -6,5 +6,12 @@
     "apps/*",
     "libs/*"
   ],
-  "scripts": {}
+  "scripts": {},
+  "devDependencies": {
+    "@typescript-eslint/parser": "^6.17.0",
+    "@typescript-eslint/utils": "^6.17.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "^2.6.1"
+  }
 }

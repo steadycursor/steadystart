@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc.json",
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "no-process-env": "warn",
+    "import/no-extraneous-dependencies": "error",
+    "import/no-default-export": "warn",
+    "space-before-blocks": "warn",
+    "newline-before-return": "warn",
+    "curly": "warn",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          [
+            "builtin",
+            "external"
+          ],
+          [
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+            "object",
+            "type"
+          ]
+        ],
+        "newlines-between": "never",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
+}
