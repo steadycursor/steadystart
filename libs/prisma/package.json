@@ -1,0 +1,19 @@
+{
+  "name": "@steadysass/prisma",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "yarn prisma generate --schema ./src/schema.prisma",
+    "watch": "tsc --build --watch --preserveWatchOutput --incremental",
+    "migrate:new": "dotenv -e ./../../.env -- yarn prisma migrate dev --create-only --skip-generate --schema ./src/schema.prisma",
+    "migrate:up": "dotenv -e ./../../.env -- yarn prisma migrate dev --skip-generate --schema ./src/schema.prisma",
+    "studio": "dotenv -e ./../../.env -- yarn prisma studio  --schema ./src/schema.prisma",
+    "tsc": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "prisma": "^5.14.0",
+    "typescript": "^5.4.5"
+  }
+}
