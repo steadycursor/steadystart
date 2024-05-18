@@ -11,6 +11,9 @@
     "studio": "dotenv -e ./../../.env -- yarn prisma studio  --schema ./src/schema.prisma",
     "tsc": "tsc --noEmit"
   },
+  "dependencies": {
+    "@prisma/client": "^5.14.0"
+  },
   "devDependencies": {
     "@types/node": "^20.12.12",
     "prisma": "^5.14.0",
