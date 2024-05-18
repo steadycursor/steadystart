@@ -1,0 +1,37 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "generate": {
+      "cache": false,
+      "outputs": [
+        "src/generated/**"
+      ]
+    },
+    "build": {
+      "cache": false,
+      "dependsOn": [
+        "^generate",
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "tsc": {
+      "cache": false,
+      "dependsOn": [
+        "^generate"
+      ]
+    },
+    "lint": {
+      "cache": false,
+      "dependsOn": [
+        "^generate"
+      ]
+    }
+  },
+  "globalDependencies": [
+    ".env",
+    "tsconfig.json"
+  ]
+}
