@@ -1,5 +1,5 @@
 {
-  "name": "@steadysass/example",
+  "name": "@steadysass/emptypackage",
   "private": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
