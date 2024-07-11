@@ -1,0 +1,21 @@
+{
+  "name": "@steadysass/validations",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "npm run generate",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch --preserveWatchOutput --incremental",
+    "generate": "npm run generate:barrels",
+    "generate:barrels": "barrelsby --directory=./src/schemas --delete --noHeader",
+    "tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "barrelsby": "^2.8.1",
+    "typescript": "^5"
+  }
+}
