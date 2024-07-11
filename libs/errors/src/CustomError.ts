@@ -1,3 +1,5 @@
+import { Language } from '@steadysass/prisma';
+
 export abstract class CustomError<T> extends Error {
   public abstract name: string;
   public data: T;
@@ -13,4 +15,6 @@ export abstract class CustomError<T> extends Error {
   }
 
   abstract toString(): string;
+
+  abstract translate(args: { language: Language }): string;
 }
