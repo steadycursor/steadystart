@@ -5,31 +5,8 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../dist"
-}
-
-// ***********************************
-// ***
-// ***          MODELS
-// ***
-// ***********************************   
-
-model Account {
-  id        String   @id @default(cuid())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-enum Language {
-  ENGLISH
+  provider        = "prisma-client-js"
+  output          = "../dist"
+  // TODO: [prisma] remove preview feature prismaSchemaFolder once stable in Prisma client #1
+  previewFeatures = ["prismaSchemaFolder"]
 }

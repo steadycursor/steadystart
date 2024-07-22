@@ -4,19 +4,22 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "yarn prisma generate --schema ./src/schema.prisma",
+    "build": "yarn prisma generate",
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
-    "migrate:new": "dotenv -e ./../../.env -- yarn prisma migrate dev --create-only --skip-generate --schema ./src/schema.prisma",
-    "migrate:up": "dotenv -e ./../../.env -- yarn prisma migrate dev --skip-generate --schema ./src/schema.prisma",
-    "studio": "dotenv -e ./../../.env -- yarn prisma studio  --schema ./src/schema.prisma",
+    "migrate:new": "dotenv -e ./../../.env -- yarn prisma migrate dev --create-only --skip-generate",
+    "migrate:up": "dotenv -e ./../../.env -- yarn prisma migrate dev --skip-generate",
+    "studio": "dotenv -e ./../../.env -- yarn prisma studio",
     "tsc": "tsc --noEmit"
   },
+  "prisma": {
+    "schema": "src"
+  },
   "dependencies": {
-    "@prisma/client": "^5.14.0"
+    "@prisma/client": "^5.17.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
-    "prisma": "^5.14.0",
+    "prisma": "^5.17.0",
     "typescript": "^5.4.5"
   }
 }
