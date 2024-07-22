@@ -6,13 +6,12 @@
     "apps/*",
     "libs/*"
   ],
+  "packageManager": "npm@10.5.0",
   "scripts": {
     "build": "turbo run build",
     "tsc": "turbo run tsc",
-    "lint": "biome check .",
-    "format": "biome format ."
+    "lint": "eslint ."
   },
-  "packageManager": "npm@10.5.0",
   "devDependencies": {
     "turbo": "^2.0.1"
   }
