@@ -1,0 +1,85 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "📦 Package build",
+      "type": "shell",
+      "command": "npm",
+      "problemMatcher": [],
+      "args": [
+        "run",
+        "build"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "label": "🛂 Package tsc",
+      "type": "shell",
+      "command": "npm",
+      "problemMatcher": [],
+      "args": [
+        "run",
+        "tsc"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "label": "🏗️ Package prebuild",
+      "type": "shell",
+      "command": "npm",
+      "problemMatcher": [],
+      "args": [
+        "run",
+        "prebuild"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "label": "🏃‍♂️ Project build",
+      "type": "shell",
+      "command": "npm",
+      "problemMatcher": [],
+      "args": [
+        "run",
+        "build"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "label": "👷 Start development server",
+      "type": "shell",
+      "command": "npm",
+      "problemMatcher": [],
+      "args": [
+        "run",
+        "dev"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "clear": true
+      }
+    }
+  ]
+}
