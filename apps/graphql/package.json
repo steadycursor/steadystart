@@ -1,0 +1,30 @@
+{
+  "name": "@steadysass/graphql",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "nodemon --watch src --exec 'ts-node' src/server.ts",
+    "build": "tsc --build"
+  },
+  "dependencies": {
+    "@pothos/core": "^4.0.2",
+    "@pothos/plugin-dataloader": "^4.0.2",
+    "@pothos/plugin-scope-auth": "^4.0.2",
+    "@pothos/plugin-simple-objects": "^4.0.3",
+    "@steadysass/prisma": "*",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "graphql": "^16.9.0",
+    "graphql-playground-middleware-express": "^1.7.23",
+    "graphql-scalars": "^1.23.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}
