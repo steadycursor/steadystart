@@ -1,5 +1,5 @@
-import { CustomError } from '../CustomError';
 import { Language } from '@steadysass/prisma';
+import { CustomError } from '../CustomError';
 
 type AuthorizationErrorOptions = {};
 

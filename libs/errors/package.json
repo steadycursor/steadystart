@@ -12,6 +12,7 @@
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
+    "@steadysass/prisma": "*",
     "barrelsby": "^2.8.1",
     "typescript": "^5"
   }
