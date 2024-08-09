@@ -6,6 +6,13 @@
     "import"
   ],
   "rules": {
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "SwitchStatement",
+        "message": "Switch statements are not allowed. Use match function instead from 'ts-pattern' package."
+      }
+    ],
     "no-process-env": "warn",
     "import/no-extraneous-dependencies": "error",
     "import/no-default-export": "warn",
