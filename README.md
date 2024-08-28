@@ -8,6 +8,7 @@ I welcome input and feedback on the stack, code quality, testing practices, and 
 
 - [ ] Find and replace `steadysass` with the slug of your project. This will replace most occurrences of package names.
 - [ ] Replace the favicon in `apps/app/favicon.ico`.
+- [ ] Fill out .env file in the root of the project
 
 ## Tech Stack
 
