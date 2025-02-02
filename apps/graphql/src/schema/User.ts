@@ -6,6 +6,5 @@ export const User = builder.loadableObject('User', {
   sort: (user) => user.id,
   fields: (t) => ({
     id: t.expose('id', { type: 'ID' }),
-    name: t.expose('name', { type: 'String' }),
   }),
 });

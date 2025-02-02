@@ -6,9 +6,10 @@
   "scripts": {
     "build": "yarn prisma generate",
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
-    "migrate:new": "dotenv -e ./../../.env -- yarn prisma migrate dev --create-only --skip-generate",
-    "migrate:up": "dotenv -e ./../../.env -- yarn prisma migrate dev --skip-generate",
-    "studio": "dotenv -e ./../../.env -- yarn prisma studio",
+    "migrate:new": "env-cmd -f ../../.env -- yarn prisma migrate dev --create-only --skip-generate",
+    "migrate:up": "env-cmd -f ../../.env -- yarn prisma migrate dev --skip-generate",
+    "db:push": "env-cmd -f ../../.env -- yarn prisma db push",
+    "studio": "env-cmd -f ../../.env -- yarn prisma studio",
     "tsc": "tsc --noEmit"
   },
   "prisma": {

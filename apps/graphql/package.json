@@ -4,21 +4,28 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "dev": "env-cmd -f ../../.env -- nodemon --watch src --exec 'ts-node' src/server.ts",
     "start": "node dist/server.js",
-    "dev": "nodemon --watch src --exec 'ts-node' src/server.ts",
+    "generate": "npm run generate:schema",
+    "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/tools/generateSchema",
     "build": "tsc --build"
   },
   "dependencies": {
+    "@clerk/backend": "^1.23.7",
     "@pothos/core": "^4.0.2",
     "@pothos/plugin-dataloader": "^4.0.2",
-    "@pothos/plugin-scope-auth": "^4.0.2",
+    "@pothos/plugin-scope-auth": "^4.1.1",
     "@pothos/plugin-simple-objects": "^4.0.3",
     "@steadysass/prisma": "*",
+    "@steadysass/secrets": "*",
     "cors": "^2.8.5",
+    "dataloader": "^2.2.2",
     "express": "^4.19.2",
     "graphql": "^16.9.0",
     "graphql-playground-middleware-express": "^1.7.23",
-    "graphql-scalars": "^1.23.0"
+    "graphql-scalars": "^1.23.0",
+    "graphql-yoga": "^5.6.2",
+    "ts-pattern": "^5.6.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

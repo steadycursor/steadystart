@@ -1,8 +1,11 @@
 model User {
   id          String       @id @default(cuid())
-  name        String
+  clerkId     String       @unique
   email       String
   memberships Membership[]
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+
+  @@unique([clerkId, email])
+  @@index([clerkId])
 }

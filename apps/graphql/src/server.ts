@@ -1,23 +1,19 @@
-import cors from 'cors';
-import express from 'express';
-import { graphqlHTTP } from 'express-graphql';
-import expressPlayground from 'graphql-playground-middleware-express';
+import { createYoga } from 'graphql-yoga';
+import { createServer } from 'node:http';
 import { context } from './context';
 import { schema } from './schema';
 
-const server = express();
+const yoga = createYoga({
+  schema,
+  context,
+  graphiql: true,
+  graphqlEndpoint: '/',
+  maskedErrors: false,
+  cors: true,
+});
 
-server.use(cors());
+const server = createServer(yoga);
 
-server.get('/', expressPlayground({ endpoint: '/' }));
-
-server
-  .post('/', [
-    graphqlHTTP(async (req) => {
-      return {
-        schema,
-        context: await context({ req }),
-      };
-    }),
-  ])
-  .listen(4005, () => console.log('Server is running on http://localhost:4005'));
+server.listen(4000, () => {
+  console.info('Server is running on http://localhost:4000');
+});

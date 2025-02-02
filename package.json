@@ -13,6 +13,7 @@
     "lint": "eslint ."
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "turbo": "^2.0.9"
   }
 }

@@ -1,6 +1,5 @@
 model Membership {
   id        String   @id @default(cuid())
-  language  Language
   user      User     @relation(fields: [userId], references: [id])
   userId    String
   account   Account  @relation(fields: [accountId], references: [id])
