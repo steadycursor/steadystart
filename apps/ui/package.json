@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "env-cmd -f ../../.env -- next dev",
-    "build": "next build",
+    "prebuild": "yarn generate",
+    "build": "env-cmd -f ../../.env -- next build",
+    "generate": "yarn generate:typed-graphql-builder",
+    "generate:typed-graphql-builder": "npx typed-graphql-builder --schema ../graphql/src/generated/schema.graphql --output ./src/generated/typed-graphql-builder.ts --includeTypename=true --scalar DateTime=string --scalar Time=string",
     "start": "next start",
     "lint": "next lint"
   },
