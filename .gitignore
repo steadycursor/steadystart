@@ -6,3 +6,6 @@ generated
 
 # Ignored files
 .env
+
+# Typescript
+tsconfig.tsbuildinfo
