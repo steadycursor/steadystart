@@ -8,6 +8,7 @@ import { Date } from './schema/Date';
 import { DateTime } from './schema/DateTime';
 import { ID } from './schema/ID';
 import { Time } from './schema/Time';
+import ZodPlugin from '@pothos/plugin-zod';
 
 export const builder = new SchemaBuilder<{
   Scalars: {
@@ -24,7 +25,7 @@ export const builder = new SchemaBuilder<{
   DefaultAuthStrategy: 'all';
 }>({
   defaultInputFieldRequiredness: true,
-  plugins: [ScopeAuthPlugin, SimpleObjectsPlugin, DataloaderPlugin],
+  plugins: [ZodPlugin, ScopeAuthPlugin, SimpleObjectsPlugin, DataloaderPlugin],
   scopeAuth: {
     defaultStrategy: 'all',
     treatErrorsAsUnauthorized: true,

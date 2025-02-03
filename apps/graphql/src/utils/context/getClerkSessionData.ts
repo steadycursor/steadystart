@@ -7,7 +7,7 @@ type GetClerkSessionDataArgs = {
 };
 export const getClerkSessionData = async ({ request }: GetClerkSessionDataArgs) => {
   const { isSignedIn, toAuth } = await clerk.authenticateRequest(request as unknown as any, {
-    publishableKey: secrets.CLERK_PUBLISHABLE_KEY,
+    publishableKey: secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
   });
 
   const auth = toAuth();

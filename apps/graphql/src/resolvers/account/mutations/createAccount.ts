@@ -1,5 +1,6 @@
 import { builder } from '../../../builder';
 import { Account } from '../../../schema/Account';
+import { createAccountSchema } from '@steadysass/validations';
 
 builder.mutationField('createAccount', (t) =>
   t.field({
@@ -10,6 +11,7 @@ builder.mutationField('createAccount', (t) =>
     authScopes: {
       accessPolicy: 'authenticated',
     },
+    validate: { schema: createAccountSchema },
     resolve: async (_parent, args, ctx) => {
       const account = await ctx.prisma.account.create({
         data: {

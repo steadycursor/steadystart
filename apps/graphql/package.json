@@ -7,9 +7,10 @@
   "scripts": {
     "dev": "env-cmd -f ../../.env -- nodemon --watch src --exec 'ts-node' src/server.ts",
     "start": "node dist/server.js",
+    "prebuild": "yarn generate",
+    "build": "tsc --build",
     "generate": "yarn generate:schema",
-    "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/tools/generateSchema",
-    "build": "tsc --build"
+    "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/tools/generateSchema"
   },
   "dependencies": {
     "@clerk/backend": "^1.23.7",
@@ -17,6 +18,7 @@
     "@pothos/plugin-dataloader": "^4.0.2",
     "@pothos/plugin-scope-auth": "^4.1.1",
     "@pothos/plugin-simple-objects": "^4.0.3",
+    "@pothos/plugin-zod": "^4.1.0",
     "@steadysass/prisma": "*",
     "@steadysass/secrets": "*",
     "cors": "^2.8.5",
@@ -26,7 +28,8 @@
     "graphql-playground-middleware-express": "^1.7.23",
     "graphql-scalars": "^1.23.0",
     "graphql-yoga": "^5.6.2",
-    "ts-pattern": "^5.6.2"
+    "ts-pattern": "^5.6.2",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
