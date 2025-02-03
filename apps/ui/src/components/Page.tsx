@@ -16,7 +16,7 @@ export const Page = ({ title, children }: PageProps) => {
     if (isSignedIn === false) {
       router.push('/auth/login');
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, router]);
 
   if (!isSignedIn) {
     return null;

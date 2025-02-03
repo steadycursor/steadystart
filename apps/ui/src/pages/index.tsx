@@ -1,5 +1,25 @@
 import { Page } from '../components/Page';
+import { useQuery } from 'urql';
+import { query } from '@/generated/typed-graphql-builder';
+import { CreateAccountForm } from '@/forms/CreateAccountForm';
+import { match, P } from 'ts-pattern';
 
 export default function AccountsPage() {
-  return <Page title="Accounts">Hello!</Page>;
+  const [accountsQuery] = useQuery({ query: query((query) => [query.accounts((account) => [account.id, account.name])]) });
+
+  return (
+    <Page title="Accounts">
+      <h2>New Account</h2>
+      <CreateAccountForm />
+      <h2>Existing Accounts</h2>
+      {match(accountsQuery)
+        .with({ fetching: true }, () => <div>Loading</div>)
+        .with({ error: P.nonNullable }, () => <div>Error</div>)
+        .when(
+          (accountsQuery) => accountsQuery.data?.accounts?.length === 0,
+          () => <div>Empty</div>,
+        )
+        .otherwise((accountsQuery) => accountsQuery.data?.accounts?.map((account) => <div key={account.id}>{account.name}</div>))}
+    </Page>
+  );
 }
