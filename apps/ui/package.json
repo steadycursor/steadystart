@@ -1,6 +1,6 @@
 {
   "name": "@steadysass/ui",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "env-cmd -f ../../.env -- next dev",
