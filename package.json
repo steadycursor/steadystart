@@ -6,7 +6,6 @@
     "apps/*",
     "libs/*"
   ],
-  "packageManager": "npm@10.5.0",
   "scripts": {
     "build": "turbo run build",
     "tsc": "turbo run tsc",

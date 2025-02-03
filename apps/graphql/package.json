@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "env-cmd -f ../../.env -- nodemon --watch src --exec 'ts-node' src/server.ts",
     "start": "node dist/server.js",
-    "generate": "npm run generate:schema",
+    "generate": "yarn generate:schema",
     "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/tools/generateSchema",
     "build": "tsc --build"
   },
