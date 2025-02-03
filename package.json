@@ -7,12 +7,12 @@
     "libs/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "tsc": "turbo run tsc",
+    "build": "wsrun --stages --report --fast-exit --exclude-missing build",
+    "tsc": "wsrun --stages --report --fast-exit --exclude-missing tsx",
     "lint": "eslint ."
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
-    "turbo": "^2.0.9"
+    "wsrun": "^5.2.4"
   }
 }
