@@ -13,10 +13,16 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.10.6",
+    "@graphql-yoga/node": "^3.9.1",
+    "@hookform/resolvers": "^3.10.0",
+    "@steadysass/graphql": "*",
+    "graphql-tag": "^2.12.6",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "ts-pattern": "^5.6.2"
+    "react-hook-form": "^7.54.2",
+    "ts-pattern": "^5.6.2",
+    "urql": "^4.2.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
