@@ -1,0 +1,8 @@
+schema: "../graphql/src/generated/schema.graphql" 
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - typescript
+    config:
+      nonOptionalTypename: true
+ 

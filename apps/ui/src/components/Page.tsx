@@ -1,7 +1,13 @@
 import { ReactNode } from 'react';
 import { SignedIn, UserButton, useAuth } from '@clerk/nextjs';
+import zod from 'zod';
 import { useRouter } from 'next/router';
+import { useQueryParamsFromZodSchema } from '@/hooks/useQueryParamsFromZodSchema';
+import Link from 'next/link';
 import { useEffect } from 'react';
+import { useQuery } from 'urql';
+import { query, $ } from '@/generated/typed-graphql-builder';
+import { useUrqlContext } from '@/hooks/useUrqlContext';
 
 type PageProps = {
   title: string;
@@ -9,8 +15,16 @@ type PageProps = {
 };
 
 export const Page = ({ title, children }: PageProps) => {
+  const queryParams = useQueryParamsFromZodSchema(zod.object({ account: zod.string().optional() }));
   const router = useRouter();
   const { isSignedIn } = useAuth();
+
+  const [accountQuery] = useQuery({
+    query: query((query) => [query.account({ id: $('id') }, (account) => [account.id, account.name])]),
+    variables: { id: queryParams.account! },
+    pause: !queryParams.account,
+    context: useUrqlContext({ additionalTypenames: ['Account'] }),
+  });
 
   useEffect(() => {
     if (isSignedIn === false) {
@@ -25,7 +39,16 @@ export const Page = ({ title, children }: PageProps) => {
   return (
     <div className="flex bg-white gap-10 p-4 h-screen">
       <div className="w-64 flex flex-col justify-between items-center">
-        <div></div>
+        <div>
+          {accountQuery.data?.account?.id && (
+            <div>
+              <div>{accountQuery.data.account.name}</div>
+              <Link href={`/`}>
+                <button>Switch account</button>
+              </Link>
+            </div>
+          )}
+        </div>
         <div>
           <SignedIn>
             <div className="bg-gray-100 p-2 rounded-md">

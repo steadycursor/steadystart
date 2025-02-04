@@ -2,6 +2,7 @@ model Account {
   id          String       @id @default(cuid())
   name        String
   memberships Membership[]
+  posts       Post[]
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 }

@@ -3,6 +3,7 @@ import DataloaderPlugin from '@pothos/plugin-dataloader';
 import ScopeAuthPlugin from '@pothos/plugin-scope-auth';
 import SimpleObjectsPlugin from '@pothos/plugin-simple-objects';
 import { accessPolicyAuthScope, AccessPolicyAuthScopeArgs } from './authScopes/accessPolicyAuthScope';
+import { userHasAccessOnAccountScope, UserHasAccessOnAccountScopeArgs } from './authScopes/userHasAccessOnAccountScope';
 import { Context } from './context';
 import { Date } from './schema/Date';
 import { DateTime } from './schema/DateTime';
@@ -19,6 +20,7 @@ export const builder = new SchemaBuilder<{
   };
   AuthScopes: {
     accessPolicy: AccessPolicyAuthScopeArgs;
+    userHasAccessOnAccount: UserHasAccessOnAccountScopeArgs;
   };
   Context: Context;
   DefaultInputFieldRequiredness: true;
@@ -31,7 +33,8 @@ export const builder = new SchemaBuilder<{
     treatErrorsAsUnauthorized: true,
     authScopes: async (ctx) => {
       return {
-        accessPolicy: (accessPolicy) => accessPolicyAuthScope(ctx)(accessPolicy),
+        accessPolicy: accessPolicyAuthScope(ctx),
+        userHasAccessOnAccount: userHasAccessOnAccountScope(ctx),
       };
     },
   },

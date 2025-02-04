@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useForm } from '../hooks/useForm';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createAccountSchema } from '@steadysass/validations';
@@ -14,18 +14,19 @@ export function CreateAccountForm() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(createAccountSchema),
+    onSubmit: async (data) => {
+      await createAccount(data);
+    },
   });
 
-  const onSubmit = (data: FormValues) => createAccount(data);
-
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)}>
+    <form.Form>
       <input {...form.register('name')} placeholder="Name" />
       {form.formState.errors.name && <p>{form.formState.errors.name.message}</p>}
 
       <button type="submit" disabled={createAccountMutation.fetching}>
         Submit
       </button>
-    </form>
+    </form.Form>
   );
 }
