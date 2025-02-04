@@ -1,7 +1,7 @@
 model User {
   id          String       @id @default(cuid())
   clerkId     String       @unique
-  email       String
+  email       String       @unique
   language    Language     @default(ENGLISH)
   memberships Membership[]
   createdAt   DateTime     @default(now())

@@ -4,6 +4,7 @@ import { secrets } from './secrets';
 import { Request } from './types/Request';
 import { findOrCreateUser } from './utils/context/findOrCreateUser';
 import { getClerkSessionData } from './utils/context/getClerkSessionData';
+import { findAndValidateAccountFromRequstHeaders } from './utils/context/findAndValidateAccountFromRequstHeaders';
 
 type ContextProps = {
   request: Request;
@@ -20,10 +21,13 @@ export const context = async ({ request }: ContextProps) => {
     ? await findOrCreateUser({ clerkUserId: clerkSessionData.userId, emailAddress: clerkSessionData.emailAddress, prisma })
     : undefined;
 
+  const account = await findAndValidateAccountFromRequstHeaders({ request, user });
+
   return {
     request,
     prisma,
     user,
+    account,
   };
 };
 
