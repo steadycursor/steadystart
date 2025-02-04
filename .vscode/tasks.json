@@ -18,6 +18,22 @@
       }
     },
     {
+      "label": "🧬 Package generate",
+      "type": "shell",
+      "command": "npm",
+      "problemMatcher": [],
+      "args": [
+        "run",
+        "generate"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
       "label": "🛂 Package tsc",
       "type": "shell",
       "command": "npm",
