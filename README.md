@@ -31,9 +31,6 @@ This starter kit includes various packages and tools that enhance development pr
 ## Roadmap
 
 - [ ] ui - component Stack
-- [ ] ui - util twMerge
-- [ ] ui - type ClassNameProps
-- [ ] ui - type ChildrenProps
 - [ ] ui - component Alert
 - [ ] ui - component Button
 - [ ] ui - component CheckboxField

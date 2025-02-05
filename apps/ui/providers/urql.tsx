@@ -2,6 +2,7 @@ import { Client, cacheExchange, fetchExchange, Provider } from 'urql';
 import { useAuth } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
 import { useQueryParamsFromZodSchema } from '@/hooks/useQueryParamsFromZodSchema';
+import { ChildrenProps } from '@/types/ChildrenProps';
 import zod from 'zod';
 
 const createClient = (args: { token: string | undefined; accountId: string | undefined }) =>
@@ -11,9 +12,8 @@ const createClient = (args: { token: string | undefined; accountId: string | und
     fetchOptions: { headers: { Authorization: args.token ? `Bearer ${args.token}` : '', Account: args.accountId ?? '' } },
   });
 
-type UrqlProviderProps = {
-  children: React.ReactNode;
-};
+type UrqlProviderProps = ChildrenProps;
+
 export const UrqlProvider = ({ children }: UrqlProviderProps) => {
   const queryParams = useQueryParamsFromZodSchema(zod.object({ account: zod.string().optional() }));
 

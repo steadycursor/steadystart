@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { SignedIn, UserButton, useAuth } from '@clerk/nextjs';
 import zod from 'zod';
 import { useRouter } from 'next/router';
@@ -8,10 +7,10 @@ import { useEffect } from 'react';
 import { useQuery } from 'urql';
 import { query, $ } from '@/generated/typed-graphql-builder';
 import { useUrqlContext } from '@/hooks/useUrqlContext';
+import { ChildrenProps } from '@/types/ChildrenProps';
 
-type PageProps = {
+type PageProps = ChildrenProps & {
   title: string;
-  children: ReactNode;
 };
 
 export const Page = ({ title, children }: PageProps) => {
