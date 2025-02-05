@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createAccountSchema } from '@steadysass/validations';
 import { useMutation } from 'urql';
 import { mutation, $ } from '@/generated/typed-graphql-builder';
+import { TextField } from '@/components/TextField';
+import { SubmitButton } from '@/components/SubmitButton';
 
 type FormValues = z.infer<typeof createAccountSchema>;
 
@@ -21,12 +23,8 @@ export function CreateAccountForm() {
 
   return (
     <form.Form>
-      <input {...form.register('name')} placeholder="Name" />
-      {form.formState.errors.name && <p>{form.formState.errors.name.message}</p>}
-
-      <button type="submit" disabled={createAccountMutation.fetching}>
-        Submit
-      </button>
+      <TextField register={form.register('name')} label={{ title: 'Name' }} />
+      <SubmitButton isDisabled={createAccountMutation.fetching} />
     </form.Form>
   );
 }
