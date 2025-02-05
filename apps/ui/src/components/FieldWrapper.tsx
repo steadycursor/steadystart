@@ -2,7 +2,6 @@ import { ClassNameProps } from '@/types/ClassNameProps';
 import { ChildrenProps } from '@/types/ChildrenProps';
 import { Div } from './Div';
 import { Label, LabelProps } from './Label';
-import { InputControlError } from './InputControlError';
 
 type FieldWrapperProps = ChildrenProps &
   ClassNameProps & {

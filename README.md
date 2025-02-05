@@ -30,16 +30,12 @@ This starter kit includes various packages and tools that enhance development pr
 
 ## Roadmap
 
-- [ ] ui - component Stack
 - [ ] ui - component Alert
 - [ ] ui - component Button
 - [ ] ui - component CheckboxField
-- [ ] ui - component TextField
 - [ ] ui - component SelectField
 - [ ] ui - component Dialog
-- [ ] ui - component FieldWrapper
 - [ ] ui - component NumericField
-- [ ] ui - component FieldError
 - [ ] ui - component GraphQLError
 - [ ] ui - component Icon
 - [ ] ui - component LinkButton

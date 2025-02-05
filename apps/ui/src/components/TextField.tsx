@@ -1,6 +1,5 @@
 import { useFormContext, FieldValues, Path, UseFormRegisterReturn } from 'react-hook-form';
 import { FieldWrapper } from './FieldWrapper';
-import { InputControlError } from './InputControlError';
 import { LabelProps } from './Label';
 import { TextInput } from './TextInput';
 

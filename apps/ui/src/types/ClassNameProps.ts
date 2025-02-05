@@ -1,3 +1,3 @@
-import { ClassNameValue } from 'tailwind-merge/dist/lib/join';
+import { ClassNameValue } from 'tailwind-merge';
 
 export type ClassNameProps = { className?: ClassNameValue | ClassNameValue[] };
