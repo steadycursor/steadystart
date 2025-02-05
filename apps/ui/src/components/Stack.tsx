@@ -7,8 +7,7 @@ type StackProps = ChildrenProps & ClassNameProps;
 export const Stack = ({ children, className }: StackProps) => (
   <Div
     className={[
-      'flex flex-col', //
-      'space-y-8 py-8 md:space-y-12 md:py-12',
+      'flex flex-col gap-3', //
       className,
     ]}
   >
