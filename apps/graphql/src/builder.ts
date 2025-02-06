@@ -4,6 +4,7 @@ import ScopeAuthPlugin from '@pothos/plugin-scope-auth';
 import SimpleObjectsPlugin from '@pothos/plugin-simple-objects';
 import { accessPolicyAuthScope, AccessPolicyAuthScopeArgs } from './authScopes/accessPolicyAuthScope';
 import { userHasAccessOnAccountScope, UserHasAccessOnAccountScopeArgs } from './authScopes/userHasAccessOnAccountScope';
+import { modelItemsBelongToAccountScope, ModelItemsBelongToAccountScopeArgs } from './authScopes/modelItemsBelongToAccount';
 import { Context } from './context';
 import { Date } from './schema/Date';
 import { DateTime } from './schema/DateTime';
@@ -21,6 +22,7 @@ export const builder = new SchemaBuilder<{
   AuthScopes: {
     accessPolicy: AccessPolicyAuthScopeArgs;
     userHasAccessOnAccount: UserHasAccessOnAccountScopeArgs;
+    modelItemsBelongToAccount: ModelItemsBelongToAccountScopeArgs;
   };
   Context: Context;
   DefaultInputFieldRequiredness: true;
@@ -35,6 +37,7 @@ export const builder = new SchemaBuilder<{
       return {
         accessPolicy: accessPolicyAuthScope(ctx),
         userHasAccessOnAccount: userHasAccessOnAccountScope(ctx),
+        modelItemsBelongToAccount: modelItemsBelongToAccountScope(ctx),
       };
     },
   },
