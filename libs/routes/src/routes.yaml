@@ -1,0 +1,7 @@
+routes:
+  home: "/"
+  auth:
+    login: "/auth/login"
+  accounts: 
+    posts: 
+      index: "/accounts/[account]/posts"

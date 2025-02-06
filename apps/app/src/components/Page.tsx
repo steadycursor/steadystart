@@ -7,10 +7,10 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useQuery } from 'urql';
 import { query, $ } from '@/generated/typed-graphql-builder';
-import { useUrqlContext } from '@/hooks/useUrqlContext';
 import { ChildrenProps } from '@/types/ChildrenProps';
 import { useState } from 'react';
 import { Button } from './Button';
+import { routes } from '@steadysass/routes';
 
 type PageProps = ChildrenProps & {
   title: string;
@@ -31,7 +31,7 @@ export const Page = ({ title, children }: PageProps) => {
 
   useEffect(() => {
     if (isSignedIn === false) {
-      router.push('/auth/login');
+      router.push(routes.auth.login());
     }
   }, [isSignedIn, router]);
 
@@ -59,7 +59,7 @@ export const Page = ({ title, children }: PageProps) => {
             {accountQuery.data?.account?.id && (
               <Div>
                 <Div className="text-lg font-semibold">{accountQuery.data.account.name}</Div>
-                <Link href={`/`} className="text-sm text-gray-600">
+                <Link href={routes.home()} className="text-sm text-gray-600">
                   <button onClick={() => setIsSidebarOpen(false)}>witch account</button>
                 </Link>
               </Div>

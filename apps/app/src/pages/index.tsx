@@ -5,12 +5,11 @@ import { Section } from '@/components/Section';
 import { CreateAccountForm } from '@/forms/CreateAccountForm';
 import { match, P } from 'ts-pattern';
 import Link from 'next/link';
-import { useUrqlContext } from '@/hooks/useUrqlContext';
+import { routes } from '@steadysass/routes';
 
 export default function AccountsPage() {
   const [accountsQuery] = useQuery({
     query: query((query) => [query.accounts((account) => [account.id, account.name])]),
-    // context: useUrqlContext({ additionalTypenames: ['Account'] }),
   });
 
   return (
@@ -30,7 +29,7 @@ export default function AccountsPage() {
           .otherwise((accountsQuery) =>
             accountsQuery.data?.accounts?.map((account) => (
               <div key={account.id}>
-                <Link href={`/accounts/${account.id}/posts`}>
+                <Link href={routes.accounts.posts.index({ account: account.id })}>
                   {account.id} - {account.name}
                 </Link>
               </div>

@@ -1,0 +1,17 @@
+{
+  "name": "@steadysass/routes",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "typed-routes-generator --source ./src/routes.yaml --output ./src/index.ts",
+    "build": "tsc --build"
+  },
+  "dependencies": {
+    "typed-routes-generator": "^1.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}
