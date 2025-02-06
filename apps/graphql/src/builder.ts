@@ -25,9 +25,11 @@ export const builder = new SchemaBuilder<{
     modelItemsBelongToAccount: ModelItemsBelongToAccountScopeArgs;
   };
   Context: Context;
+  DefaultFieldNullability: false;
   DefaultInputFieldRequiredness: true;
   DefaultAuthStrategy: 'all';
 }>({
+  defaultFieldNullability: false,
   defaultInputFieldRequiredness: true,
   plugins: [ZodPlugin, ScopeAuthPlugin, SimpleObjectsPlugin, DataloaderPlugin],
   scopeAuth: {
