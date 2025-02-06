@@ -2701,6 +2701,11 @@ commander@^4.0.0:
   resolved "https://registry.npmjs.org/commander/-/commander-4.1.1.tgz"
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
 
+commander@^9.2.0:
+  version "9.5.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-9.5.0.tgz#bc08d1eb5cedf7ccb797a96199d41c7bc3e60d30"
+  integrity sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==
+
 common-tags@1.8.2:
   version "1.8.2"
   resolved "https://registry.npmjs.org/common-tags/-/common-tags-1.8.2.tgz"
@@ -2913,6 +2918,11 @@ decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/decamelize/-/decamelize-1.2.0.tgz"
   integrity sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==
+
+deep-clone-map@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/deep-clone-map/-/deep-clone-map-1.4.1.tgz#beba11ce93d5f4eba13e8a6e2406173cee8958bf"
+  integrity sha512-PQrQ3gZxT9TESz38KVW9OZ1dwZTHpJbfo195MwNX3oI6MkL3Rs4akr1xPaDIjhP4+OWej0AyOq/e1eXH+Vu5Gw==
 
 deep-is@^0.1.3:
   version "0.1.4"
@@ -3748,6 +3758,11 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
+
+fs@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/fs/-/fs-0.0.1-security.tgz#8a7bd37186b6dddf3813f23858b57ecaaf5e41d4"
+  integrity sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==
 
 fsevents@2.3.3, fsevents@~2.3.2:
   version "2.3.3"
@@ -6736,6 +6751,16 @@ typed-array-length@^1.0.7:
     possible-typed-array-names "^1.0.0"
     reflect.getprototypeof "^1.0.6"
 
+typed-routes-generator@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/typed-routes-generator/-/typed-routes-generator-1.1.1.tgz#a1d120e0ad9784010695ed7a2690b78f89738967"
+  integrity sha512-XsNzC0qOiaA99rysmBimCRDqrukIcMLLRz2xOZU6sz+8Ec31N8SBUM9Po3cuP1kv7L3ipFmdevfvTXQ2jSqJJQ==
+  dependencies:
+    commander "^9.2.0"
+    deep-clone-map "^1.4.1"
+    fs "^0.0.1-security"
+    yaml "^2.1.0"
+
 typescript@4.9.4:
   version "4.9.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.4.tgz#a2a3d2756c079abda241d75f149df9d561091e78"
@@ -7146,7 +7171,7 @@ yaml-ast-parser@^0.0.43:
   resolved "https://registry.npmjs.org/yaml-ast-parser/-/yaml-ast-parser-0.0.43.tgz"
   integrity sha512-2PTINUwsRqSd+s8XxKaJWQlUuEMHJQyEuh2edBbW8KNJz0SJPwUSD2zRWqezFEdN7IzAgeuYHFUCF7o8zRdZ0A==
 
-yaml@^2.3.1, yaml@^2.3.4, yaml@^2.4.1:
+yaml@^2.1.0, yaml@^2.3.1, yaml@^2.3.4, yaml@^2.4.1:
   version "2.7.0"
   resolved "https://registry.npmjs.org/yaml/-/yaml-2.7.0.tgz"
   integrity sha512-+hSoy/QHluxmC9kCIJyL/uyFmLmc+e5CFR5Wa+bpIhIj85LVb9ZH2nVnqrHoSvKogwODv0ClqZkmiSSaIH5LTA==
