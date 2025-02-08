@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "wsrun --stages --report --fast-exit --exclude-missing build",
-    "tsc": "wsrun --stages --report --fast-exit --exclude-missing tsx",
+    "tsc": "wsrun --stages --report --fast-exit --exclude-missing tsc",
     "lint": "eslint ."
   },
   "devDependencies": {
