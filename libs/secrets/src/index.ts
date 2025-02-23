@@ -1,2 +1,2 @@
-export { parseSecrets } from './logic/secrets';
-export { parseSecrets as runtimeSecret } from './logic/secrets';
+export { parseSecrets } from './lib/parseSecrets';
+export type { Secrets } from './lib/parseSecrets';
