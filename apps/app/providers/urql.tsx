@@ -7,7 +7,7 @@ import zod from 'zod';
 
 const createClient = (args: { token: string | undefined; accountId: string | undefined }) =>
   new Client({
-    url: 'http://localhost:4000',
+    url: '/api/graphql',
     exchanges: [cacheExchange, fetchExchange],
     fetchOptions: { headers: { Authorization: args.token ? `Bearer ${args.token}` : '', Account: args.accountId ?? '' } },
   });
