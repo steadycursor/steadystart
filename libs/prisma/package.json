@@ -5,23 +5,23 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "yarn prisma generate",
+    "build": "pnpm prisma generate",
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
-    "migrate:new": "env-cmd -f ../../.env -- yarn prisma migrate dev --create-only --skip-generate",
-    "migrate:up": "env-cmd -f ../../.env -- yarn prisma migrate dev --skip-generate",
-    "db:push": "env-cmd -f ../../.env -- yarn prisma db push",
-    "studio": "env-cmd -f ../../.env -- yarn prisma studio",
+    "migrate:new": "env-cmd -f ../../.env -- pnpm prisma migrate dev --create-only --skip-generate",
+    "migrate:up": "env-cmd -f ../../.env -- pnpm prisma migrate dev --skip-generate",
+    "db:push": "env-cmd -f ../../.env -- pnpm prisma db push",
+    "studio": "env-cmd -f ../../.env -- pnpm prisma studio",
     "tsc": "tsc --noEmit"
   },
   "prisma": {
     "schema": "src"
   },
   "dependencies": {
-    "@prisma/client": "^5.17.0"
+    "@prisma/client": "^6.4.1"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
-    "prisma": "^5.17.0",
+    "prisma": "^6.4.1",
     "typescript": "^5.4.5"
   }
 }

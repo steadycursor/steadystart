@@ -2,17 +2,12 @@
   "name": "steadysass",
   "version": "0.0.1",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "libs/*"
-  ],
   "scripts": {
-    "build": "wsrun --stages --report --fast-exit --exclude-missing build",
-    "tsc": "wsrun --stages --report --fast-exit --exclude-missing tsc",
+    "build": "pnpm -r run build",
+    "tsc": "pnpm -r run build",
     "lint": "eslint ."
   },
   "devDependencies": {
-    "env-cmd": "^10.1.0",
-    "wsrun": "^5.2.4"
+    "env-cmd": "^10.1.0"
   }
 }

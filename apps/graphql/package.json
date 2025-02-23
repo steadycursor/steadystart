@@ -7,9 +7,9 @@
   "scripts": {
     "dev": "env-cmd -f ../../.env -- nodemon --watch src --exec 'ts-node' src/server.ts",
     "start": "node dist/server.js",
-    "prebuild": "yarn generate",
+    "prebuild": "pnpm run generate",
     "build": "tsc --build",
-    "generate": "yarn generate:schema",
+    "generate": "pnpm run generate:schema",
     "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/tools/generateSchema"
   },
   "dependencies": {
@@ -19,8 +19,8 @@
     "@pothos/plugin-scope-auth": "^4.1.1",
     "@pothos/plugin-simple-objects": "^4.0.3",
     "@pothos/plugin-zod": "^4.1.0",
-    "@steadysass/prisma": "*",
-    "@steadysass/secrets": "*",
+    "@steadysass/prisma": "workspace:*",
+    "@steadysass/secrets": "workspace:*",
     "cors": "^2.8.5",
     "dataloader": "^2.2.2",
     "express": "^4.19.2",
