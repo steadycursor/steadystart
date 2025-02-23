@@ -10,7 +10,7 @@ export class AuthorizationError extends CustomError<AuthorizationErrorOptions> {
     super({});
   }
 
-  toString = () => 'Autherization with provided credentials is invalid.';
+  toString = () => 'Authorization with provided credentials is invalid.';
 
   translate = (args: { language: Language }) => {
     switch (args.language) {
