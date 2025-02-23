@@ -1,26 +1,32 @@
+import { ClassNameProps } from '../types/ClassNameProps';
 import { ButtonHTMLAttributes } from 'react';
-import { ChildrenProps } from '@/types/ChildrenProps';
 import { twMerge } from 'tailwind-merge';
+import { tv } from 'tailwind-variants';
 
-export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> &
-  ChildrenProps & {
-    isDisabled?: boolean;
-  };
+const variants = (defaultVariants: { isDisabled?: boolean }) =>
+  tv({
+    base: 'cursor-pointer rounded-md',
+    variants: {
+      size: {
+        default: 'px-3 py-2 font-semibold border text-xs',
+      },
+      color: {
+        primary: 'bg-yellow-300 border-yellow-400',
+        default: 'bg-gray-200 border-gray-300',
+      },
+      isDisabled: {
+        true: 'opacity-50 cursor-not-allowed',
+      },
+    },
+    defaultVariants: { color: 'default', size: 'default', isDisabled: defaultVariants.isDisabled },
+  });
 
-export const Button = ({ children, isDisabled, ...props }: ButtonProps) => {
-  return (
-    <div>
-      <button
-        disabled={isDisabled}
-        className={twMerge([
-          'px-3 py-2 text-sm font-semibold rounded-md cursor-pointer',
-          'bg-blue-600 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
-          isDisabled && 'opacity-35 cursor-not-allowed',
-        ])}
-        {...props}
-      >
-        {children}
-      </button>
-    </div>
-  );
-};
+export type ButtonProps = {
+  variant?: Parameters<typeof variants>[0];
+  isDisabled?: boolean;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> &
+  ClassNameProps;
+
+export const Button = (props: ButtonProps) => (
+  <button {...props} className={twMerge(props.className, variants({ isDisabled: props.isDisabled })(props.variant))} disabled={props.isDisabled} />
+);
