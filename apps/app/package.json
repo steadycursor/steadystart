@@ -29,7 +29,9 @@
     "react-hook-form": "^7.54.2",
     "tailwind-merge": "^3.0.1",
     "ts-pattern": "^5.6.2",
-    "urql": "^4.2.1"
+    "urql": "^4.2.1",
+    "graphql": "^16.10.0",
+    "graphql-yoga": "^5.8.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

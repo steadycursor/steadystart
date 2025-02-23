@@ -14,7 +14,7 @@ export const clerk = createClerkClient({
   secretKey: secrets.CLERK_SECRET_KEY,
 });
 
-export const context = async ({ request }: ContextProps) => {
+export const createContext = async ({ request }: ContextProps) => {
   const clerkSessionData = await getClerkSessionData({ request });
 
   const user = clerkSessionData
@@ -31,4 +31,4 @@ export const context = async ({ request }: ContextProps) => {
   };
 };
 
-export type Context = Awaited<ReturnType<typeof context>>;
+export type Context = Awaited<ReturnType<typeof createContext>>;

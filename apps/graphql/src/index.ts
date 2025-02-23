@@ -1,2 +1,3 @@
 export { schema } from './schema';
-export { context } from './context';
+export { createContext } from './context';
+export type { Context } from './context';
