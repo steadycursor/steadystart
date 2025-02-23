@@ -13,8 +13,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@steadysass/graphql": "*",
-    "@steadysass/routes": "*",
     "@clerk/nextjs": "^6.10.6",
     "@graphql-yoga/node": "^3.9.1",
     "@hookform/resolvers": "^3.10.0",
