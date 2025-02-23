@@ -1,0 +1,13 @@
+{
+  "name": "Docker in Docker",
+  "dockerFile": "Dockerfile",
+  "runArgs": ["--init", "--privileged"],
+  "mounts": ["source=dind-var-lib-docker,target=/var/lib/docker,type=volume"],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": "true",
+      "moby": "true"
+    }
+  }
+}
