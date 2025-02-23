@@ -1,2 +1,2 @@
-export { createDummyDomain } from './logic/createDummyDomain';
-export type { CreateDummyDomainArgs } from './logic/createDummyDomain';
+export { createDummyDomain } from './lib/createDummyDomain';
+export type { CreateDummyDomainArgs } from './lib/createDummyDomain';
