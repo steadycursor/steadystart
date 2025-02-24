@@ -9,3 +9,6 @@ generated
 
 # Typescript
 tsconfig.tsbuildinfo
+
+# Digital Ocean App Plaform
+steadysass.yaml
