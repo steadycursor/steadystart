@@ -3,6 +3,12 @@ import { ButtonHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
 
+export type ButtonProps = {
+  variant?: Parameters<typeof variants>[0];
+  isDisabled?: boolean;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> &
+  ClassNameProps;
+
 const variants = (defaultVariants: { isDisabled?: boolean }) =>
   tv({
     base: 'cursor-pointer rounded-md',
@@ -21,12 +27,6 @@ const variants = (defaultVariants: { isDisabled?: boolean }) =>
     defaultVariants: { color: 'default', size: 'default', isDisabled: defaultVariants.isDisabled },
   });
 
-export type ButtonProps = {
-  variant?: Parameters<typeof variants>[0];
-  isDisabled?: boolean;
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> &
-  ClassNameProps;
-
-export const Button = (props: ButtonProps) => (
-  <button {...props} className={twMerge(props.className, variants({ isDisabled: props.isDisabled })(props.variant))} disabled={props.isDisabled} />
+export const Button = ({ className, isDisabled, ...props }: ButtonProps) => (
+  <button {...props} className={twMerge(className, variants({ isDisabled })(props.variant))} disabled={isDisabled} />
 );
