@@ -129,6 +129,9 @@ importers:
       '@steadysass/secrets':
         specifier: workspace:*
         version: link:../../libs/secrets
+      '@steadysass/validations':
+        specifier: workspace:*
+        version: link:../../libs/validations
       cors:
         specifier: ^2.8.5
         version: 2.8.5

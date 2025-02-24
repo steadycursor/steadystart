@@ -21,6 +21,7 @@
     "@pothos/plugin-zod": "^4.1.0",
     "@steadysass/prisma": "workspace:*",
     "@steadysass/secrets": "workspace:*",
+    "@steadysass/validations": "workspace:*",
     "cors": "^2.8.5",
     "dataloader": "^2.2.2",
     "express": "^4.19.2",
