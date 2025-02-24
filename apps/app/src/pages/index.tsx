@@ -4,6 +4,7 @@ import { query } from '@/generated/typed-graphql-builder';
 import { Section } from '@/components/Section';
 import { CreateAccountForm } from '@/forms/CreateAccountForm';
 import { match, P } from 'ts-pattern';
+import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
 import Link from 'next/link';
 import { routes } from '@steadysass/routes';
 
@@ -21,7 +22,7 @@ export default function AccountsPage() {
       <Section title="Accounts">
         {match(accountsQuery)
           .with({ fetching: true }, () => <div>Loading</div>)
-          .with({ error: P.nonNullable }, () => <div>Error</div>)
+          .with({ error: P.nonNullable }, () => <UnexpectedErrorAlert />)
           .when(
             (accountsQuery) => accountsQuery.data?.accounts?.length === 0,
             () => <div>Empty</div>,

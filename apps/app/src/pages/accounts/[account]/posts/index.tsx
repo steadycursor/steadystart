@@ -4,6 +4,8 @@ import { query } from '@/generated/typed-graphql-builder';
 import { CreatePostForm } from '@/forms/CreatePostForm';
 import { match, P } from 'ts-pattern';
 import { useUrqlContext } from '@/hooks/useUrqlContext';
+import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
+import { Alert } from '@/components/Alert';
 import { Section } from '@/components/Section';
 
 export default function PostsPage() {
@@ -17,11 +19,14 @@ export default function PostsPage() {
       <Section title="New post">
         <CreatePostForm />
       </Section>
+      <Alert title="Hello!" variant={{ type: 'success' }}>
+        Ahojs
+      </Alert>
 
       <Section title="Posts">
         {match(postsQuery)
           .with({ fetching: true }, () => <div>Loading</div>)
-          .with({ error: P.nonNullable }, () => <div>Error</div>)
+          .with({ error: P.nonNullable }, () => <UnexpectedErrorAlert />)
           .when(
             (postsQuery) => postsQuery.data?.posts?.length === 0,
             () => <div>Empty</div>,
