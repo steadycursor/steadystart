@@ -7,6 +7,8 @@ import { match, P } from 'ts-pattern';
 import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
 import Link from 'next/link';
 import { routes } from '@steadysass/routes';
+import { EmptyState } from '@/components/EmptyState';
+import { Loading } from '@/components/Loading';
 
 export default function AccountsPage() {
   const [accountsQuery] = useQuery({
@@ -21,11 +23,11 @@ export default function AccountsPage() {
 
       <Section title="Accounts">
         {match(accountsQuery)
-          .with({ fetching: true }, () => <div>Loading</div>)
+          .with({ fetching: true }, () => <Loading />)
           .with({ error: P.nonNullable }, () => <UnexpectedErrorAlert />)
           .when(
             (accountsQuery) => accountsQuery.data?.accounts?.length === 0,
-            () => <div>Empty</div>,
+            () => <EmptyState />,
           )
           .otherwise((accountsQuery) =>
             accountsQuery.data?.accounts?.map((account) => (

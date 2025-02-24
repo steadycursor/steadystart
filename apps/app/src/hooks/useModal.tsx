@@ -1,5 +1,5 @@
 import { createContext, ReactElement, ReactNode, useContext, useState, cloneElement } from 'react';
-import { Icon } from '@/components/Icon';
+import { Dismiss20Regular } from '@fluentui/react-icons';
 
 export const ModalContext = createContext<() => void>(() => {});
 
@@ -42,7 +42,7 @@ export function useModal({ title, trigger, content }: UseModalArgs): UseModalPay
           <div className="flex justify-between mb-4 items-center">
             {title && <h2 className="text-2xl font-semibold">{title}</h2>}
             <div onClick={() => closeModal()} className="cursor-pointer">
-              <Icon family="material-outlined" name="cancel--v1" size={30} />
+              <Dismiss20Regular className="size-7" />
             </div>
           </div>
           <div className="w-full overflow-hidden">{content({ closeModal })}</div>

@@ -30,24 +30,16 @@ This starter kit includes various packages and tools that enhance development pr
 
 ## Roadmap
 
-- [ ] ui - component Alert
-- [ ] ui - component Button
 - [ ] ui - component CheckboxField
 - [ ] ui - component SelectField
-- [ ] ui - component Dialog
 - [ ] ui - component NumericField
 - [ ] ui - component GraphQLError
-- [ ] ui - component Icon
 - [ ] ui - component LinkButton
-- [ ] ui - component Loadign
-- [ ] ui - component NoContentState
-- [ ] ui - component UnexpectedErrorAlert
 - [ ] ui - component SwitchField
 - [ ] ui - component Table
 - [ ] ui - component Tag
 - [ ] ui - component TextAreaField
 - [ ] ui - hook useFormResponseHandler
 - [ ] ui - hook useGraphQLError
-- [ ] ui - hook useModal
 - [ ] ui - hook useToast
 - [ ] routes - package to use typed routes
