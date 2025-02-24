@@ -9,7 +9,7 @@
     "build": "tsc --build",
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
     "generate": "pnpm run generate:barrels",
-    "generate:barrels": "barrelsby --directory=./src/errors --delete --noHeader",
+    "generate:barrels": "barrelsby --directory=./src/lib/errors --delete --noHeader",
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
