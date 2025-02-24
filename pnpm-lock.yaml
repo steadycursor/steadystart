@@ -29,6 +29,9 @@ importers:
       '@steadysass/routes':
         specifier: workspace:*
         version: link:../../libs/routes
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       graphql:
         specifier: ^16.10.0
         version: 16.10.0
