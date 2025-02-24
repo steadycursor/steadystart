@@ -15,11 +15,12 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.10.6",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@graphql-yoga/node": "^3.9.1",
     "@hookform/resolvers": "^3.10.0",
     "@steadysass/graphql": "workspace:*",
-    "@steadysass/validations": "workspace:*",
     "@steadysass/routes": "workspace:*",
+    "@steadysass/validations": "workspace:*",
     "dotenv": "^16.4.7",
     "graphql": "^16.10.0",
     "graphql-tag": "^2.12.6",
