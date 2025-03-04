@@ -1,0 +1,4 @@
+model Config {
+  key   String @unique
+  value Json
+}
