@@ -6,9 +6,10 @@
     "dev": "env-cmd -f ../../.env -- next dev",
     "prebuild": "pnpm run generate",
     "build": "next build",
-    "generate": "pnpm run generate:prepare-generated-folder && pnpm run generate:typed-graphql-builder && pnpm run generate:codegen",
+    "generate": "pnpm run generate:prepare-generated-folder && pnpm run generate:typed-graphql-builder && pnpm run generate:codegen && pnpm run generate:append-generated-typed-graphql-builder",
     "generate:prepare-generated-folder": "mkdir -p src/generated",
     "generate:typed-graphql-builder": "npx typed-graphql-builder --schema ../graphql/src/generated/schema.graphql --output ./src/generated/typed-graphql-builder.ts --includeTypename=true --scalar DateTime=string --scalar Time=string",
+    "generate:append-generated-typed-graphql-builder": "ts-node ./src/generators/append-generated-typed-graphql-builder.ts",
     "generate:codegen": "npx graphql-codegen",
     "start": "next start",
     "lint": "next lint"
