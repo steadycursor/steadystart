@@ -1,0 +1,22 @@
+{
+  "name": "@steadysass/enums",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "prebuild": "pnpm run generate",
+    "build": "tsc --build",
+    "generate": "ts-node ./cli/generateEnums.ts",
+    "tsc": "tsc --noEmit",
+    "watch": "tsc --build --watch --preserveWatchOutput --incremental",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix && prettier --write '**/*.{ts,tsx}'"
+  },
+  "dependencies": {
+    "@steadysass/prisma": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}
