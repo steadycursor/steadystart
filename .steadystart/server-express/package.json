@@ -1,0 +1,23 @@
+{
+  "name": "@steadystart/server-express",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "env-cmd -f ./../../../.env -- ts-node src/main.ts",
+    "start": "node dist/main.js",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch --preserveWatchOutput --incremental",
+    "tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "env-cmd": "^10.1.0",
+    "express": "^4.19.2",
+    "express-pretty-listen": "^1.0.1",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

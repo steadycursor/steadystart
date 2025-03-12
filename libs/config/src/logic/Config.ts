@@ -1,4 +1,4 @@
-import { PrismaClient } from '@steadysass/prisma';
+import { PrismaClient } from '@steadystart/prisma';
 import { ConfigKeys } from '../types/ConfigKeys';
 import { defaultValues } from './defaultValues';
 

@@ -1,5 +1,5 @@
-const fs = require('fs').promises;
-const path = require('path');
+import fs from 'fs/promises';
+import path from 'path';
 
 (async () => {
   const filePath = path.join(__dirname, '../generated/typed-graphql-builder.ts');

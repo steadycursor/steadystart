@@ -1,6 +1,9 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "tailwindCSS.experimental.classRegex": [
-    ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
+ "tailwindCSS.experimental.classRegex": [
+  [
+    "\\bclassName\\s*=\\s*{?\\s*['\"]?([^'\"]*)['\"]?\\s*}?"
   ]
+]
 }
+ 

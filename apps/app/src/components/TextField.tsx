@@ -1,4 +1,5 @@
-import { useFormContext, FieldValues, Path, UseFormRegisterReturn } from 'react-hook-form';
+import { InputHTMLAttributes } from 'react';
+import { useFormContext, FieldValues, UseFormRegisterReturn } from 'react-hook-form';
 import { FieldWrapper } from './FieldWrapper';
 import { LabelProps } from './Label';
 import { TextInput } from './TextInput';
@@ -7,9 +8,9 @@ type TextFieldProps = {
   register: UseFormRegisterReturn;
   label: LabelProps;
   placeholder?: string;
-};
+} & Pick<InputHTMLAttributes<HTMLInputElement>, 'type'>;
 
-export const TextField = <T extends FieldValues>({ label, register, placeholder }: TextFieldProps) => {
+export const TextField = <T extends FieldValues>({ label, register, placeholder, ...props }: TextFieldProps) => {
   const formContext = useFormContext<T>();
 
   const name = register.name;
@@ -20,6 +21,7 @@ export const TextField = <T extends FieldValues>({ label, register, placeholder 
       error={{ message: formContext.formState.errors[name]?.message as string }}
     >
       <TextInput
+        {...props}
         {...register}
         id={name}
         placeholder={placeholder}

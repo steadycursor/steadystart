@@ -1,11 +1,10 @@
 {
-  "name": "steadysass",
+  "name": "steadystart",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "pnpm -r run build",
-    "tsc": "pnpm -r run build",
-    "lint": "eslint ."
+    "tsc": "pnpm -r run tsc"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0"

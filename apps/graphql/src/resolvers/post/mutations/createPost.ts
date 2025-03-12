@@ -1,6 +1,6 @@
 import { builder } from '../../../builder';
 import { Post } from '../../../schema/Post';
-import { createPostSchema } from '@steadysass/validations';
+import { createPostSchema } from '@steadystart/validations';
 
 builder.mutationField('createPost', (t) =>
   t.field({

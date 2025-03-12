@@ -1,0 +1,12 @@
+{
+  "$Enums": {
+    "Locale": "Locale"
+  },
+  "ExampleCustomEnum": {
+    "CUSTOM_ENUM_VALUE": "Custom enum value with translation"
+  },
+  "Locale": {
+    "CS": "Czech",
+    "EN": "English"
+  }
+}

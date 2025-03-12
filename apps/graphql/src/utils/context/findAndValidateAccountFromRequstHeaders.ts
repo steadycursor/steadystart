@@ -1,6 +1,6 @@
 import { prisma } from '../../prisma';
 import { Request } from '../../types/Request';
-import { User } from '@steadysass/prisma';
+import { User } from '@steadystart/prisma';
 
 type FindAndValidateAccountFromRequstHeadersArgs = {
   request: Request;

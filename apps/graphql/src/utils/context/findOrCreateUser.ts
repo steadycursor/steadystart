@@ -1,4 +1,4 @@
-import { PrismaClient } from '@steadysass/prisma';
+import { PrismaClient } from '@steadystart/prisma';
 
 type FindOrCreateUserArgs = {
   clerkUserId: string;

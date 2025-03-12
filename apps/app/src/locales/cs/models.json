@@ -1,0 +1,11 @@
+{
+  "account": {
+    "singular": "Účet"
+  },
+  "post": {
+    "plural": "Příspěvky"
+  },
+  "user": {
+    "singular": "Uživatel"
+  }
+}

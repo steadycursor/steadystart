@@ -1,6 +1,6 @@
 import { useAuth, RedirectToSignIn } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
-import { routes } from '@steadysass/routes';
+import { routes } from '@steadystart/routes';
 
 export default function AuthLoginPage() {
   const router = useRouter();

@@ -9,20 +9,23 @@ import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
 import { Alert } from '@/components/Alert';
 import { Section } from '@/components/Section';
 import { Loading } from '@/components/Loading';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export default function PostsPage() {
+  const { t } = useTranslation();
+
   const [postsQuery] = useQuery({
     query: query((query) => [query.posts((post) => [post.id, post.name])]),
     // context: useUrqlContext({ additionalTypenames: ['Post'] }),
   });
 
   return (
-    <Page title="Posts">
-      <Section title="New post">
+    <Page title={t('components:PostsPage.Page.title')}>
+      <Section title={t('components:PostsPage.sections.newPost')}>
         <CreatePostForm />
       </Section>
 
-      <Section title="Posts">
+      <Section title={t('components:PostsPage.sections.posts')}>
         {match(postsQuery)
           .with({ fetching: true }, () => <Loading />)
           .with({ error: P.nonNullable }, () => <UnexpectedErrorAlert />)

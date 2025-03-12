@@ -1,3 +1,3 @@
-import { PrismaClient } from '@steadysass/prisma';
+import { PrismaClient } from '@steadystart/prisma';
 
 export const prisma = new PrismaClient();

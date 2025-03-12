@@ -1,0 +1,12 @@
+{
+  "$Enums": {
+    "Locale": "Jazykové prostředí"
+  },
+  "ExampleCustomEnum": {
+    "CUSTOM_ENUM_VALUE": "Vlastní enum hodnota s překladem"
+  },
+  "Locale": {
+    "CS": "Čeština",
+    "EN": "Angličtina"
+  }
+}

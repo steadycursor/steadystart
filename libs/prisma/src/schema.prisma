@@ -7,6 +7,5 @@ datasource db {
 generator client {
   provider        = "prisma-client-js"
   output          = "../dist"
-  // TODO: [prisma] remove preview feature prismaSchemaFolder once stable in Prisma client #1
   previewFeatures = ["prismaSchemaFolder"]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@steadysass/enums",
+  "name": "@steadystart/enums",
   "private": true,
   "version": "0.0.0",
   "main": "dist/src/index.js",
@@ -7,14 +7,15 @@
   "scripts": {
     "prebuild": "pnpm run generate",
     "build": "tsc --build",
-    "generate": "ts-node ./cli/generateEnums.ts",
+    "generate": "pnpm run generate:enums-for-locales-extraction-generator",
+    "generate:enums-for-locales-extraction-generator": "ts-node ./src/generators/enums-for-locales-extraction-generator.ts",
     "tsc": "tsc --noEmit",
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix && prettier --write '**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "@steadysass/prisma": "workspace:*"
+    "@steadystart/prisma": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5"

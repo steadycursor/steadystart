@@ -1,0 +1,45 @@
+{
+  "AccountsPage": {
+    "Page": {
+      "title": "Vítejte v Steady Start"
+    },
+    "sections": {
+      "accounts": "Účty",
+      "newAccount": "Vytvořit účet"
+    }
+  },
+  "Page": {
+    "mobileView": {
+      "Menu": "Menu"
+    },
+    "switchAccount": "Přepnout účet"
+  },
+  "PostsPage": {
+    "Page": {
+      "title": "Příspěvky"
+    },
+    "sections": {
+      "newPost": "Nový příspěvek",
+      "posts": "Příspěvky"
+    }
+  },
+  "ProfilePage": {
+    "Page": {
+      "title": "Profil"
+    }
+  },
+  "SubmitButton": {
+    "title": "Odeslat"
+  },
+  "UpdateUserLocaleForm": {
+    "Card": {
+      "description": "Vyberte jazyk rozhraní aplikace. Volba zůstane zachována i po obnovení stránky nebo otevření odkazu s jiným jazykovým nastavením.",
+      "title": "Jazyk aplikace"
+    }
+  },
+  "useFormResponseHandler": {
+    "defaultToastMessages": {
+      "success": "Super. Povedlo se to."
+    }
+  }
+}

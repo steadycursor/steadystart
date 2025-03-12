@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createYoga } from 'graphql-yoga';
-import { schema, createContext } from '@steadysass/graphql';
+import { schema, createContext } from '@steadystart/graphql';
 
 export const config = {
   api: {

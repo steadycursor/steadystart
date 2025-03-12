@@ -1,1 +1,2 @@
-export * from './lib/errors';
+export type { ErrorMessage } from './types/ErrorMessage';
+export { errors } from './lib/errors';

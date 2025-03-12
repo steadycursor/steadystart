@@ -6,22 +6,25 @@ import { CreateAccountForm } from '@/forms/CreateAccountForm';
 import { match, P } from 'ts-pattern';
 import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
 import Link from 'next/link';
-import { routes } from '@steadysass/routes';
+import { routes } from '@steadystart/routes';
 import { EmptyState } from '@/components/EmptyState';
 import { Loading } from '@/components/Loading';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export default function AccountsPage() {
+  const { t } = useTranslation();
+
   const [accountsQuery] = useQuery({
     query: query((query) => [query.accounts((account) => [account.id, account.name])]),
   });
 
   return (
-    <Page title="Accounts">
-      <Section title="New Account">
+    <Page title={t('components:AccountsPage.Page.title')}>
+      <Section title={t('components:AccountsPage.sections.newAccount')}>
         <CreateAccountForm />
       </Section>
 
-      <Section title="Accounts">
+      <Section title={t('components:AccountsPage.sections.accounts')}>
         {match(accountsQuery)
           .with({ fetching: true }, () => <Loading />)
           .with({ error: P.nonNullable }, () => <UnexpectedErrorAlert />)

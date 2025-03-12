@@ -1,0 +1,45 @@
+{
+  "AccountsPage": {
+    "Page": {
+      "title": "Welcome to Steady Start"
+    },
+    "sections": {
+      "accounts": "Accounts",
+      "newAccount": "New Account"
+    }
+  },
+  "Page": {
+    "mobileView": {
+      "Menu": "Menu"
+    },
+    "switchAccount": "Switch account"
+  },
+  "PostsPage": {
+    "Page": {
+      "title": "Posts"
+    },
+    "sections": {
+      "newPost": "New post",
+      "posts": "Posts"
+    }
+  },
+  "ProfilePage": {
+    "Page": {
+      "title": "Profile"
+    }
+  },
+  "SubmitButton": {
+    "title": "Submit"
+  },
+  "UpdateUserLocaleForm": {
+    "Card": {
+      "description": "Select the language for your application interface. Your choice persists across page reloads and when opening links with different locale settings.",
+      "title": "Application Language"
+    }
+  },
+  "useFormResponseHandler": {
+    "defaultToastMessages": {
+      "success": "Great! That did the trick."
+    }
+  }
+}

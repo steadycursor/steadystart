@@ -24,7 +24,7 @@ ingress:
       path:
         prefix: /
 maintenance: {}
-name: steadysass
+name: steadystart
 region: fra
 services:
 - build_command: pnpm run build
@@ -32,10 +32,10 @@ services:
   github:
     branch: main
     deploy_on_push: true
-    repo: steadycursor/steadysass 👈
+    repo: steadycursor/steadystart 👈
   http_port: 3000
   instance_count: 1
   instance_size_slug: apps-s-1vcpu-0.5gb
   name: app
-  run_command: pnpm --filter @steadysass/app start
+  run_command: pnpm --filter @steadystart/app start
   source_dir: /

@@ -2,6 +2,8 @@ routes:
   home: "/"
   auth:
     login: "/auth/login"
+  user:
+    profile: "/profile"
   accounts: 
     posts: 
       index: "/accounts/[account]/posts"

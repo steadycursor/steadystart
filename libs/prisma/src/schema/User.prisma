@@ -2,7 +2,7 @@ model User {
   id          String       @id @default(cuid())
   clerkId     String       @unique
   email       String       @unique
-  language    Language     @default(ENGLISH)
+  locale      Locale       @default(EN)
   memberships Membership[]
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt

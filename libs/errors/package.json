@@ -1,5 +1,5 @@
 {
-  "name": "@steadysass/errors",
+  "name": "@steadystart/errors",
   "private": true,
   "version": "0.0.0",
   "main": "dist/index.js",
@@ -7,13 +7,13 @@
   "scripts": {
     "prebuild": "pnpm run generate",
     "build": "tsc --build",
+    "generate": "pnpm run generate:errors-for-locales-extraction-generator",
+    "generate:errors-for-locales-extraction-generator": "ts-node src/generator/errors-for-locales-extraction-generator.ts",
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
-    "generate": "pnpm run generate:barrels",
-    "generate:barrels": "barrelsby --directory=./src/lib/errors --delete --noHeader",
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
-    "@steadysass/prisma": "workspace:*",
+    "@steadystart/prisma": "workspace:*",
     "barrelsby": "^2.8.1",
     "typescript": "^5"
   }

@@ -1,0 +1,11 @@
+{
+  "account": {
+    "singular": "Account"
+  },
+  "post": {
+    "plural": "Posts"
+  },
+  "user": {
+    "singular": "User"
+  }
+}

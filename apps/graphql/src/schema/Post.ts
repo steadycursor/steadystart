@@ -1,4 +1,4 @@
-import { Prisma } from '@steadysass/prisma';
+import { Prisma } from '@steadystart/prisma';
 import { builder } from '../builder';
 import { DateTime } from './DateTime';
 import { Context } from '../context';
