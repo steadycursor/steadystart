@@ -28,5 +28,5 @@ const variants = (defaultVariants: { isDisabled?: boolean }) =>
   });
 
 export const Button = ({ className, isDisabled, ...props }: ButtonProps) => (
-  <button {...props} className={twMerge(className, variants({ isDisabled })(props.variant))} disabled={isDisabled} />
+  <button {...props} className={twMerge(variants({ isDisabled })(props.variant), className)} disabled={isDisabled} />
 );
