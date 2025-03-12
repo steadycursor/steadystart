@@ -4,19 +4,18 @@ import { query } from '@/generated/typed-graphql-builder';
 import { CreatePostForm } from '@/forms/CreatePostForm';
 import { EmptyState } from '@/components/EmptyState';
 import { match, P } from 'ts-pattern';
-import { useUrqlContext } from '@/hooks/useUrqlContext';
 import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
-import { Alert } from '@/components/Alert';
 import { Section } from '@/components/Section';
-import { Loading } from '@/components/Loading';
 import { useTranslation } from '@/hooks/useTranslation';
+import { DataTable } from '@/components/Table';
+import { useUrqlContext } from '@/hooks/useUrqlContext';
 
 export default function PostsPage() {
   const { t } = useTranslation();
 
   const [postsQuery] = useQuery({
     query: query((query) => [query.posts((post) => [post.id, post.name])]),
-    // context: useUrqlContext({ additionalTypenames: ['Post'] }),
+    context: useUrqlContext({ additionalTypenames: ['Post'] }),
   });
 
   return (
@@ -27,13 +26,28 @@ export default function PostsPage() {
 
       <Section title={t('components:PostsPage.sections.posts')}>
         {match(postsQuery)
-          .with({ fetching: true }, () => <Loading />)
           .with({ error: P.nonNullable }, () => <UnexpectedErrorAlert />)
           .when(
             (postsQuery) => postsQuery.data?.posts?.length === 0,
             () => <EmptyState />,
           )
-          .otherwise((postsQuery) => postsQuery.data?.posts?.map((post) => <div key={post.id}>{post.name}</div>))}
+          .otherwise((postsQuery) => (
+            <DataTable
+              columns={[
+                {
+                  accessorKey: 'name',
+                  header: 'Name',
+                },
+              ]}
+              data={
+                postsQuery.data?.posts.map((post) => ({
+                  id: post.id,
+                  name: post.name,
+                })) || []
+              }
+              isFetching={postsQuery.fetching}
+            />
+          ))}
       </Section>
     </Page>
   );

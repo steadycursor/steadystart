@@ -15,5 +15,7 @@ export type UseUrqlContextArgs = Omit<OperationContext, 'url'> & {
 };
 
 export const useUrqlContext = ({ additionalTypenames, ...args }: UseUrqlContextArgs) => {
-  return useMemo(() => ({ additionalTypenames, ...args }), [additionalTypenames, args]);
+  const argsDeps = JSON.stringify(args);
+
+  return useMemo(() => ({ additionalTypenames, ...args }), [additionalTypenames?.join(','), argsDeps]);
 };

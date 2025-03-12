@@ -30,6 +30,7 @@
     "@steadystart/graphql": "workspace:*",
     "@steadystart/routes": "workspace:*",
     "@steadystart/validations": "workspace:*",
+    "@tanstack/react-table": "^8.21.2",
     "dotenv": "^16.4.7",
     "graphql": "^16.10.0",
     "graphql-tag": "^2.12.6",
