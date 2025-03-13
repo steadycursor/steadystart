@@ -1,20 +1,20 @@
 import { builder } from '../../../builder';
-import { Account } from '../../../schema/Account';
+import { Workspace } from '../../../schema/Workspace';
 
-builder.queryField('accounts', (t) =>
+builder.queryField('workspaces', (t) =>
   t.field({
-    type: [Account],
+    type: [Workspace],
     authScopes: {
       accessPolicy: 'authenticated',
     },
     resolve: async (_parent, _args, ctx) => {
-      const accounts = ctx.prisma.account.findMany({
+      const workspaces = ctx.prisma.workspace.findMany({
         where: {
           memberships: { some: { userId: ctx.user!.id } },
         },
       });
 
-      return accounts;
+      return workspaces;
     },
   }),
 );

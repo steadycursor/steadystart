@@ -1,6 +1,6 @@
 {
-  "account": {
-    "singular": "Account"
+  "workspace": {
+    "singular": "Workspace"
   },
   "post": {
     "plural": "Posts"

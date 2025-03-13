@@ -29,8 +29,8 @@ export default createYoga<{
     if (req.headers.authorization) {
       customRequest.headers.authorization = req.headers.authorization;
     }
-    if (req.headers.account) {
-      customRequest.headers.account = req.headers.account as string;
+    if (req.headers.workspace) {
+      customRequest.headers.workspace = req.headers.workspace as string;
     }
 
     return createContext({ request: customRequest });

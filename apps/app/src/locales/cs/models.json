@@ -1,6 +1,6 @@
 {
-  "account": {
-    "singular": "Účet"
+  "workspace": {
+    "singular": "Pracovní prostor"
   },
   "post": {
     "plural": "Příspěvky"

@@ -1,18 +1,18 @@
 {
-  "AccountsPage": {
+  "WorkspacesPage": {
     "Page": {
       "title": "Vítejte v Steady Start"
     },
     "sections": {
-      "accounts": "Účty",
-      "newAccount": "Vytvořit účet"
+      "workspaces": "Pracovní prostory",
+      "newWorkspace": "Vytvořit pracovní prostor"
     }
   },
   "Page": {
     "mobileView": {
       "Menu": "Menu"
     },
-    "switchAccount": "Přepnout účet"
+    "switchWorkspace": "Přepnout pracovní prostor"
   },
   "PostsPage": {
     "Page": {

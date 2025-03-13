@@ -10,14 +10,14 @@ builder.mutationField('createPost', (t) =>
     },
     authScopes: {
       accessPolicy: 'authenticated',
-      userHasAccessOnAccount: true,
+      userHasAccessOnWorkspace: true,
     },
     validate: { schema: createPostSchema },
     resolve: async (_parent, args, ctx) => {
       const post = await ctx.prisma.post.create({
         data: {
           name: args.name,
-          accountId: ctx.account!.id,
+          workspaceId: ctx.workspace!.id,
         },
       });
 

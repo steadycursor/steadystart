@@ -1,24 +1,24 @@
 import { builder } from '../../../builder';
-import { Account } from '../../../schema/Account';
+import { Workspace } from '../../../schema/Workspace';
 
-builder.queryField('account', (t) =>
+builder.queryField('workspace', (t) =>
   t.field({
-    type: Account,
+    type: Workspace,
     args: {
       id: t.arg({ type: 'ID' }),
     },
     authScopes: (_parent, args, _ctx) => ({
       accessPolicy: 'authenticated',
-      userHasAccessOnAccount: { id: args.id },
+      userHasAccessOnWorkspace: { id: args.id },
     }),
     resolve: async (_parent, args, ctx) => {
-      const account = ctx.prisma.account.findUniqueOrThrow({
+      const workspace = ctx.prisma.workspace.findUniqueOrThrow({
         where: {
           id: args.id,
         },
       });
 
-      return account;
+      return workspace;
     },
   }),
 );

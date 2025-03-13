@@ -28,7 +28,7 @@ export const Page = ({ title, children }: PageProps) => {
   useChangeUserLocaleBasedOnItsSetting();
 
   const { t } = useTranslation();
-  const queryParams = useQueryParamsFromZodSchema(zod.object({ account: zod.string().optional() }));
+  const queryParams = useQueryParamsFromZodSchema(zod.object({ workspace: zod.string().optional() }));
   const router = useRouter();
   const { isSignedIn } = useAuth();
 
@@ -36,10 +36,10 @@ export const Page = ({ title, children }: PageProps) => {
 
   const [meQuery] = useQuery({ query: query((query) => [query.me((me) => [me.locale])]) });
 
-  const [accountQuery] = useQuery({
-    query: query((query) => [query.account({ id: $('id') }, (account) => [account.id, account.name])]),
-    variables: { id: queryParams.account! },
-    pause: !queryParams.account,
+  const [workspaceQuery] = useQuery({
+    query: query((query) => [query.workspace({ id: $('id') }, (workspace) => [workspace.id, workspace.name])]),
+    variables: { id: queryParams.workspace! },
+    pause: !queryParams.workspace,
   });
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export const Page = ({ title, children }: PageProps) => {
         <Link href={routes.home()}>
           <Div className="flex gap-3 items-center">
             <Img src="/logo.png" className="w-auto h-6" />
-            <Div className="text-lg font-semibold">{accountQuery.data?.account?.name}</Div>
+            <Div className="text-lg font-semibold">{workspaceQuery.data?.workspace?.name}</Div>
           </Div>
         </Link>
         <Div className="flex gap-2">
@@ -87,18 +87,18 @@ export const Page = ({ title, children }: PageProps) => {
           ]}
         >
           <Div>
-            {/* Logo with account switcher */}
+            {/* Logo with workspace switcher */}
             <Div className="sm:block hidden mb-6">
               <Link href={routes.home()}>
                 <Div className="flex gap-4 items-center">
                   <Img src="/logo.png" className="w-auto h-10" />
 
                   <Div className="flex-1">
-                    {accountQuery.data?.account?.id && (
+                    {workspaceQuery.data?.workspace?.id && (
                       <Div>
-                        <Div className="font-semibold leading-1 truncate">{accountQuery.data.account.name}</Div>
+                        <Div className="font-semibold leading-1 truncate">{workspaceQuery.data.workspace.name}</Div>
                         <Link href={routes.home()} className="text-xs text-gray-600">
-                          <Div>{t('components:Page.switchAccount')}</Div>
+                          <Div>{t('components:Page.switchWorkspace')}</Div>
                         </Link>
                       </Div>
                     )}
@@ -106,17 +106,17 @@ export const Page = ({ title, children }: PageProps) => {
                 </Div>
               </Link>
             </Div>
-            {/* -- Logo with account switcher */}
+            {/* -- Logo with workspace switcher */}
 
-            {/* Account navigation items */}
-            {queryParams.account && accountQuery.data?.account?.id && (
-              <SidebarSection title={t(`models:account.singular`)}>
-                <Link href={routes.accounts.posts.index({ account: queryParams.account })}>
+            {/* Workspace navigation items */}
+            {queryParams.workspace && workspaceQuery.data?.workspace?.id && (
+              <SidebarSection title={t(`models:workspace.singular`)}>
+                <Link href={routes.workspaces.posts.index({ workspace: queryParams.workspace })}>
                   <SidebarItem title={t(`models:post.plural`)} Icon={News24Regular} />
                 </Link>
               </SidebarSection>
             )}
-            {/* -- Account navigation items */}
+            {/* -- Workspace navigation items */}
 
             {/* User navigation items */}
             <SidebarSection title={t(`models:user.singular`)}>

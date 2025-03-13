@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { OperationContext } from 'urql';
-import type { Account, User, Post } from '@/generated/graphql';
+import type { Workspace, User, Post } from '@/generated/graphql';
 
 type ExtractTypename<T> = T extends { __typename: string } ? T['__typename'] : never;
 
 export type AdditionalTypename = ExtractTypename<
-  | Account //
+  | Workspace //
   | User
   | Post
 >;

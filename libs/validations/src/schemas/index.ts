@@ -1,3 +1,3 @@
-export * from "./createAccountSchema";
 export * from "./createPostSchema";
+export * from "./createWorkspaceSchema";
 export * from "./updateUserSchema";

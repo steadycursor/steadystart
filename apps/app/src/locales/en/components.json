@@ -1,18 +1,18 @@
 {
-  "AccountsPage": {
+  "WorkspacesPage": {
     "Page": {
       "title": "Welcome to Steady Start"
     },
     "sections": {
-      "accounts": "Accounts",
-      "newAccount": "New Account"
+      "workspaces": "Workspaces",
+      "newWorkspace": "New Workspace"
     }
   },
   "Page": {
     "mobileView": {
       "Menu": "Menu"
     },
-    "switchAccount": "Switch account"
+    "switchWorkspace": "Switch workspace"
   },
   "PostsPage": {
     "Page": {

@@ -1,4 +1,4 @@
-model Account {
+model Workspace {
   id          String       @id @default(cuid())
   name        String
   memberships Membership[]

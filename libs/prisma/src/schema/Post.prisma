@@ -1,8 +1,8 @@
 model Post {
-  id        String   @id @default(cuid())
-  name      String
-  account   Account  @relation(fields: [accountId], references: [id])
-  accountId String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String    @id @default(cuid())
+  name        String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+  workspaceId String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }

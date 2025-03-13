@@ -8,52 +8,52 @@ import { LinkButton } from '@/components/LinkButton';
 import { Section } from '@/components/Section';
 import { DataTable } from '@/components/Table';
 import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
-import { CreateAccountForm } from '@/forms/CreateAccountForm';
+import { CreateWorkspaceForm } from '@/forms/CreateWorkspaceForm';
 import { query } from '@/generated/typed-graphql-builder';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useUrqlContext } from '@/hooks/useUrqlContext';
 
-export default function AccountsPage() {
+export default function WorkspacesPage() {
   const { t } = useTranslation();
 
-  const [accountsQuery] = useQuery({
-    query: query((query) => [query.accounts((account) => [account.id, account.name])]),
-    context: useUrqlContext({ additionalTypenames: ['Account'] }),
+  const [workspacesQuery] = useQuery({
+    query: query((query) => [query.workspaces((workspace) => [workspace.id, workspace.name])]),
+    context: useUrqlContext({ additionalTypenames: ['Workspace'] }),
   });
 
   return (
-    <Page title={t('components:AccountsPage.Page.title')}>
-      <Section title={t('components:AccountsPage.sections.newAccount')}>
-        <CreateAccountForm />
+    <Page title={t('components:WorkspacesPage.Page.title')}>
+      <Section title={t('components:WorkspacesPage.sections.newWorkspace')}>
+        <CreateWorkspaceForm />
       </Section>
 
-      <Section title={t('components:AccountsPage.sections.accounts')}>
-        {match(accountsQuery)
+      <Section title={t('components:WorkspacesPage.sections.workspaces')}>
+        {match(workspacesQuery)
           .with({ error: P.nonNullable }, () => <UnexpectedErrorAlert />)
           .when(
-            (accountsQuery) => accountsQuery.data?.accounts?.length === 0,
+            (workspacesQuery) => workspacesQuery.data?.workspaces?.length === 0,
             () => <EmptyState />,
           )
-          .otherwise((accountsQuery) => (
+          .otherwise((workspacesQuery) => (
             <DataTable
               columns={[
                 {
                   accessorKey: 'name',
                   header: 'Name',
                   cell: (props) => (
-                    <Link href={routes.accounts.posts.index({ account: props.row.original.id })}>
+                    <Link href={routes.workspaces.posts.index({ workspace: props.row.original.id })}>
                       <LinkButton>{props.row.original.name}</LinkButton>
                     </Link>
                   ),
                 },
               ]}
               data={
-                accountsQuery.data?.accounts.map((account) => ({
-                  id: account.id,
-                  name: account.name,
+                workspacesQuery.data?.workspaces.map((workspace) => ({
+                  id: workspace.id,
+                  name: workspace.name,
                 })) || []
               }
-              isFetching={accountsQuery.fetching}
+              isFetching={workspacesQuery.fetching}
             />
           ))}
       </Section>

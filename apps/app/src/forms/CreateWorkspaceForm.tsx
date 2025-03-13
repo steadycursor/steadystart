@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { routes } from '@steadystart/routes';
-import { createAccountSchema } from '@steadystart/validations';
+import { createWorkspaceSchema } from '@steadystart/validations';
 import { useRouter } from 'next/router';
 import { useMutation } from 'urql';
 import { z } from 'zod';
@@ -11,28 +11,28 @@ import { mutation, $ } from '@/generated/typed-graphql-builder';
 import { useFormResponseHandler } from '@/hooks/useFormResponseHandler';
 import { useTranslation } from '@/hooks/useTranslation';
 
-type FormValues = z.infer<typeof createAccountSchema>;
+type FormValues = z.infer<typeof createWorkspaceSchema>;
 
-export function CreateAccountForm() {
+export function CreateWorkspaceForm() {
   const { t } = useTranslation();
   const router = useRouter();
   const formResponseHandler = useFormResponseHandler();
 
-  const [createAccountMutation, createAccount] = useMutation(
-    mutation((mutation) => [mutation.createAccount({ name: $('name') }, (account) => [account.id])]),
+  const [createWorkspaceMutation, createWorkspace] = useMutation(
+    mutation((mutation) => [mutation.createWorkspace({ name: $('name') }, (workspace) => [workspace.id])]),
   );
 
   const form = useForm<FormValues>({
-    resolver: zodResolver(createAccountSchema),
+    resolver: zodResolver(createWorkspaceSchema),
     onSubmit: async (data) => {
-      await createAccount(data)
+      await createWorkspace(data)
         .then(formResponseHandler)
         .then((response) => {
-          if (!response.data?.createAccount.id) {
+          if (!response.data?.createWorkspace.id) {
             return;
           }
 
-          router.push(routes.accounts.posts.index({ account: response.data.createAccount.id }));
+          router.push(routes.workspaces.posts.index({ workspace: response.data.createWorkspace.id }));
         });
     },
   });
@@ -40,7 +40,7 @@ export function CreateAccountForm() {
   return (
     <form.Form>
       <TextField register={form.register('name')} label={{ title: t('fields:name') }} />
-      <SubmitButton isDisabled={createAccountMutation.fetching} />
+      <SubmitButton isDisabled={createWorkspaceMutation.fetching} />
     </form.Form>
   );
 }

@@ -4,8 +4,8 @@ import ScopeAuthPlugin from '@pothos/plugin-scope-auth';
 import SimpleObjectsPlugin from '@pothos/plugin-simple-objects';
 import ZodPlugin from '@pothos/plugin-zod';
 import { accessPolicyAuthScope, AccessPolicyAuthScopeArgs } from './authScopes/accessPolicyAuthScope';
-import { modelItemsBelongToAccountScope, ModelItemsBelongToAccountScopeArgs } from './authScopes/modelItemsBelongToAccount';
-import { userHasAccessOnAccountScope, UserHasAccessOnAccountScopeArgs } from './authScopes/userHasAccessOnAccountScope';
+import { modelItemsBelongToWorkspaceScope, ModelItemsBelongToWorkspaceScopeArgs } from './authScopes/modelItemsBelongToWorkspace';
+import { userHasAccessOnWorkspaceScope, UserHasAccessOnWorkspaceScopeArgs } from './authScopes/userHasAccessOnWorkspaceScope';
 import { Context } from './context';
 import { Date } from './schema/Date';
 import { DateTime } from './schema/DateTime';
@@ -21,8 +21,8 @@ export const builder = new SchemaBuilder<{
   };
   AuthScopes: {
     accessPolicy: AccessPolicyAuthScopeArgs;
-    userHasAccessOnAccount: UserHasAccessOnAccountScopeArgs;
-    modelItemsBelongToAccount: ModelItemsBelongToAccountScopeArgs;
+    userHasAccessOnWorkspace: UserHasAccessOnWorkspaceScopeArgs;
+    modelItemsBelongToWorkspace: ModelItemsBelongToWorkspaceScopeArgs;
   };
   Context: Context;
   DefaultFieldNullability: false;
@@ -38,8 +38,8 @@ export const builder = new SchemaBuilder<{
     authScopes: async (ctx) => {
       return {
         accessPolicy: accessPolicyAuthScope(ctx),
-        userHasAccessOnAccount: userHasAccessOnAccountScope(ctx),
-        modelItemsBelongToAccount: modelItemsBelongToAccountScope(ctx),
+        userHasAccessOnWorkspace: userHasAccessOnWorkspaceScope(ctx),
+        modelItemsBelongToWorkspace: modelItemsBelongToWorkspaceScope(ctx),
       };
     },
   },

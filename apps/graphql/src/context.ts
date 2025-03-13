@@ -2,7 +2,7 @@ import { createClerkClient } from '@clerk/backend';
 import { prisma } from './prisma';
 import { secrets } from './secrets';
 import { Request } from './types/Request';
-import { findAndValidateAccountFromRequstHeaders } from './utils/context/findAndValidateAccountFromRequstHeaders';
+import { findAndValidateWorkspaceFromRequestHeaders } from './utils/context/findAndValidateWorkspaceFromRequestHeaders';
 import { findOrCreateUser } from './utils/context/findOrCreateUser';
 import { getClerkSessionData } from './utils/context/getClerkSessionData';
 
@@ -21,13 +21,13 @@ export const createContext = async ({ request }: ContextProps) => {
     ? await findOrCreateUser({ clerkUserId: clerkSessionData.userId, emailAddress: clerkSessionData.emailAddress, prisma })
     : undefined;
 
-  const account = await findAndValidateAccountFromRequstHeaders({ request, user });
+  const workspace = await findAndValidateWorkspaceFromRequestHeaders({ request, user });
 
   return {
     request,
     prisma,
     user,
-    account,
+    workspace,
   };
 };
 

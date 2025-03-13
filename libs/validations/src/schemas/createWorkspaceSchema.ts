@@ -1,5 +1,5 @@
 import { z } from 'zod';
 
-export const createAccountSchema = z.object({
+export const createWorkspaceSchema = z.object({
   name: z.string().min(2),
 });

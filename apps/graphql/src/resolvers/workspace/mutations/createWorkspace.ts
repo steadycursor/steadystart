@@ -1,19 +1,19 @@
-import { createAccountSchema } from '@steadystart/validations';
+import { createWorkspaceSchema } from '@steadystart/validations';
 import { builder } from '../../../builder';
-import { Account } from '../../../schema/Account';
+import { Workspace } from '../../../schema/Workspace';
 
-builder.mutationField('createAccount', (t) =>
+builder.mutationField('createWorkspace', (t) =>
   t.field({
-    type: Account,
+    type: Workspace,
     args: {
       name: t.arg({ type: 'String' }),
     },
     authScopes: {
       accessPolicy: 'authenticated',
     },
-    validate: { schema: createAccountSchema },
+    validate: { schema: createWorkspaceSchema },
     resolve: async (_parent, args, ctx) => {
-      const account = await ctx.prisma.account.create({
+      const workspace = await ctx.prisma.workspace.create({
         data: {
           name: args.name,
           memberships: {
@@ -22,7 +22,7 @@ builder.mutationField('createAccount', (t) =>
         },
       });
 
-      return account;
+      return workspace;
     },
   }),
 );

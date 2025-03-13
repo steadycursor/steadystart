@@ -6,12 +6,12 @@ builder.queryField('posts', (t) =>
     type: [Post],
     authScopes: {
       accessPolicy: 'authenticated',
-      userHasAccessOnAccount: true,
+      userHasAccessOnWorkspace: true,
     },
     resolve: async (_parent, _args, ctx) => {
       const posts = ctx.prisma.post.findMany({
         where: {
-          accountId: ctx.account!.id,
+          workspaceId: ctx.workspace!.id,
         },
       });
 

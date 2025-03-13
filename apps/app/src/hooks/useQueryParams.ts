@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { z } from 'zod';
 
 const querySchema = z.object({
-  account: z.string(),
+  workspace: z.string(),
 });
 
 type QueryParams = z.infer<typeof querySchema>;

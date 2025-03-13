@@ -1,37 +1,37 @@
-import { Client, cacheExchange, fetchExchange, Provider } from 'urql';
 import { useAuth } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
+import { Client, cacheExchange, fetchExchange, Provider } from 'urql';
+import zod from 'zod';
 import { useQueryParamsFromZodSchema } from '@/hooks/useQueryParamsFromZodSchema';
 import { ChildrenProps } from '@/types/ChildrenProps';
-import zod from 'zod';
 
-const createClient = (args: { token: string | undefined; accountId: string | undefined }) =>
+const createClient = (args: { token: string | undefined; workspaceId: string | undefined }) =>
   new Client({
     url: '/api/graphql',
     exchanges: [cacheExchange, fetchExchange],
-    fetchOptions: { headers: { Authorization: args.token ? `Bearer ${args.token}` : '', Account: args.accountId ?? '' } },
+    fetchOptions: { headers: { Authorization: args.token ? `Bearer ${args.token}` : '', Workspace: args.workspaceId ?? '' } },
   });
 
 type UrqlProviderProps = ChildrenProps;
 
 export const UrqlProvider = ({ children }: UrqlProviderProps) => {
-  const queryParams = useQueryParamsFromZodSchema(zod.object({ account: zod.string().optional() }));
+  const queryParams = useQueryParamsFromZodSchema(zod.object({ workspace: zod.string().optional() }));
 
   const { getToken } = useAuth();
 
-  const [client, setClient] = useState(createClient({ token: undefined, accountId: queryParams.account }));
+  const [client, setClient] = useState(createClient({ token: undefined, workspaceId: queryParams.workspace }));
 
   useEffect(() => {
     const fetchToken = async () => {
       const token = await getToken();
 
       if (token) {
-        setClient(createClient({ token, accountId: queryParams.account }));
+        setClient(createClient({ token, workspaceId: queryParams.workspace }));
       }
     };
 
     fetchToken();
-  }, [getToken, queryParams.account]);
+  }, [getToken, queryParams.workspace]);
 
   return <Provider value={client}>{children}</Provider>;
 };
