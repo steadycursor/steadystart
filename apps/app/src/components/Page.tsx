@@ -17,6 +17,7 @@ import { query, $ } from '@/generated/typed-graphql-builder';
 import { useChangeUserLocaleBasedOnItsSetting } from '@/hooks/useChangeUserLocaleBasedOnItsSetting';
 import { useQueryParamsFromZodSchema } from '@/hooks/useQueryParamsFromZodSchema';
 import { useTranslation } from '@/hooks/useTranslation';
+import { redirectUrlQueryParametr } from '@/pages/auth/login';
 import { ChildrenProps } from '@/types/ChildrenProps';
 
 type PageProps = ChildrenProps & {
@@ -43,7 +44,9 @@ export const Page = ({ title, children }: PageProps) => {
 
   useEffect(() => {
     if (isSignedIn === false) {
-      router.push(routes.auth.login());
+      const currentPath = encodeURIComponent(router.asPath);
+
+      router.push(routes.auth.login() + `?${redirectUrlQueryParametr}=${currentPath}`);
     }
   }, [isSignedIn, router]);
 
