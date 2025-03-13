@@ -1,7 +1,7 @@
-import { useTranslation } from './useTranslation';
 import { CombinedError } from 'urql';
-import { useGraphqlError } from './useGraphqlError';
 import { toast } from './../lib/toast';
+import { useGraphqlError } from './useGraphqlError';
+import { useTranslation } from './useTranslation';
 
 type CallbackProps<T> = {
   data?: T;

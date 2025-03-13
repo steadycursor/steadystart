@@ -1,17 +1,17 @@
-import { Page } from '../components/Page';
-import { useQuery } from 'urql';
-import { query } from '@/generated/typed-graphql-builder';
-import { Section } from '@/components/Section';
-import { CreateAccountForm } from '@/forms/CreateAccountForm';
-import { useUrqlContext } from '@/hooks/useUrqlContext';
-import { match, P } from 'ts-pattern';
-import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
-import Link from 'next/link';
 import { routes } from '@steadystart/routes';
-import { LinkButton } from '@/components/LinkButton';
+import Link from 'next/link';
+import { match, P } from 'ts-pattern';
+import { useQuery } from 'urql';
+import { Page } from '../components/Page';
 import { EmptyState } from '@/components/EmptyState';
-import { useTranslation } from '@/hooks/useTranslation';
+import { LinkButton } from '@/components/LinkButton';
+import { Section } from '@/components/Section';
 import { DataTable } from '@/components/Table';
+import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
+import { CreateAccountForm } from '@/forms/CreateAccountForm';
+import { query } from '@/generated/typed-graphql-builder';
+import { useTranslation } from '@/hooks/useTranslation';
+import { useUrqlContext } from '@/hooks/useUrqlContext';
 
 export default function AccountsPage() {
   const { t } = useTranslation();

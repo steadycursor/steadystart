@@ -1,5 +1,5 @@
-import { Div } from './Div';
 import { CollectionsEmptyRegular } from '@fluentui/react-icons';
+import { Div } from './Div';
 
 export const EmptyState = () => {
   return (

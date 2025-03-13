@@ -4,9 +4,14 @@
   "private": true,
   "scripts": {
     "build": "pnpm -r run build",
-    "tsc": "pnpm -r run tsc"
+    "tsc": "pnpm -r run tsc",
+    "lint": "pnpm -r run lint"
   },
   "devDependencies": {
-    "env-cmd": "^10.1.0"
-  }
+    "@typescript-eslint/parser": "^7.4.0",
+    "env-cmd": "^10.1.0",
+    "eslint": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1"
+  },
+  "packageManager": "pnpm@9.3.0"
 }

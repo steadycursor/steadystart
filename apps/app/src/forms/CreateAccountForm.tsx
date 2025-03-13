@@ -1,15 +1,15 @@
-import { useForm } from '../hooks/useForm';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { routes } from '@steadystart/routes';
 import { createAccountSchema } from '@steadystart/validations';
+import { useRouter } from 'next/router';
 import { useMutation } from 'urql';
-import { mutation, $ } from '@/generated/typed-graphql-builder';
-import { TextField } from '@/components/TextField';
+import { z } from 'zod';
+import { useForm } from '../hooks/useForm';
 import { SubmitButton } from '@/components/SubmitButton';
+import { TextField } from '@/components/TextField';
+import { mutation, $ } from '@/generated/typed-graphql-builder';
 import { useFormResponseHandler } from '@/hooks/useFormResponseHandler';
 import { useTranslation } from '@/hooks/useTranslation';
-import { useRouter } from 'next/router';
-import { routes } from '@steadystart/routes';
 
 type FormValues = z.infer<typeof createAccountSchema>;
 

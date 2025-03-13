@@ -1,7 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { Div } from './Div';
-
 import { LabelProps } from './Label';
 import { ToggleInput } from './ToggleInput';
 

@@ -1,6 +1,6 @@
 import { PrismaClient } from '@steadystart/prisma';
-import { ConfigKeys } from '../types/ConfigKeys';
 import { defaultValues } from './defaultValues';
+import { ConfigKeys } from '../types/ConfigKeys';
 
 export class Config {
   private prisma: PrismaClient;

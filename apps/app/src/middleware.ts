@@ -1,5 +1,6 @@
 import { clerkMiddleware } from '@clerk/nextjs/server';
 
+// eslint-disable-next-line import/no-default-export
 export default clerkMiddleware({ signInUrl: '/auth/login' });
 
 export const config = {

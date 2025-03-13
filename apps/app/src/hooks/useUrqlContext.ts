@@ -17,5 +17,6 @@ export type UseUrqlContextArgs = Omit<OperationContext, 'url'> & {
 export const useUrqlContext = ({ additionalTypenames, ...args }: UseUrqlContextArgs) => {
   const argsDeps = JSON.stringify(args);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => ({ additionalTypenames, ...args }), [additionalTypenames?.join(','), argsDeps]);
 };

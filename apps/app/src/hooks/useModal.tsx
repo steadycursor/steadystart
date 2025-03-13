@@ -1,10 +1,10 @@
-import { createContext, ReactElement, ReactNode, useContext, useState, cloneElement } from 'react';
 import { Dismiss20Regular } from '@fluentui/react-icons';
+import { createContext, ReactElement, ReactNode, useContext, useState, cloneElement } from 'react';
 
 export const ModalContext = createContext<() => void>(() => {});
 
 export type UseModalArgs = {
-  trigger: ReactElement | undefined;
+  trigger: ReactElement<{ onClick?: () => void }> | undefined;
   content: (args: { closeModal: () => void }) => ReactNode;
   title?: ReactNode;
 };
@@ -26,7 +26,6 @@ export function useModal({ title, trigger, content }: UseModalArgs): UseModalPay
   const closeModal = () => setIsOpen(false);
   const toggleModal = () => setIsOpen((prev) => !prev);
 
-  // @ts-ignore
   const triggerWithProps = trigger && cloneElement(trigger, { onClick: openModal });
 
   const modal = isOpen ? (

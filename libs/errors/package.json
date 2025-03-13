@@ -10,11 +10,15 @@
     "generate": "pnpm run generate:errors-for-locales-extraction-generator",
     "generate:errors-for-locales-extraction-generator": "ts-node src/generator/errors-for-locales-extraction-generator.ts",
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
     "@steadystart/prisma": "workspace:*",
     "barrelsby": "^2.8.1",
+    "eslint": "^9.1.0",
     "typescript": "^5"
   }
 }

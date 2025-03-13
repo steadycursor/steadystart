@@ -1,6 +1,6 @@
+import { createAccountSchema } from '@steadystart/validations';
 import { builder } from '../../../builder';
 import { Account } from '../../../schema/Account';
-import { createAccountSchema } from '@steadystart/validations';
 
 builder.mutationField('createAccount', (t) =>
   t.field({

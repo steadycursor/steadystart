@@ -14,6 +14,7 @@ export const ToggleInput: FC<ToggleInputProps> = ({ id, ...props }) => {
     setEnabled((prev: boolean) => {
       const newVal = !prev;
       field.onChange(newVal);
+
       return newVal;
     });
   };

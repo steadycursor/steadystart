@@ -4,10 +4,9 @@ import path from 'path';
 (async () => {
   const filePath = path.join(__dirname, '../generated/typed-graphql-builder.ts');
 
-  try {
-    let content = await fs.readFile(filePath, 'utf-8');
+  let content = await fs.readFile(filePath, 'utf-8');
 
-    const newType = `
+  const newType = `
 export type ModelOutput<T> = T extends $Interface<infer Subtypes, any>
   ? { [K in keyof Subtypes]: ModelOutput<Subtypes[K]> }[keyof Subtypes]
   : T extends $Union<infer Subtypes, any>
@@ -25,7 +24,6 @@ export type ModelOutput<T> = T extends $Interface<infer Subtypes, any>
   : never;
 `;
 
-    content += `\n${newType}`;
-    await fs.writeFile(filePath, content, 'utf-8');
-  } catch (error) {}
+  content += `\n${newType}`;
+  await fs.writeFile(filePath, content, 'utf-8');
 })();

@@ -11,7 +11,9 @@
     "migrate:up": "env-cmd -f ../../.env -- pnpm prisma migrate dev --skip-generate",
     "db:push": "env-cmd -f ../../.env -- pnpm prisma db push",
     "studio": "env-cmd -f ../../.env -- pnpm prisma studio",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "prisma": {
     "schema": "src"
@@ -20,8 +22,10 @@
     "@prisma/client": "^6.4.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
     "@types/node": "^20.12.12",
+    "eslint": "^9.1.0",
     "prisma": "^6.4.1",
-    "typescript": "^5.4.5"
+    "typescript": "^5"
   }
 }

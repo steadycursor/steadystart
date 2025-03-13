@@ -1,6 +1,6 @@
-import { ClassNameProps } from '../types/ClassNameProps';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { ClassNameProps } from '../types/ClassNameProps';
 
 export type DivProps = Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'className'> & ClassNameProps;
 

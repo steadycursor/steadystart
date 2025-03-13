@@ -1,7 +1,7 @@
-import { ClassNameProps } from '../types/ClassNameProps';
 import { ButtonHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
+import { ClassNameProps } from '../types/ClassNameProps';
 
 export type ButtonProps = {
   variant?: Parameters<typeof variants>[0];

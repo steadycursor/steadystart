@@ -1,13 +1,13 @@
-import { Page } from '../../../../components/Page';
-import { useQuery } from 'urql';
-import { query } from '@/generated/typed-graphql-builder';
-import { CreatePostForm } from '@/forms/CreatePostForm';
-import { EmptyState } from '@/components/EmptyState';
 import { match, P } from 'ts-pattern';
-import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
+import { useQuery } from 'urql';
+import { Page } from '../../../../components/Page';
+import { EmptyState } from '@/components/EmptyState';
 import { Section } from '@/components/Section';
-import { useTranslation } from '@/hooks/useTranslation';
 import { DataTable } from '@/components/Table';
+import { UnexpectedErrorAlert } from '@/components/UnexpectedErrorAlert';
+import { CreatePostForm } from '@/forms/CreatePostForm';
+import { query } from '@/generated/typed-graphql-builder';
+import { useTranslation } from '@/hooks/useTranslation';
 import { useUrqlContext } from '@/hooks/useUrqlContext';
 
 export default function PostsPage() {

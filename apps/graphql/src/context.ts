@@ -2,9 +2,9 @@ import { createClerkClient } from '@clerk/backend';
 import { prisma } from './prisma';
 import { secrets } from './secrets';
 import { Request } from './types/Request';
+import { findAndValidateAccountFromRequstHeaders } from './utils/context/findAndValidateAccountFromRequstHeaders';
 import { findOrCreateUser } from './utils/context/findOrCreateUser';
 import { getClerkSessionData } from './utils/context/getClerkSessionData';
-import { findAndValidateAccountFromRequstHeaders } from './utils/context/findAndValidateAccountFromRequstHeaders';
 
 type ContextProps = {
   request: Request;

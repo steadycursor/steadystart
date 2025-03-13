@@ -1,5 +1,5 @@
-import { FC, SelectHTMLAttributes } from 'react';
 import { ChevronDown24Regular } from '@fluentui/react-icons';
+import { FC, SelectHTMLAttributes } from 'react';
 
 type SelectInputProps = SelectHTMLAttributes<HTMLSelectElement>;
 

@@ -1,6 +1,6 @@
-import { useTranslation } from './useTranslation';
-import { CombinedError } from 'urql';
 import { errors, ErrorMessage } from '@steadystart/errors';
+import { CombinedError } from 'urql';
+import { useTranslation } from './useTranslation';
 
 export type UseGraphqlErrorPayload = (error: Pick<CombinedError, 'message'>) => string | null;
 

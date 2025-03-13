@@ -1,11 +1,11 @@
 import '@/styles/globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
+import { routes } from '@steadystart/routes';
+import Head from 'next/head';
+import { Toaster } from 'react-hot-toast';
+import { UrqlProvider } from '../../providers/urql';
 import { HeadTitle } from '@/components/HeadTitle';
 import type { AppProps } from 'next/app';
-import { UrqlProvider } from '../../providers/urql';
-import { Toaster } from 'react-hot-toast';
-import Head from 'next/head';
-import { routes } from '@steadystart/routes';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

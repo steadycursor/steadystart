@@ -1,7 +1,7 @@
-import { useTranslation } from './useTranslation';
-import { query } from '@/generated/typed-graphql-builder';
 import { useEffect } from 'react';
 import { useQuery } from 'urql';
+import { useTranslation } from './useTranslation';
+import { query } from '@/generated/typed-graphql-builder';
 
 export const useChangeUserLocaleBasedOnItsSetting = () => {
   const { lang, setLanguage } = useTranslation();
@@ -18,5 +18,5 @@ export const useChangeUserLocaleBasedOnItsSetting = () => {
     }
 
     setLanguage(meQuery.data.me.locale.toLowerCase());
-  }, [meQuery.data?.me.locale, lang]);
+  }, [meQuery.data?.me.locale, lang, setLanguage]);
 };

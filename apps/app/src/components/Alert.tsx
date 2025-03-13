@@ -1,6 +1,6 @@
+import { Info48Filled, Warning48Filled, ErrorCircle48Filled, CheckmarkCircle48Filled } from '@fluentui/react-icons';
 import { tv } from 'tailwind-variants';
 import { match } from 'ts-pattern';
-import { Info48Filled, Warning48Filled, ErrorCircle48Filled, CheckmarkCircle48Filled } from '@fluentui/react-icons';
 import { Div, DivProps } from './Div';
 
 export type AlertProps = {

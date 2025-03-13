@@ -1,7 +1,7 @@
-import { ClassNameProps } from '@/types/ClassNameProps';
-import { ChildrenProps } from '@/types/ChildrenProps';
 import { Div } from './Div';
 import { Label, LabelProps } from './Label';
+import { ChildrenProps } from '@/types/ChildrenProps';
+import { ClassNameProps } from '@/types/ClassNameProps';
 
 type FieldWrapperProps = ChildrenProps &
   ClassNameProps & {

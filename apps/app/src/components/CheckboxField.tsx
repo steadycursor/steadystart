@@ -1,9 +1,8 @@
 import { InputHTMLAttributes } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
-import { Div } from './Div';
-
-import { LabelProps } from './Label';
 import { CheckboxInput } from './CheckboxInput';
+import { Div } from './Div';
+import { LabelProps } from './Label';
 
 type CheckboxFieldProps = {
   register: UseFormRegisterReturn;

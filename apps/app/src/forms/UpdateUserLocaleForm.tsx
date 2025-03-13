@@ -1,15 +1,15 @@
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { localeSelectOptions } from '@steadystart/enums';
 import { updateUserSchema } from '@steadystart/validations';
-import { Card } from '@/components/Card';
 import { useMutation, useQuery } from 'urql';
+import { z } from 'zod';
+import { useForm } from '../hooks/useForm';
+import { Card } from '@/components/Card';
+import { SelectField } from '@/components/SelectField';
 import { SubmitButton } from '@/components/SubmitButton';
 import { mutation, $, query } from '@/generated/typed-graphql-builder';
-import { useForm } from '../hooks/useForm';
-import { SelectField } from '@/components/SelectField';
-import { localeSelectOptions } from '@steadystart/enums';
-import { useTranslation } from '@/hooks/useTranslation';
 import { useFormResponseHandler } from '@/hooks/useFormResponseHandler';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type FormValues = z.infer<typeof updateUserSchema>;
 

@@ -15,6 +15,7 @@
     "generate:append-generated-typed-graphql-builder": "ts-node --project tsconfig.scripts.json ./src/generators/append-generated-typed-graphql-builder.ts",
     "generate:transform-generated-typed-graphql-builder-enums-to-consts": "ts-node --project tsconfig.scripts.json ./src/generators/transform-generated-typed-graphql-builder-enums-to-consts.ts",
     "generate:codegen": "npx graphql-codegen",
+    "translate": "claude \"Fill out missing translations in app/src/locales. Default language for translation is english (en) language.\"",
     "start": "next start",
     "lint": "next lint"
   },
@@ -50,7 +51,7 @@
     "zod": "3.22.4"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
+    "@eslint/eslintrc": "^3.3.0",
     "@graphql-codegen/cli": "^5.0.4",
     "@graphql-codegen/typescript": "^4.1.3",
     "@types/node": "^20",

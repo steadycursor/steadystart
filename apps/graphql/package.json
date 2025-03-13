@@ -10,7 +10,10 @@
     "prebuild": "pnpm run generate",
     "build": "tsc --build",
     "generate": "pnpm run generate:schema",
-    "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/tools/generateSchema"
+    "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/tools/generateSchema",
+    "tsc": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@clerk/backend": "^1.23.7",
@@ -19,9 +22,9 @@
     "@pothos/plugin-scope-auth": "^4.1.1",
     "@pothos/plugin-simple-objects": "^4.0.3",
     "@pothos/plugin-zod": "^4.1.0",
+    "@steadystart/errors": "workspace:*",
     "@steadystart/prisma": "workspace:*",
     "@steadystart/secrets": "workspace:*",
-    "@steadystart/errors": "workspace:*",
     "@steadystart/validations": "workspace:*",
     "cors": "^2.8.5",
     "dataloader": "^2.2.2",
@@ -35,8 +38,10 @@
     "zod": "3.22.4"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "eslint": "^9.1.0",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5"

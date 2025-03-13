@@ -10,14 +10,18 @@
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
     "generate": "pnpm run generate:barrels",
     "generate:barrels": "barrelsby --directory=./src/schemas --delete --noHeader",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@steadystart/enums": "workspace:*",
     "zod": "3.22.4"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
+    "typescript": "^5",
     "barrelsby": "^2.8.1",
-    "typescript": "^5"
+    "eslint": "^9.1.0"
   }
 }

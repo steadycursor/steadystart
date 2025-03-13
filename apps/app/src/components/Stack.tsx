@@ -1,6 +1,6 @@
+import { Div } from './Div';
 import { ChildrenProps } from '../types/ChildrenProps';
 import { ClassNameProps } from '../types/ClassNameProps';
-import { Div } from './Div';
 
 type StackProps = ChildrenProps & ClassNameProps;
 

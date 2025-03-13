@@ -3,7 +3,7 @@
     "Locale": "Jazykové prostředí"
   },
   "ExampleCustomEnum": {
-    "CUSTOM_ENUM_VALUE": "Vlastní enum hodnota s překladem"
+    "CUSTOM_ENUM_VALUE": "Vlastní hodnota enumerace"
   },
   "Locale": {
     "CS": "Čeština",

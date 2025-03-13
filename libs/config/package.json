@@ -7,12 +7,16 @@
   "scripts": {
     "build": "tsc --build",
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@steadystart/prisma": "workspace:*"
   },
   "devDependencies": {
-    "typescript": "^5.4.5"
+    "@eslint/eslintrc": "^3.3.0",
+    "eslint": "^9.1.0",
+    "typescript": "^5"
   }
 }

@@ -5,12 +5,10 @@ const querySchema = z.object({
   account: z.string(),
 });
 
-type QuerySchema = {
-  [K in keyof typeof querySchema.shape]: boolean;
-};
+type QueryParams = z.infer<typeof querySchema>;
 
 type QueryOptions = {
-  [K in keyof QuerySchema]?: true;
+  [K in keyof QueryParams]?: true;
 };
 
 export const useQueryParams = <T extends QueryOptions>(options: T) => {
@@ -20,7 +18,7 @@ export const useQueryParams = <T extends QueryOptions>(options: T) => {
   const validatedQuery = querySchema.pick(options).safeParse(query);
 
   if (!validatedQuery.success) {
-    throw new Error('Query validation failed in useQueryParams hook.', validatedQuery.error);
+    throw new Error(`Query validation failed in useQueryParams hook: ${validatedQuery.error.message}`);
   }
 
   return validatedQuery.data;

@@ -1,7 +1,7 @@
-import { builder } from '../../../builder';
-import { Me } from '../../../schema/Me';
 import { updateUserSchema } from '@steadystart/validations';
+import { builder } from '../../../builder';
 import { Locale } from '../../../schema/Locale';
+import { Me } from '../../../schema/Me';
 
 builder.mutationField('updateUser', (t) =>
   t.field({

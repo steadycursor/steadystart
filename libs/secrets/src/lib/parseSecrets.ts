@@ -10,6 +10,7 @@ const schema = z.object({
 export type Secrets = z.infer<typeof schema>;
 
 export const parseSecrets = (): Readonly<Secrets> => {
+  // eslint-disable-next-line no-process-env
   const parsed = schema.parse(process.env);
 
   return Object.freeze(parsed);
