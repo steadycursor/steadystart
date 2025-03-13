@@ -17,8 +17,10 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
     "@steadystart/prisma": "workspace:*",
+    "@types/node": "^22.13.10",
     "barrelsby": "^2.8.1",
     "eslint": "^9.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
