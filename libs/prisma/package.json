@@ -19,13 +19,13 @@
     "schema": "src"
   },
   "dependencies": {
-    "@prisma/client": "^6.4.1"
+    "@prisma/client": "^6.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
     "@types/node": "^20.12.12",
     "eslint": "^9.1.0",
-    "prisma": "^6.4.1",
+    "prisma": "^6.5.0",
     "typescript": "^5"
   }
 }
