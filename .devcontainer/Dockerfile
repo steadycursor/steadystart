@@ -55,3 +55,12 @@ RUN echo '\
 export NVM_DIR="$HOME/.nvm"\n\
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"\n\
 ' >> ~/.zshrc
+
+# Load NVM environment
+RUN . ~/.nvm/nvm.sh 
+
+# Install package managers and tools
+# - pnpm: Fast, disk space efficient package manager
+# - monorun: Tool for managing monorepo scripts
+# - claude-code: CLI for Anthropic's Claude AI assistant
+RUN npm install -g pnpm monorun @anthropic-ai/claude-code
