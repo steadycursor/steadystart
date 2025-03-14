@@ -29,7 +29,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | b
     && . ~/.nvm/nvm.sh \
     && . ~/.profile \ 
     && . ~/.bashrc \
-    && nvm install 20.18.1 \
+    && nvm install 22.14.0 \
     && . ~/.nvm/nvm.sh \
     && . ~/.profile \ 
     && . ~/.bashrc 
