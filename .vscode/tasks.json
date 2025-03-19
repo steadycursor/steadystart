@@ -50,6 +50,22 @@
       }
     },
     {
+      "label": "😈 Package lint",
+      "type": "shell",
+      "command": "npm",
+      "problemMatcher": [],
+      "args": [
+        "run",
+        "lint"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
       "label": "🏗️ Package prebuild",
       "type": "shell",
       "command": "npm",
