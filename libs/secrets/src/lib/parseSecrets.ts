@@ -1,17 +1,18 @@
-import { z } from 'zod';
+import { parseSecretsFromZodSchema } from './parseSecretsFromZodSchema';
+import { secretsValidationSchema } from './secretsValidationSchema';
 
-const schema = z.object({
-  DATABASE_URL: z.string().url(),
-  DATABASE_DIRECT_URL: z.string().url(),
-  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
-  CLERK_SECRET_KEY: z.string(),
-});
+export const parseSecrets = () => {
+  const { secrets, skipValidation } = parseSecretsFromZodSchema(secretsValidationSchema);
 
-export type Secrets = z.infer<typeof schema>;
+  if (skipValidation) {
+    return secrets;
+  }
 
-export const parseSecrets = (): Readonly<Secrets> => {
-  // eslint-disable-next-line no-process-env
-  const parsed = schema.parse(process.env);
+  // CUSTOM VALIDATION of combination of values
 
-  return Object.freeze(parsed);
+  // if (secrets.ENVIRONMENT === 'test' && secrets.DATABASE_URL.includes('digitalocean.com')) {
+  //   throw new Error('Invalid DATABASE_URL with environment.');
+  // }
+
+  return secrets;
 };

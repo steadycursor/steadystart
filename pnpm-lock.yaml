@@ -341,9 +341,9 @@ importers:
 
   libs/secrets:
     dependencies:
-      znv:
-        specifier: ^0.4.0
-        version: 0.4.0(zod@3.22.4)
+      '@homoky/znv':
+        specifier: ^0.4.2
+        version: 0.4.2(zod@3.22.4)
       zod:
         specifier: 3.22.4
         version: 3.22.4
@@ -1260,6 +1260,11 @@ packages:
   '@gulpjs/to-absolute-glob@4.0.0':
     resolution: {integrity: sha512-kjotm7XJrJ6v+7knhPaRgaT6q8F8K2jiafwYdNHLzmV0uGLuZY43FK6smNSHUPrhq5kX2slCUy+RGG/xGqmIKA==}
     engines: {node: '>=10.13.0'}
+
+  '@homoky/znv@0.4.2':
+    resolution: {integrity: sha512-X/5QgTaHyNu6AfBjzCjLsg1Jd4ggazNQ5oEJCR+Y8D8KcMMgYtqKBrm/gI/aXLxJcod5KM0eZg70USziiZK7aQ==}
+    peerDependencies:
+      zod: ^3.13.2
 
   '@hookform/resolvers@3.10.0':
     resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
@@ -5548,11 +5553,6 @@ packages:
     resolution: {integrity: sha512-b4JR1PFR10y1mKjhHY9LaGo6tmrgjit7hxVIeAmyMw3jegXR4dhYqLaQF5zMXZxY7tLpMyJeLjr1C4rLmkVe8g==}
     engines: {node: '>=12.20'}
 
-  znv@0.4.0:
-    resolution: {integrity: sha512-6/pGsQhBisLzKdyC90mUCRgYDtCfQ4aQ68sDybexq3GMzqqkp662GH6qIyuCHJC1i72hJPHbWAhccTJVuZUQfA==}
-    peerDependencies:
-      zod: ^3.13.2
-
   zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
 
@@ -6628,6 +6628,11 @@ snapshots:
   '@gulpjs/to-absolute-glob@4.0.0':
     dependencies:
       is-negated-glob: 1.0.0
+
+  '@homoky/znv@0.4.2(zod@3.22.4)':
+    dependencies:
+      colorette: 2.0.20
+      zod: 3.22.4
 
   '@hookform/resolvers@3.10.0(react-hook-form@7.54.2(react@19.0.0))':
     dependencies:
@@ -11538,11 +11543,6 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.1.1: {}
-
-  znv@0.4.0(zod@3.22.4):
-    dependencies:
-      colorette: 2.0.20
-      zod: 3.22.4
 
   zod@3.22.4: {}
 
