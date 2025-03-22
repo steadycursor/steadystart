@@ -36,7 +36,7 @@ export default function PostsPage() {
               columns={[
                 {
                   accessorKey: 'title',
-                  header: t('field:title'),
+                  header: t('fields:title'),
                 },
               ]}
               data={postsQuery.data?.posts || []}
