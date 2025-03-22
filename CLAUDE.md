@@ -62,6 +62,7 @@ When user types only the word "task", show a numbered list of available tasks fr
 Available tasks:
 
 - `commit`
+- `commit-fast`
 - `prepare-validation-schema`
 
 ## Path References
