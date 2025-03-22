@@ -17,7 +17,7 @@ export default function WorkspacesPage() {
   const { t } = useTranslation();
 
   const [workspacesQuery] = useQuery({
-    query: query((query) => [query.workspaces((workspace) => [workspace.id, workspace.name])]),
+    query: query((query) => [query.workspaces((workspace) => [workspace.id, workspace.title])]),
     context: useUrqlContext({ additionalTypenames: ['Workspace'] }),
   });
 
@@ -38,21 +38,16 @@ export default function WorkspacesPage() {
             <DataTable
               columns={[
                 {
-                  accessorKey: 'name',
-                  header: 'Name',
+                  accessorKey: 'title',
+                  header: t('fields:title'),
                   cell: (props) => (
                     <Link href={routes.workspaces.posts.index({ workspace: props.row.original.id })}>
-                      <LinkButton>{props.row.original.name}</LinkButton>
+                      <LinkButton>{props.row.original.title}</LinkButton>
                     </Link>
                   ),
                 },
               ]}
-              data={
-                workspacesQuery.data?.workspaces.map((workspace) => ({
-                  id: workspace.id,
-                  name: workspace.name,
-                })) || []
-              }
+              data={workspacesQuery.data?.workspaces || []}
               isFetching={workspacesQuery.fetching}
             />
           ))}

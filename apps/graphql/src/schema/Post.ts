@@ -13,7 +13,7 @@ export const Post = builder.loadableObject('Post', {
 builder.objectType(Post, {
   fields: (t) => ({
     id: t.expose('id', { type: 'ID' }),
-    name: t.expose('name', { type: 'String' }),
+    title: t.expose('title', { type: 'String' }),
     createdAt: t.expose('createdAt', { type: DateTime }),
   }),
 });

@@ -12,6 +12,6 @@ export const Workspace = builder.loadableObject('Workspace', {
 builder.objectType(Workspace, {
   fields: (t) => ({
     id: t.expose('id', { type: 'ID' }),
-    name: t.expose('name', { type: 'String' }),
+    title: t.expose('title', { type: 'String' }),
   }),
 });

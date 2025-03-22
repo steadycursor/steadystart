@@ -14,7 +14,7 @@ export default function PostsPage() {
   const { t } = useTranslation();
 
   const [postsQuery] = useQuery({
-    query: query((query) => [query.posts((post) => [post.id, post.name])]),
+    query: query((query) => [query.posts((post) => [post.id, post.title])]),
     context: useUrqlContext({ additionalTypenames: ['Post'] }),
   });
 
@@ -35,16 +35,11 @@ export default function PostsPage() {
             <DataTable
               columns={[
                 {
-                  accessorKey: 'name',
-                  header: 'Name',
+                  accessorKey: 'title',
+                  header: t('field:title'),
                 },
               ]}
-              data={
-                postsQuery.data?.posts.map((post) => ({
-                  id: post.id,
-                  name: post.name,
-                })) || []
-              }
+              data={postsQuery.data?.posts || []}
               isFetching={postsQuery.fetching}
             />
           ))}

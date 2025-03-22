@@ -19,7 +19,7 @@ export function CreateWorkspaceForm() {
   const formResponseHandler = useFormResponseHandler();
 
   const [createWorkspaceMutation, createWorkspace] = useMutation(
-    mutation((mutation) => [mutation.createWorkspace({ name: $('name') }, (workspace) => [workspace.id])]),
+    mutation((mutation) => [mutation.createWorkspace({ title: $('title') }, (workspace) => [workspace.id])]),
   );
 
   const form = useForm<FormValues>({
@@ -39,7 +39,7 @@ export function CreateWorkspaceForm() {
 
   return (
     <form.Form>
-      <TextField register={form.register('name')} label={{ title: t('fields:name') }} />
+      <TextField register={form.register('title')} label={{ title: t('fields:title') }} />
       <SubmitButton isDisabled={createWorkspaceMutation.fetching} />
     </form.Form>
   );

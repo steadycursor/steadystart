@@ -37,7 +37,7 @@ export const Page = ({ title, children }: PageProps) => {
   const [meQuery] = useQuery({ query: query((query) => [query.me((me) => [me.locale])]) });
 
   const [workspaceQuery] = useQuery({
-    query: query((query) => [query.workspace({ id: $('id') }, (workspace) => [workspace.id, workspace.name])]),
+    query: query((query) => [query.workspace({ id: $('id') }, (workspace) => [workspace.id, workspace.title])]),
     variables: { id: queryParams.workspace! },
     pause: !queryParams.workspace,
   });
@@ -69,7 +69,7 @@ export const Page = ({ title, children }: PageProps) => {
         <Link href={routes.home()}>
           <Div className="flex gap-3 items-center">
             <Img src="/logo.png" className="w-auto h-6" />
-            <Div className="text-lg font-semibold">{workspaceQuery.data?.workspace?.name}</Div>
+            <Div className="text-lg font-semibold">{workspaceQuery.data?.workspace?.title}</Div>
           </Div>
         </Link>
         <Div className="flex gap-2">
@@ -96,7 +96,7 @@ export const Page = ({ title, children }: PageProps) => {
                   <Div className="flex-1">
                     {workspaceQuery.data?.workspace?.id && (
                       <Div>
-                        <Div className="font-semibold leading-1 truncate">{workspaceQuery.data.workspace.name}</Div>
+                        <Div className="font-semibold leading-1 truncate">{workspaceQuery.data.workspace.title}</Div>
                         <Link href={routes.home()} className="text-xs text-gray-600">
                           <Div>{t('components:Page.switchWorkspace')}</Div>
                         </Link>

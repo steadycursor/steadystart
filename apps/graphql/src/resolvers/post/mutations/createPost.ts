@@ -6,7 +6,7 @@ builder.mutationField('createPost', (t) =>
   t.field({
     type: Post,
     args: {
-      name: t.arg({ type: 'String' }),
+      title: t.arg({ type: 'String' }),
     },
     authScopes: {
       accessPolicy: 'authenticated',
@@ -16,7 +16,7 @@ builder.mutationField('createPost', (t) =>
     resolve: async (_parent, args, ctx) => {
       const post = await ctx.prisma.post.create({
         data: {
-          name: args.name,
+          title: args.title,
           workspaceId: ctx.workspace!.id,
         },
       });

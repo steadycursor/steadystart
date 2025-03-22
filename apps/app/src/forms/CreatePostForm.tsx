@@ -15,7 +15,7 @@ export function CreatePostForm() {
   const { t } = useTranslation();
   const formResponseHandler = useFormResponseHandler();
 
-  const [createPostMutation, createPost] = useMutation(mutation((mutation) => [mutation.createPost({ name: $('name') }, (post) => [post.id])]));
+  const [createPostMutation, createPost] = useMutation(mutation((mutation) => [mutation.createPost({ title: $('title') }, (post) => [post.id])]));
 
   const form = useForm<FormValues>({
     resolver: zodResolver(createPostSchema),
@@ -26,7 +26,7 @@ export function CreatePostForm() {
 
   return (
     <form.Form>
-      <TextField register={form.register('name')} label={{ title: t('fields:name') }} />
+      <TextField register={form.register('title')} label={{ title: t('fields:title') }} />
       <SubmitButton isDisabled={createPostMutation.fetching} />
     </form.Form>
   );
