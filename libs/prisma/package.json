@@ -9,6 +9,7 @@
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
     "migrate:new": "env-cmd -f ../../.env -- pnpm prisma migrate dev --create-only --skip-generate",
     "migrate:up": "env-cmd -f ../../.env -- pnpm prisma migrate dev --skip-generate",
+    "migrate:status": "env-cmd -f ../../.env -- pnpm prisma migrate status",
     "db:push": "env-cmd -f ../../.env -- pnpm prisma db push",
     "studio": "env-cmd -f ../../.env -- pnpm prisma studio",
     "tsc": "tsc --noEmit",
