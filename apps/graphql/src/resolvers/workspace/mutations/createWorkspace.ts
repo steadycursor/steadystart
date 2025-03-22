@@ -13,7 +13,7 @@ builder.mutationField('createWorkspace', (t) =>
     },
     validate: { schema: createWorkspaceSchema },
     resolve: async (_parent, args, ctx) => {
-      const workspace = ctx.prisma.workspace.create({
+      const workspace = await ctx.prisma.workspace.create({
         data: {
           name: args.name,
           memberships: {
