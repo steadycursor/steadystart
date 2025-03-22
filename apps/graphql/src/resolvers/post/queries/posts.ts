@@ -9,7 +9,7 @@ builder.queryField('posts', (t) =>
       userHasAccessOnWorkspace: true,
     },
     resolve: async (_parent, _args, ctx) => {
-      const posts = ctx.prisma.post.findMany({
+      const posts = await ctx.prisma.post.findMany({
         where: {
           workspaceId: ctx.workspace!.id,
         },

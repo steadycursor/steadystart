@@ -13,7 +13,7 @@ builder.queryField('post', (t) =>
       modelItemsBelongToWorkspace: { model: 'post', id: args.id },
     }),
     resolve: async (_parent, args, ctx) => {
-      const post = ctx.prisma.post.findFirstOrThrow({
+      const post = await ctx.prisma.post.findFirstOrThrow({
         where: {
           id: args.id,
         },

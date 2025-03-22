@@ -8,7 +8,7 @@ builder.queryField('workspaces', (t) =>
       accessPolicy: 'authenticated',
     },
     resolve: async (_parent, _args, ctx) => {
-      const workspaces = ctx.prisma.workspace.findMany({
+      const workspaces = await ctx.prisma.workspace.findMany({
         where: {
           memberships: { some: { userId: ctx.user!.id } },
         },

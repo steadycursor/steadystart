@@ -12,7 +12,7 @@ builder.queryField('workspace', (t) =>
       userHasAccessOnWorkspace: { id: args.id },
     }),
     resolve: async (_parent, args, ctx) => {
-      const workspace = ctx.prisma.workspace.findUniqueOrThrow({
+      const workspace = await ctx.prisma.workspace.findUniqueOrThrow({
         where: {
           id: args.id,
         },
