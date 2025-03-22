@@ -7,7 +7,7 @@ export const includeOnPost = {} satisfies Prisma.PostInclude;
 
 export const Post = builder.loadableObject('Post', {
   load: (ids: string[], context: Context) => context.prisma.post.findMany({ where: { id: { in: ids } }, include: includeOnPost }),
-  sort: (workspace) => workspace.id,
+  sort: (post) => post.id,
 });
 
 builder.objectType(Post, {
