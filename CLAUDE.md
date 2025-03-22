@@ -57,6 +57,8 @@ This file contains project-specific instructions that Claude should read at the 
 
 Custom tasks are stored in the `./.claude/tasks/` directory as Markdown files. The task name corresponds to the filename (without extension).
 
+When user types only the word "task", show a numbered list of available tasks from those listed in this section and let the user select which one to run by number. Do not list or search for additional tasks in the `.claude/tasks/` directory - only use the tasks explicitly listed here. Once task is selected, read the file `.claude/tasks/{selected-task}.md` and follow instructions.
+
 Available tasks:
 
 - `commit`
