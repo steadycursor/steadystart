@@ -7,7 +7,8 @@
   - Description should be concise and explain what was changed
   - Commit messages should be based only on staged files
 - Always provide at least 3 message options in a numbered list; I will choose one or request a different option
-- If there are no staged changes, display a message in red text: "No changes staged for commit. Please stage some changes first."
+- If there are no staged changes, abort the process with a message in red text: "No changes staged for commit. Aborting."
+- NEVER ask about staging files - assume all files I want to commit are already staged
 - Format the suggested commit messages in orange text to make them more readable in the terminal
 - NEVER proceed with `git commit -m` without explicit confirmation from me first
 - Only after I explicitly confirm or modify the commit message, proceed with `git commit -m "message"`
