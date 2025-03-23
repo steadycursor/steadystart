@@ -12,6 +12,8 @@ This file contains project-specific instructions that Claude should read at the 
 - Always allowed to use `ls`, `cd`, `mkdir` commands freely to navigate the project
 - Always allowrd to read all files and list all folder structure needed for task completion
 - If user modifies a file between reads, assume the change is intentional
+- NEVER modify files on your own initiative - only make changes when explicitly requested
+- If you notice something that should be modified, ask about it and wait for explicit permission
 
 ## Code Style Guidelines
 
