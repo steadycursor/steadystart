@@ -31,6 +31,7 @@ module.exports = {
                 selector: "TSTypeAliasDeclaration[id.name='Options']",
                 message: "Options type name should follow the class name.",
             }],
+        "no-console": ["error", { "allow": [] }],
         "no-process-env": "warn",
         "import/no-extraneous-dependencies": "warn",
         "import/no-default-export": "warn",
