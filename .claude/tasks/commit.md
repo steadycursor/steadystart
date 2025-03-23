@@ -3,6 +3,7 @@
 - Takes all staged changes, suggests a commit message, ALWAYS asks for confirmation, and creates the commit ONLY after explicit approval
 - Format of commit message is `[package1,package2] description of changes`
   - Package names should be in square brackets, listing all affected packages
+  - If 80% or more changes are focused on a single feature/functionality, mention only the main package and ignore minor related changes
   - Description should start with lowercase letter
   - Description should be concise and explain what was changed
   - Commit messages should be based only on staged files
