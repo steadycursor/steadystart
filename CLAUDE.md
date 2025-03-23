@@ -64,6 +64,7 @@ Available tasks:
 - `commit`
 - `commit-fast`
 - `prepare-validation-schema`
+- `create-prisma-migration`
 
 ## Path References
 
