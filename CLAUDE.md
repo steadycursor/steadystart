@@ -67,6 +67,7 @@ Available tasks:
 - `commit-fast`
 - `prepare-validation-schema`
 - `create-prisma-migration`
+- `create-react-component`
 
 ## Path References
 
