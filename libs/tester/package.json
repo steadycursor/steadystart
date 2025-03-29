@@ -1,0 +1,32 @@
+{
+  "name": "@steadystart/tester",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "generate": "pnpm run generate:db-dump-with-seeded-data",
+    "generate:db-dump-with-seeded-data": "ts-node ./src/generators/db-dump-with-seeded-data-generator.ts",
+    "tsc": "tsc --noEmit",
+    "watch": "tsc --build --watch --preserveWatchOutput --incremental",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix && prettier --write '**/*.{ts,tsx}'"
+  },
+  "dependencies": {
+    "@steadystart/prisma": "workspace:*",
+    "bcryptjs": "^2.4.3",
+    "luxon": "^3.4.4",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^22.13.14",
+    "@types/uuid": "^8.3.0",
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}
