@@ -1,0 +1,27 @@
+{
+  "name": "@steadystart/playground",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "playground": "env-cmd -f ../../.env -- ts-node src/playground.ts",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch --preserveWatchOutput --incremental",
+    "tsc": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@steadystart/prisma": "workspace:*",
+    "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
+    "cross-env": "^7.0.3",
+    "env-cmd": "^10.1.0",
+    "eslint": "^9.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}
