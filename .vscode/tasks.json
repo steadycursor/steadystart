@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "[graphql] 🧪 Run Jest on file",
+      "label": "[graphql] 🧪 Run Jest test on file",
       "type": "shell",
       "command": "pnpm",
       "problemMatcher": [],
