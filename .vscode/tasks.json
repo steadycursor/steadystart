@@ -2,6 +2,29 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "[graphql] 🧪 Run Jest on file",
+      "type": "shell",
+      "command": "pnpm",
+      "problemMatcher": [],
+      "args": [
+        "--filter=@steadystart/graphql",
+        "run",
+        "test",
+        "${file}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "clear": true,
+        "focus": true
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
       "label": "📦 Package build",
       "type": "shell",
       "command": "npm",
