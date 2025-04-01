@@ -10,7 +10,9 @@
     "prebuild": "pnpm run generate",
     "build": "tsc --build",
     "generate": "pnpm run generate:schema",
-    "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/tools/generateSchema",
+    "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/generators/create-graphql-schema-generator",
+    "generate:genql": "pnpm genql --schema ./src/generated/schema.graphql --output ./src/generated/genql",
+    "test": "SKIP_ENV_VALIDATION=true env-cmd -f /workspaces/steadysass/.env -f /workspaces/steadysass/libs/tester/.env.test -- jest",
     "tsc": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -25,11 +27,12 @@
     "@steadystart/errors": "workspace:*",
     "@steadystart/prisma": "workspace:*",
     "@steadystart/secrets": "workspace:*",
+    "@steadystart/tester": "workspace:*",
     "@steadystart/validations": "workspace:*",
     "cors": "^2.8.5",
     "dataloader": "^2.2.2",
     "express": "^4.19.2",
-    "graphql": "^16.9.0",
+    "graphql": "16.10.0",
     "graphql-playground-middleware-express": "^1.7.23",
     "graphql-scalars": "^1.23.0",
     "graphql-yoga": "^5.6.2",
@@ -38,11 +41,18 @@
     "zod": "3.22.4"
   },
   "devDependencies": {
+    "@genql/runtime": "2.6.0",
     "@eslint/eslintrc": "^3.3.0",
+    "@genql/cli": "2.6.0",
+    "@jest/types": "^29.6.3",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.14",
+    "cross-env": "^7.0.3",
     "eslint": "^9.1.0",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.4",
+    "ts-jest": "^29.3.1",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   }
