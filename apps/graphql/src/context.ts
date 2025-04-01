@@ -1,30 +1,31 @@
 import { createClerkClient } from '@clerk/backend';
-import { prisma } from './prisma';
+import { prisma as productionPrisma } from './prisma';
 import { secrets } from './secrets';
 import { Request } from './types/Request';
-import { findAndValidateWorkspaceFromRequestHeaders } from './utils/context/findAndValidateWorkspaceFromRequestHeaders';
-import { findOrCreateUser } from './utils/context/findOrCreateUser';
-import { getClerkSessionData } from './utils/context/getClerkSessionData';
+import { PrismaClient } from '@steadystart/prisma';
+import { resolveUserFromContext } from './utils/context/resolveUserFromContext';
+import { resolveWorkspaceFromContext } from './utils/context/resolveWorkspaceFromContext';
 
-type ContextProps = {
-  request: Request;
+export type ContextProps = {
+  request: Request | undefined;
+  test?: {
+    prisma: PrismaClient;
+    userId: string | undefined;
+    workspaceId: string | undefined;
+  };
 };
 
 export const clerk = createClerkClient({
   secretKey: secrets.CLERK_SECRET_KEY,
 });
 
-export const createContext = async ({ request }: ContextProps) => {
-  const clerkSessionData = await getClerkSessionData({ request });
+export const createContext = async ({ request, test }: ContextProps) => {
+  const prisma = test ? test.prisma : productionPrisma;
 
-  const user = clerkSessionData
-    ? await findOrCreateUser({ clerkUserId: clerkSessionData.userId, emailAddress: clerkSessionData.emailAddress, prisma })
-    : undefined;
-
-  const workspace = await findAndValidateWorkspaceFromRequestHeaders({ request, user });
+  const user = await resolveUserFromContext({ request, prisma, test });
+  const workspace = await resolveWorkspaceFromContext({ user, request, prisma, test });
 
   return {
-    request,
     prisma,
     user,
     workspace,
