@@ -17,13 +17,11 @@ export const modelItemsBelongToWorkspaceScope = (ctx: Context) => async (args: M
 
   const uniqueIds = Array.from(new Set(ids));
 
-  const result = await ctx.prisma[args.model]
-    .findMany({ where: { id: { in: uniqueIds }, workspaceId: ctx.workspace.id } })
-    .then((data: any) => data.length === uniqueIds.length);
+  const items = await ctx.prisma[args.model].findMany({ where: { id: { in: uniqueIds }, workspaceId: ctx.workspace.id } });
 
-  if (!result) {
+  if (items.length !== uniqueIds.length) {
     return false;
   }
 
-  return result;
+  return true;
 };
