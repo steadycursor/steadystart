@@ -10,7 +10,7 @@ builder.queryField('post', (t) =>
     authScopes: async (_parent, args, _ctx) => ({
       accessPolicy: 'authenticated',
       userHasAccessOnWorkspace: true,
-      modelItemsBelongToWorkspace: { model: 'post', id: args.id },
+      modelItemsBelongToWorkspace: { id: args.id, model: 'post' },
     }),
     resolve: async (_parent, args, ctx) => {
       const post = await ctx.prisma.post.findFirstOrThrow({
