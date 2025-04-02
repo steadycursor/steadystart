@@ -42,9 +42,30 @@ test('Should not create a post when title is too short', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
+    [ClientError: [
+      {
+        "code": "too_small",
+        "minimum": 2,
+        "type": "string",
+        "inclusive": true,
+        "exact": false,
+        "message": "String must contain at least 2 character(s)",
+        "path": [
+          "title"
+        ]
+      }
+    ]
     {
-      "data": null,
-      "errors": "[GraphQLError: []",
-    }
+      "message": "[\\n  {\\n    \\"code\\": \\"too_small\\",\\n    \\"minimum\\": 2,\\n    \\"type\\": \\"string\\",\\n    \\"inclusive\\": true,\\n    \\"exact\\": false,\\n    \\"message\\": \\"String must contain at least 2 character(s)\\",\\n    \\"path\\": [\\n      \\"title\\"\\n    ]\\n  }\\n]",
+      "locations": [
+        {
+          "line": 1,
+          "column": 24
+        }
+      ],
+      "path": [
+        "createPost"
+      ]
+    }]
   `);
 });

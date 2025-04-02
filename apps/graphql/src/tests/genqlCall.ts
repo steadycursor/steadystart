@@ -57,7 +57,7 @@ export async function genqlQuery<Q extends QueryRequest>({
         console.warn(e.message);
       }
 
-      return ({ data: null, errors: `[GraphQLError: ${e.message.split('\n')[0]}]` } as unknown) as QueryResult<typeof source>;
+      return (e as unknown) as QueryResult<typeof source>;
     });
 }
 
@@ -82,6 +82,6 @@ export async function genqlMutation<Q extends MutationRequest>({
         console.warn(e.message);
       }
 
-      return ({ data: null, errors: `[GraphQLError: ${e.message.split('\n')[0]}]` } as unknown) as MutationResult<typeof source>;
+      return (e as unknown) as MutationResult<typeof source>;
     });
 }

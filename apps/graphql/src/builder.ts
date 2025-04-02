@@ -34,7 +34,6 @@ export const builder = new SchemaBuilder<{
   plugins: [ZodPlugin, ScopeAuthPlugin, SimpleObjectsPlugin, DataloaderPlugin],
   scopeAuth: {
     defaultStrategy: 'all',
-    treatErrorsAsUnauthorized: true,
     authScopes: async (ctx) => {
       return {
         accessPolicy: accessPolicyAuthScope(ctx),
