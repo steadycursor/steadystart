@@ -1,6 +1,6 @@
 import { Prisma } from '@steadystart/prisma';
 import { DateTime } from 'luxon';
-import { SeedDatabaseModelFunctionArgs } from '../../types/SeedDatabaseModelFunctionArgs';
+import { SeedDatabaseModelFunctionArgs } from '../../../types/SeedDatabaseModelFunctionArgs';
 
 import { workspaces } from './workspaces';
 

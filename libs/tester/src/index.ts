@@ -1,2 +1,2 @@
-export { TestDatabaseOrchestrator } from './db/TestDatabaseOrchestrator';
-export { seededData } from './seed/seededData';
+export { TestDatabaseOrchestrator } from './lib/TestDatabaseOrchestrator';
+export { seededData } from './lib/seed/seededData';
