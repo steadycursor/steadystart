@@ -1,3 +1,9 @@
+---
+title: 'Create React Component Task'
+read_only: true
+type: 'command'
+---
+
 # Create React Component
 
 This task guides you through creating a new React component.

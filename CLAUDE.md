@@ -55,19 +55,12 @@ This file contains project-specific instructions that Claude should read at the 
   1. Run task:commit (need to manually stage files first)
   2. Neither (stop here)
 
-## Custom Tasks
+## Commands and Tasks
 
-Custom tasks are stored in the `./.claude/tasks/` directory as Markdown files. The task name corresponds to the filename (without extension).
-
-When user types only the word "task", show a numbered list of available tasks from those listed in this section and let the user select which one to run by number. Do not list or search for additional tasks in the `.claude/tasks/` directory - only use the tasks explicitly listed here. The numbered list must maintain the same order as the tasks are listed below. Once task is selected, read the file `.claude/tasks/{selected-task}.md` and follow instructions.
-
-Available tasks:
-
-- `commit`
-- `commit-fast`
-- `prepare-validation-schema`
-- `create-prisma-migration`
-- `create-react-component`
+- Files in the `.claude/commands/` directory contain instructions for automated tasks
+- These files are READ-ONLY and should NEVER be modified
+- When a command is run, follow the instructions in the file exactly, without trying to improve or modify the file itself
+- Command files may include a YAML frontmatter with metadata - respect any `read_only: true` flags
 
 ## Path References
 

@@ -1,6 +1,12 @@
+---
+title: 'Fast Commit Task'
+read_only: true
+type: 'command'
+---
+
 # Create new fast commit task
 
-This task uses the same logic as the commit task (.claude/tasks/commit.md) but automatically selects the first suggested commit message without asking for confirmation.
+This task uses the same logic as the commit task (.claude/commands/commit.md) but automatically selects the first suggested commit message without asking for confirmation.
 
 - Generate 3 commit message suggestions following the same format as the commit task
 - Automatically use the first suggestion without asking the user

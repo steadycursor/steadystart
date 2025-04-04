@@ -1,3 +1,9 @@
+---
+title: 'Prepare Validation Schema Task'
+read_only: true
+type: 'command'
+---
+
 # Prepare validation schema
 
 This task helps create or update validation schemas for GraphQL mutations.

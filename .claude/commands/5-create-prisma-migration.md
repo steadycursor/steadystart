@@ -1,3 +1,9 @@
+---
+title: 'Create Prisma Migration Task'
+read_only: true
+type: 'command'
+---
+
 # Create Prisma Migration Task
 
 - Check for changes in schema files in `libs/prisma/src/schema/` directory

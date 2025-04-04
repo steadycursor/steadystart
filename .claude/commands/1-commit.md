@@ -1,3 +1,9 @@
+---
+title: 'Git Commit Task'
+read_only: true
+type: 'command'
+---
+
 # Create new git commit task
 
 - Takes all staged changes, suggests a commit message, ALWAYS asks for confirmation, and creates the commit ONLY after explicit approval
