@@ -11,8 +11,6 @@ import { mutation, $, query } from '@/generated/typed-graphql-builder';
 import { useFormResponseHandler } from '@/hooks/useFormResponseHandler';
 import { useTranslation } from '@/hooks/useTranslation';
 
-type FormValues = z.infer<typeof updateUserSchema>;
-
 export function UpdateUserLocaleForm() {
   const { t, setLanguage } = useTranslation();
   const formResponseHandler = useFormResponseHandler();
@@ -21,12 +19,12 @@ export function UpdateUserLocaleForm() {
 
   const [udpateUserMutation, updateUser] = useMutation(mutation((mutation) => [mutation.updateUser({ locale: $('locale') }, (me) => [me.id])]));
 
-  const form = useForm<FormValues>({
+  const form = useForm<z.infer<typeof updateUserSchema>>({
     resolver: zodResolver(updateUserSchema),
     defaultValues: {
       locale: meQuery.data?.me.locale,
     },
-    onSubmit: async (data: FormValues) => {
+    onSubmit: async (data) => {
       await updateUser(data).then(formResponseHandler);
       setLanguage(data.locale.toLowerCase());
     },

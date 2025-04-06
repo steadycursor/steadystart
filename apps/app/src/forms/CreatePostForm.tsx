@@ -9,17 +9,15 @@ import { mutation, $ } from '@/generated/typed-graphql-builder';
 import { useFormResponseHandler } from '@/hooks/useFormResponseHandler';
 import { useTranslation } from '@/hooks/useTranslation';
 
-type FormValues = z.infer<typeof createPostSchema>;
-
 export function CreatePostForm() {
   const { t } = useTranslation();
   const formResponseHandler = useFormResponseHandler();
 
   const [createPostMutation, createPost] = useMutation(mutation((mutation) => [mutation.createPost({ title: $('title') }, (post) => [post.id])]));
 
-  const form = useForm<FormValues>({
+  const form = useForm<z.infer<typeof createPostSchema>>({
     resolver: zodResolver(createPostSchema),
-    onSubmit: async (data: FormValues) => {
+    onSubmit: async (data) => {
       await createPost(data).then(formResponseHandler);
     },
   });

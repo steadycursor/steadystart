@@ -11,8 +11,6 @@ import { mutation, $ } from '@/generated/typed-graphql-builder';
 import { useFormResponseHandler } from '@/hooks/useFormResponseHandler';
 import { useTranslation } from '@/hooks/useTranslation';
 
-type FormValues = z.infer<typeof createWorkspaceSchema>;
-
 export function CreateWorkspaceForm() {
   const { t } = useTranslation();
   const router = useRouter();
@@ -22,7 +20,7 @@ export function CreateWorkspaceForm() {
     mutation((mutation) => [mutation.createWorkspace({ title: $('title') }, (workspace) => [workspace.id])]),
   );
 
-  const form = useForm<FormValues>({
+  const form = useForm<z.infer<typeof createWorkspaceSchema>>({
     resolver: zodResolver(createWorkspaceSchema),
     onSubmit: async (data) => {
       await createWorkspace(data)
