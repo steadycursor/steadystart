@@ -37,3 +37,7 @@ This task guides you through creating a new React component.
    - Create the file in the specified location
    - If ClassNameProps required, return <Div className={[className]}></Div> (not <div>)
    - If ChildrenProprs required, return <Div>{children}</Div> (not <div>)
+
+### Accessibility
+
+- Do not use any aria-\* attributes (aria-hidden, aria-label, aria-checked, etc.) in components
