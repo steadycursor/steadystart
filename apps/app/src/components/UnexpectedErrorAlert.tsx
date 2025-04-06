@@ -1,11 +1,15 @@
+import { FC } from 'react';
 import { Alert } from './Alert';
+import { useTranslation } from '@/hooks/useTranslation';
 
-export const UnexpectedErrorAlert = () => {
+export const UnexpectedErrorAlert: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Alert
       variant={{ type: 'danger' }}
-      title="Oops! We ran into a problem. Try reloading the page or coming back later."
-      content="Something went wrong while loading the data. This might be a temporary issue, so please try again in a moment. If the problem persists, feel free to contact us for assistance."
+      title={t('components:UnexpectedErrorAlert.title')}
+      content={t('components:UnexpectedErrorAlert.content')}
     />
   );
 };
