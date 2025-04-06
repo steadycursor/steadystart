@@ -41,7 +41,7 @@ export default function WorkspacesPage() {
                   accessorKey: 'title',
                   header: t('fields:title'),
                   cell: (props) => (
-                    <Link href={routes.workspaces.posts.index({ workspace: props.row.original.id })}>
+                    <Link href={routes.workspaces.posts.index({ workspaceId: props.row.original.id })}>
                       <LinkButton>{props.row.original.title}</LinkButton>
                     </Link>
                   ),

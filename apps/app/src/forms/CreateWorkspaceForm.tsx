@@ -32,7 +32,7 @@ export function CreateWorkspaceForm() {
             return;
           }
 
-          router.push(routes.workspaces.posts.index({ workspace: response.data.createWorkspace.id }));
+          router.push(routes.workspaces.posts.index({ workspaceId: response.data.createWorkspace.id }));
         });
     },
   });

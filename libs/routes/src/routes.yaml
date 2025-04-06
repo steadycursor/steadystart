@@ -4,6 +4,6 @@ routes:
     login: "/auth/login"
   user:
     profile: "/profile"
-  workspaces: 
-    posts: 
-      index: "/workspaces/[workspace]/posts"
+  workspaces:
+    posts:
+      index: "/workspaces/[workspaceId]/posts"

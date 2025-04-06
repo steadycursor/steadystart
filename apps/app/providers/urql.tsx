@@ -1,8 +1,7 @@
 import { useAuth } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
 import { Client, cacheExchange, fetchExchange, Provider } from 'urql';
-import zod from 'zod';
-import { useQueryParamsFromZodSchema } from '@/hooks/useQueryParamsFromZodSchema';
+import { useQueryParams } from '@/hooks/useQueryParams';
 import { ChildrenProps } from '@/types/ChildrenProps';
 
 const createClient = (args: { token: string | undefined; workspaceId: string | undefined }) =>
@@ -15,23 +14,23 @@ const createClient = (args: { token: string | undefined; workspaceId: string | u
 type UrqlProviderProps = ChildrenProps;
 
 export const UrqlProvider = ({ children }: UrqlProviderProps) => {
-  const queryParams = useQueryParamsFromZodSchema(zod.object({ workspace: zod.string().optional() }));
+  const queryParams = useQueryParams({}, { workspaceId: true });
 
   const { getToken } = useAuth();
 
-  const [client, setClient] = useState(createClient({ token: undefined, workspaceId: queryParams.workspace }));
+  const [client, setClient] = useState(createClient({ token: undefined, workspaceId: queryParams.workspaceId }));
 
   useEffect(() => {
     const fetchToken = async () => {
       const token = await getToken();
 
       if (token) {
-        setClient(createClient({ token, workspaceId: queryParams.workspace }));
+        setClient(createClient({ token, workspaceId: queryParams.workspaceId }));
       }
     };
 
     fetchToken();
-  }, [getToken, queryParams.workspace]);
+  }, [getToken, queryParams.workspaceId]);
 
   return <Provider value={client}>{children}</Provider>;
 };

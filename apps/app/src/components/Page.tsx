@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useQuery } from 'urql';
-import zod from 'zod';
+import { useQueryParams } from '@/hooks/useQueryParams';
 import { Button } from './Button';
 import { Div } from './Div';
 import { HeadTitle } from './HeadTitle';
@@ -15,7 +15,6 @@ import { Img } from './Img';
 import { Loading } from './Loading';
 import { query, $ } from '@/generated/typed-graphql-builder';
 import { useChangeUserLocaleBasedOnItsSetting } from '@/hooks/useChangeUserLocaleBasedOnItsSetting';
-import { useQueryParamsFromZodSchema } from '@/hooks/useQueryParamsFromZodSchema';
 import { useTranslation } from '@/hooks/useTranslation';
 import { redirectUrlQueryParametr } from '@/pages/auth/login';
 import { ChildrenProps } from '@/types/ChildrenProps';
@@ -28,7 +27,7 @@ export const Page = ({ title, children }: PageProps) => {
   useChangeUserLocaleBasedOnItsSetting();
 
   const { t } = useTranslation();
-  const queryParams = useQueryParamsFromZodSchema(zod.object({ workspace: zod.string().optional() }));
+  const queryParams = useQueryParams({}, { workspaceId: true });
   const router = useRouter();
   const { isSignedIn } = useAuth();
 
@@ -38,8 +37,8 @@ export const Page = ({ title, children }: PageProps) => {
 
   const [workspaceQuery] = useQuery({
     query: query((query) => [query.workspace({ id: $('id') }, (workspace) => [workspace.id, workspace.title])]),
-    variables: { id: queryParams.workspace! },
-    pause: !queryParams.workspace,
+    variables: { id: queryParams.workspaceId! },
+    pause: !queryParams.workspaceId,
   });
 
   useEffect(() => {
@@ -109,9 +108,9 @@ export const Page = ({ title, children }: PageProps) => {
             {/* -- Logo with workspace switcher */}
 
             {/* Workspace navigation items */}
-            {queryParams.workspace && workspaceQuery.data?.workspace?.id && (
+            {queryParams.workspaceId && workspaceQuery.data?.workspace?.id && (
               <SidebarSection title={t(`models:workspace.singular`)}>
-                <Link href={routes.workspaces.posts.index({ workspace: queryParams.workspace })}>
+                <Link href={routes.workspaces.posts.index({ workspaceId: queryParams.workspaceId })}>
                   <SidebarItem title={t(`models:post.plural`)} Icon={News24Regular} />
                 </Link>
               </SidebarSection>
