@@ -3,6 +3,7 @@ module.exports = {
     plugins: ['import'],
     ignorePatterns: ['**/dist/**', '**/generated/**', 'node_modules'],
     rules: {
+        'no-console': ['error', { allow: [] }],
         'no-restricted-syntax': [
             'warn',
             {
@@ -22,12 +23,12 @@ module.exports = {
                 message: 'Options type name should follow the class name.',
             },
         ],
-        'no-console': ['error', { allow: [] }],
         'no-process-env': 'warn',
         'import/no-extraneous-dependencies': 'warn',
         'import/no-default-export': 'warn',
         'space-before-blocks': 'warn',
         'newline-before-return': 'warn',
+        'space-before-return': 'warn',
         curly: 'warn',
         'import/order': [
             'warn',
