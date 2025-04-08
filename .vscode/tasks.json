@@ -2,15 +2,39 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "[graphql] 🧪 Run Jest test on file",
+      "label": "[graphql] 🧪 Run Jest test on file and update snapshots",
       "type": "shell",
       "command": "pnpm",
       "problemMatcher": [],
       "args": [
-        "--filter=@steadystart/graphql",
+        "--filter=@relaybrain/graphql",
         "run",
         "test",
-        "${file}"
+        "${file}",
+        "-u"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "clear": true,
+        "focus": true
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "[graphql] 🚩 Run Jest test on file",
+      "type": "shell",
+      "command": "pnpm",
+      "problemMatcher": [],
+      "args": [
+        "--filter=@relaybrain/graphql",
+        "run",
+        "test",
+        "${file}",
       ],
       "options": {
         "cwd": "${workspaceFolder}"
