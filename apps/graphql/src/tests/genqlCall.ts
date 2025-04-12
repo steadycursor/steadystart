@@ -19,7 +19,7 @@ export const createClientWithContext = async ({ prisma, workspaceId, userId }: C
       workspaceId,
     },
   }).catch((error) => {
-    console.warn('Error when creating context in test graphqlCall function', JSON.stringify(e));
+    console.warn('Error when creating context in test graphqlCall function', JSON.stringify(error));
 
     // eslint-disable-next-line no-restricted-syntax
     throw new Error(error);
