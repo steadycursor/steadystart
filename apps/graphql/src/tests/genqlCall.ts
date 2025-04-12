@@ -28,7 +28,7 @@ export const createClientWithContext = async ({ prisma, workspaceId, userId }: C
     fetcher: async (operation: any) => {
       return graphql({
         schema,
-        variableValues: operation.variables,
+        variableValues: Object.fromEntries(Object.entries(operation.variables).filter(([_, v]) => v !== undefined)),
         source: operation.query,
         contextValue: context,
       });
