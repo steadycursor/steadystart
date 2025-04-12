@@ -12,7 +12,7 @@
     "generate": "pnpm run generate:schema && pnpm run generate:genql",
     "generate:genql": "pnpm genql --schema ./src/generated/schema.graphql --output ./src/generated/genql",
     "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/generators/create-graphql-schema-generator",
-    "test": "SKIP_ENV_VALIDATION=true env-cmd -f /workspaces/steadysass/.env -f /workspaces/steadysass/libs/tester/.env.test -- jest",
+    "test": "SKIP_ENV_VALIDATION=true env-cmd -f ../../.env -f ../../libs/tester/.env.test -- jest",
     "tsc": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
