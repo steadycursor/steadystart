@@ -55,6 +55,28 @@ This file contains project-specific instructions that Claude should read at the 
   1. Run task:commit (need to manually stage files first)
   2. Neither (stop here)
 
+## Code Documentation and Comments
+
+When working with code that contains comments or documentation:
+
+1. Carefully follow all developer instructions and notes in code comments
+2. Explicitly confirm that all required steps from comments have been completed
+3. Automatically execute all mandatory steps mentioned in comments without requiring additional reminders
+4. Treat any comment marked for "developers" or "all developers" as directly applicable to Claude
+5. Pay special attention to comments marked as "IMPORTANT", "NOTE", or with similar emphasis
+
+This applies to both code-level comments and documentation in separate files. Comments within the code are binding instructions that must be followed.
+
+## Knowledge Sharing and Persistence
+
+- When asked to remember something, ALWAYS persist this information in a way that's accessible to ALL developers, not just in conversational memory
+- Document important information in appropriate files (comments, documentation, README, etc.) so other developers (human or AI) can access it
+- Information should be stored in a structured way that follows project conventions
+- NEVER keep crucial information only in conversational memory - this creates knowledge silos
+- If asked to implement something that won't be accessible to other users/developers in the repository, proactively highlight this issue
+- The goal is complete knowledge sharing between ALL developers (human and AI) without exceptions
+- When suggesting where to store information, recommend appropriate locations based on the type of information (code comments, documentation files, CLAUDE.md, etc.)
+
 ## Commands and Tasks
 
 - Files in the `.claude/commands/` directory contain instructions for automated tasks
