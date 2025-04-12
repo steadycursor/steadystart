@@ -6,7 +6,9 @@ type: 'command'
 
 # Create Prisma Migration Task
 
-- Check for changes in schema files in `libs/prisma/src/schema/` directory
+- First run `cd libs/prisma && pnpm run migrate:status` to check if there are any migrations that have not been applied
+- If there are pending migrations that have not been applied, ABORT immediately and DO NOT proceed further
+- After confirming all migrations are applied, check git status to identify staged files in the `libs/prisma/src/schema/` directory
 - Detect which files were changed or added and what was modified
 - Create a descriptive migration name based on the changes
 - Suggest 3 migration name options based on the schema changes
