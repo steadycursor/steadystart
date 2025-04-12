@@ -1,7 +1,7 @@
 import { PrismaClient } from '@steadystart/prisma';
 import * as path from 'path';
-import { TestDatabaseOrchestrator } from '../lib/TestDatabaseOrchestrator';
 import { seedFullDatabase } from '../lib/seed/seedFullDatabase';
+import { TestDatabaseOrchestrator } from '../lib/TestDatabaseOrchestrator';
 import { exec } from '../utils/exec';
 
 (async () => {

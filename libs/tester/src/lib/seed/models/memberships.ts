@@ -1,9 +1,8 @@
 import { Prisma } from '@steadystart/prisma';
 import { DateTime } from 'luxon';
-import { SeedDatabaseModelFunctionArgs } from '../../../types/SeedDatabaseModelFunctionArgs';
-
 import { users } from './users';
 import { workspaces } from './workspaces';
+import { SeedDatabaseModelFunctionArgs } from '../../../types/SeedDatabaseModelFunctionArgs';
 
 export const memberships = {
   0: {

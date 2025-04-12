@@ -1,7 +1,7 @@
 import { PrismaClient, User } from '@steadystart/prisma';
 import { match } from 'ts-pattern';
-import { getClerkSessionData } from './getClerkSessionData';
 import { findOrCreateUser } from './findOrCreateUser';
+import { getClerkSessionData } from './getClerkSessionData';
 import { ContextProps } from '../../context';
 
 type ResolveUserFromContextArgs = ContextProps & {

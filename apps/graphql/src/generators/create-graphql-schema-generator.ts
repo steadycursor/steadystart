@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from 'fs';
+import { printSchema, lexicographicSortSchema } from 'graphql';
 import path from 'path';
 import { schema } from '../schema';
-import { printSchema, lexicographicSortSchema } from 'graphql';
 
 const schemaAsString = printSchema(lexicographicSortSchema(schema));
 const schemaDirectory = path.join(__dirname, '../generated');

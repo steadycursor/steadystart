@@ -1,7 +1,7 @@
 import { PrismaClient } from '@steadystart/prisma';
+import * as path from 'path';
 import { v1, v4 } from 'uuid';
 import { exec } from '../utils/exec';
-import * as path from 'path';
 
 export interface TestDatabaseOrchestratorOptions {
   host?: string;

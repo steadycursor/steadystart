@@ -1,8 +1,8 @@
 import { Prisma } from '@steadystart/prisma';
 import { DateTime } from 'luxon';
+import { workspaces } from './workspaces';
 import { SeedDatabaseModelFunctionArgs } from '../../../types/SeedDatabaseModelFunctionArgs';
 
-import { workspaces } from './workspaces';
 
 export const posts = {
   0: {

@@ -1,8 +1,8 @@
 import { PrismaClient } from '@steadystart/prisma';
+import { graphql } from 'graphql';
 import { createContext } from '../context';
 import { createClient, QueryRequest, QueryResult, MutationRequest, MutationResult } from '../generated/genql';
 import { schema } from '../schema';
-import { graphql } from 'graphql';
 
 export type CreateClientWithContextArgs = {
   userId?: string;
@@ -18,10 +18,11 @@ export const createClientWithContext = async ({ prisma, workspaceId, userId }: C
       userId,
       workspaceId,
     },
-  }).catch((e) => {
+  }).catch((error) => {
     console.warn('Error when creating context in test graphqlCall function', JSON.stringify(e));
 
-    throw new Error(e);
+    // eslint-disable-next-line no-restricted-syntax
+    throw new Error(error);
   });
 
   return createClient({

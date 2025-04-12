@@ -41,7 +41,9 @@ const checkSingleModelItemsBelongToWorkspaceScope = async (ctx: Context, args: M
 };
 
 export const modelItemsBelongToWorkspaceScope = (ctx: Context) => async (args: ModelItemsBelongToWorkspaceScopeArgs): Promise<boolean> => {
-  if (!args || args.length === 0) return true;
+  if (!args || args.length === 0) {
+    return true;
+  }
 
   const results = await Promise.all(args.map((arg) => checkSingleModelItemsBelongToWorkspaceScope(ctx, arg)));
 
