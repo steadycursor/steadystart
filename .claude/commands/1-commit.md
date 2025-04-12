@@ -1,7 +1,7 @@
 ---
-title: "Git Commit Task"
+title: 'Git Commit Task'
 read_only: true
-type: "command"
+type: 'command'
 ---
 
 # Create new git commit task
@@ -25,7 +25,7 @@ type: "command"
   - Commit messages should be based only on staged files
 - Always provide at least 5 message options in a numbered list; I will choose one or request a different option
 - The scope in square brackets should be consistent across all suggested message options - it's a fixed rule based on the files changed, not something to vary between options
-- When suggesting commit messages, use `git log -n 20 --oneline` to review the most recent commit messages for inspiration on format and style
+- When suggesting commit messages, use `git log -n 100 --oneline` to review the most recent commit messages for inspiration on format and style
 - If there are no staged changes, abort the process with a message in red text: "No changes staged for commit. Aborting."
 - NEVER ask about staging files - assume all files I want to commit are already staged
 - NEVER use git add commands - you are forbidden from staging files yourself
@@ -54,7 +54,7 @@ type: "command"
 
 - **Trigger Condition**: When editing arguments in an existing or new GraphQL mutation/query
 - **What to Check**: Verify that a corresponding validation schema exists and matches the arguments structure
-- **Failure Action**: 
+- **Failure Action**:
   - Abort the commit process and display detailed error message
   - Suggest to run `task prepare-validation-schema` but ALWAYS ask for user confirmation first
   - Do NOT run the task without explicit user approval
@@ -67,7 +67,7 @@ type: "command"
   - Single IDs should use appropriate auth scopes
   - All ID parameters must be validated before being used in database queries
   - Auth scopes must correctly reference the appropriate ID fields (not unrelated ones)
-- **Failure Action**: 
+- **Failure Action**:
   - Abort the commit process and display detailed error message about missing or incorrect access checks
   - Suggest to run `task prepare-resolver-auth-scope` but ALWAYS ask for user confirmation first
   - Do NOT run the task without explicit user approval
@@ -79,7 +79,7 @@ type: "command"
 - **Specific Checks**:
   - For TypeScript files (.ts): Validate against the TypeScript code guidelines in `./.claude/code-guidelines/typescript.md`
   - For React files (.tsx): Validate against both the React AND TypeScript code guidelines in `./.claude/code-guidelines/react.md` and `./.claude/code-guidelines/typescript.md`
-- **Failure Action**: 
+- **Failure Action**:
   - Abort the commit process and display detailed error message about code guidelines violations
   - Show the specific guideline(s) being violated
   - Suggest fixes for common violations based on the guidelines
