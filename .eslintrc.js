@@ -3,7 +3,7 @@ module.exports = {
     plugins: ['import'],
     ignorePatterns: ['**/dist/**', '**/generated/**', 'node_modules'],
     rules: {
-        'no-console': ['error', { allow: [] }],
+        'no-console': ['error', { allow: ["warn", "error", "info"] }],
         'no-restricted-syntax': [
             'warn',
             {
@@ -27,8 +27,9 @@ module.exports = {
         'import/no-extraneous-dependencies': 'warn',
         'import/no-default-export': 'warn',
         'space-before-blocks': 'warn',
-        'newline-before-return': 'warn',
-        'space-before-return': 'warn',
+        "padding-line-between-statements": ["error",
+            { blankLine: "always", prev: "*", next: "return" }
+        ],
         curly: 'warn',
         'import/order': [
             'warn',
