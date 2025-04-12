@@ -1,5 +1,13 @@
 {
   "version": "2.0.0",
+   "inputs": [
+    {
+      "id": "testName",
+      "type": "promptString",
+      "description": "Test name pattern to run",
+      "default": ""
+    }
+  ],
   "tasks": [
     {
       "label": "[graphql] 🧪 Run Jest test on file and update snapshots",
@@ -7,7 +15,7 @@
       "command": "pnpm",
       "problemMatcher": [],
       "args": [
-        "--filter=@relaybrain/graphql",
+        "--filter=@steadystart/graphql",
         "run",
         "test",
         "${file}",
@@ -31,10 +39,12 @@
       "command": "pnpm",
       "problemMatcher": [],
       "args": [
-        "--filter=@relaybrain/graphql",
+        "--filter=@steadystart/graphql",
         "run",
         "test",
         "${file}",
+        "-t",
+        "${input:testName}"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
