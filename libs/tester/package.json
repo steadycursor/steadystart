@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --build",
+    "postbuild": "pnpm run generate",
     "generate": "pnpm run generate:db-dump-with-seeded-data",
     "generate:db-dump-with-seeded-data": "ts-node ./src/generators/db-dump-with-seeded-data-generator.ts",
     "tsc": "tsc --noEmit",
