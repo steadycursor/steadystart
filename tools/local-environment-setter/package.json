@@ -1,0 +1,18 @@
+{
+  "name": "@steadystart/local-environment-setter",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "tsc": "tsc --noEmit",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
+    "@types/node": "^22.15.17",
+    "enquirer": "2.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}
