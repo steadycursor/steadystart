@@ -4,6 +4,7 @@ import ScopeAuthPlugin from '@pothos/plugin-scope-auth';
 import SimpleObjectsPlugin from '@pothos/plugin-simple-objects';
 import ZodPlugin from '@pothos/plugin-zod';
 import { accessPolicyAuthScope, AccessPolicyAuthScopeArgs } from './authScopes/accessPolicyAuthScope';
+import { forbiddenAuthScope, ForbiddenAuthScopeArgs } from './authScopes/forbiddenAuthScope';
 import { modelItemsBelongToWorkspaceScope, ModelItemsBelongToWorkspaceScopeArgs } from './authScopes/modelItemsBelongToWorkspace';
 import { userHasAccessOnWorkspaceScope, UserHasAccessOnWorkspaceScopeArgs } from './authScopes/userHasAccessOnWorkspaceScope';
 import { Context } from './context';
@@ -23,6 +24,7 @@ export const builder = new SchemaBuilder<{
     accessPolicy: AccessPolicyAuthScopeArgs;
     userHasAccessOnWorkspace: UserHasAccessOnWorkspaceScopeArgs;
     modelItemsBelongToWorkspace: ModelItemsBelongToWorkspaceScopeArgs;
+    forbidden: ForbiddenAuthScopeArgs;
   };
   Context: Context;
   DefaultFieldNullability: false;
@@ -39,6 +41,7 @@ export const builder = new SchemaBuilder<{
         accessPolicy: accessPolicyAuthScope(ctx),
         userHasAccessOnWorkspace: userHasAccessOnWorkspaceScope(ctx),
         modelItemsBelongToWorkspace: modelItemsBelongToWorkspaceScope(ctx),
+        forbidden: forbiddenAuthScope(ctx),
       };
     },
   },
