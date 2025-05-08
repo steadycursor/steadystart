@@ -27,8 +27,8 @@ const eslintConfig = [
           "message": "Use GraphQLError from src/utils/GraphQLError.ts instead of importing from 'graphql'"
         },
         {
-          "selector": "NewExpression[callee.name='GraphQLError'][callee.object.name!='utils']",
-          "message": "Use GraphQLError from src/utils/GraphQLError.ts instead"
+          "selector": "MemberExpression[object.name='graphql'][property.name='GraphQLError']",
+          "message": "Use GraphQLError from src/utils/GraphQLError.ts instead of graphql.GraphQLError"
         }
       ]
     }
