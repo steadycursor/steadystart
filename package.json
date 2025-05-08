@@ -5,8 +5,7 @@
   "scripts": {
     "build": "pnpm -r run build",
     "tsc": "pnpm -r run tsc",
-    "lint": "pnpm -r run lint",
-    "claude:task": "claude task"
+    "lint": "pnpm -r run lint"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^7.4.0",
