@@ -1,4 +1,6 @@
+import { ClerkClient } from '@clerk/backend';
 import { PrismaClient, User } from '@steadystart/prisma';
+import { Secrets } from '@steadystart/secrets';
 import { match } from 'ts-pattern';
 import { findOrCreateUser } from './findOrCreateUser';
 import { getClerkSessionData } from './getClerkSessionData';
@@ -6,14 +8,16 @@ import { ContextProps } from '../../context';
 
 type ResolveUserFromContextArgs = ContextProps & {
   prisma: PrismaClient;
+  clerk: ClerkClient;
+  secrets: Secrets;
 };
 
-export const resolveUserFromContext = async ({ request, prisma, test }: ResolveUserFromContextArgs): Promise<User | null> => {
+export const resolveUserFromContext = async ({ request, prisma, test, clerk, secrets }: ResolveUserFromContextArgs): Promise<User | null> => {
   return match({ request, test })
     .when(
       ({ request }) => !!request,
       async ({ request }) => {
-        const clerkSessionData = await getClerkSessionData({ request: request! });
+        const clerkSessionData = await getClerkSessionData({ request: request!, clerk, secrets });
 
         const user = clerkSessionData
           ? await findOrCreateUser({
