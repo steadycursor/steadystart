@@ -9,6 +9,8 @@ type UseFormProps<T extends ReactHookForm.FieldValues> = ReactHookForm.UseFormPr
 export const useForm = <T extends ReactHookForm.FieldValues>(props: UseFormProps<T>) => {
   const form = ReactHookForm.useForm<T>(props);
 
+  const values = form.watch();
+
   const Form = ({ children }: ChildrenProps) => (
     <form onSubmit={form.handleSubmit(props.onSubmit)}>
       <ReactHookForm.FormProvider {...form}>
@@ -17,5 +19,5 @@ export const useForm = <T extends ReactHookForm.FieldValues>(props: UseFormProps
     </form>
   );
 
-  return { ...form, onSubmit: props.onSubmit, Form };
+  return { ...form, values, onSubmit: props.onSubmit, Form };
 };
