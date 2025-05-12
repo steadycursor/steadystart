@@ -12,7 +12,7 @@
     "generate": "pnpm run generate:schema && pnpm run generate:genql",
     "generate:genql": "pnpm genql --schema ./src/generated/schema.graphql --output ./src/generated/genql",
     "generate:schema": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --skip-project --transpile-only src/generators/create-graphql-schema-generator",
-    "test": "SKIP_ENV_VALIDATION=true env-cmd -f ../../.env -f ../../libs/tester/.env.test -- jest",
+    "test": "dotenv -e ../../.env -e ../../libs/tester/.env.test -- cross-env SKIP_ENV_VALIDATION=true jest",
     "tsc": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -53,6 +53,7 @@
     "jest": "^29.7.0",
     "nodemon": "^3.1.4",
     "ts-jest": "^29.3.1",
+    "dotenv-cli": "^8.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   }
