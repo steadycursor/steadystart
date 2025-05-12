@@ -55,6 +55,17 @@ This file contains project-specific instructions that Claude should read at the 
   1. Run task:commit (need to manually stage files first)
   2. Neither (stop here)
 
+## Code Style Consistency
+
+- ALWAYS respect how things are written in the existing project
+- DO NOT invent your own approaches or innovations
+- STRICTLY follow the existing style of tests, resolvers, functions, and arguments
+- Before creating a new file, ALWAYS examine a similar file and follow its style exactly
+- If code doesn't include comments, DO NOT add comments
+- Use seeded data in tests instead of creating new objects when seeded data exists
+- Follow the exact format of error handling, variable naming, and code organization used in similar files
+- Never deviate from the established patterns in the codebase
+
 ## Code Documentation and Comments
 
 When working with code that contains comments or documentation:
