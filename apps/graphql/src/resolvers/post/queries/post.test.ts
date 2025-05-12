@@ -38,19 +38,13 @@ test('Should not get post with invalid ID', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Query.post
     {
-      "message": "Not authorized to resolve Query.post",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 17
-        }
+          "message": "MODEL_ITEMS_DONT_BELONG_TO_WORKSPACE",
+        },
       ],
-      "path": [
-        "post"
-      ]
-    }]
+    }
   `);
 });
 
@@ -67,19 +61,13 @@ test('Should not get post when wrong workspace', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Query.post
     {
-      "message": "Not authorized to resolve Query.post",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 17
-        }
+          "message": "MODEL_ITEMS_DONT_BELONG_TO_WORKSPACE",
+        },
       ],
-      "path": [
-        "post"
-      ]
-    }]
+    }
   `);
 });
 
@@ -95,18 +83,12 @@ test('Should not get post when no user', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Query.post
     {
-      "message": "Not authorized to resolve Query.post",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 17
-        }
+          "message": "USER_NOT_AUTHENTICATED",
+        },
       ],
-      "path": [
-        "post"
-      ]
-    }]
+    }
   `);
 });

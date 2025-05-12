@@ -34,31 +34,27 @@ test('Should not create a workspace when title is too short', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: [
-      {
-        "code": "too_small",
-        "minimum": 2,
-        "type": "string",
-        "inclusive": true,
-        "exact": false,
-        "message": "String must contain at least 2 character(s)",
-        "path": [
-          "title"
-        ]
-      }
-    ]
     {
-      "message": "[\\n  {\\n    \\"code\\": \\"too_small\\",\\n    \\"minimum\\": 2,\\n    \\"type\\": \\"string\\",\\n    \\"inclusive\\": true,\\n    \\"exact\\": false,\\n    \\"message\\": \\"String must contain at least 2 character(s)\\",\\n    \\"path\\": [\\n      \\"title\\"\\n    ]\\n  }\\n]",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 24
-        }
+          "message": "VALIDATION_ERROR: title - String must contain at least 2 character(s)",
+          "validation": {
+            "details": {
+              "code": "too_small",
+              "exact": false,
+              "inclusive": true,
+              "message": "String must contain at least 2 character(s)",
+              "minimum": 2,
+              "path": [
+                "title",
+              ],
+              "type": "string",
+            },
+            "field": "title",
+          },
+        },
       ],
-      "path": [
-        "createWorkspace"
-      ]
-    }]
+    }
   `);
 });
 
@@ -73,18 +69,12 @@ test('Should not create a workspace when user is not authenticated', async () =>
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Mutation.createWorkspace
     {
-      "message": "Not authorized to resolve Mutation.createWorkspace",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 24
-        }
+          "message": "USER_NOT_AUTHENTICATED",
+        },
       ],
-      "path": [
-        "createWorkspace"
-      ]
-    }]
+    }
   `);
 });

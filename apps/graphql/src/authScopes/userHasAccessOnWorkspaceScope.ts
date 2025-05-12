@@ -1,14 +1,15 @@
 import { Context } from '../context';
+import { GraphQLError } from '../utils/GraphQLError';
 
 export type UserHasAccessOnWorkspaceScopeArgs = true | { id: string };
 
 export const userHasAccessOnWorkspaceScope = (ctx: Context) => async (args: UserHasAccessOnWorkspaceScopeArgs) => {
   if (!ctx.user) {
-    return false;
+    throw new GraphQLError('USER_NOT_FOUND');
   }
 
   if (args === true && !ctx.workspace) {
-    return false;
+    throw new GraphQLError('VALID_WORKSPACE_NOT_FOUND_IN_HEADERS');
   }
 
   const membership = await ctx.prisma.membership.findFirst({
@@ -19,7 +20,7 @@ export const userHasAccessOnWorkspaceScope = (ctx: Context) => async (args: User
   });
 
   if (!membership) {
-    return false;
+    throw new GraphQLError('NOT_AUTHORIZED');
   }
 
   return true;

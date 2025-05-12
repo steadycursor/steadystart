@@ -47,7 +47,7 @@ test('Should return only workspaces where user has membership', async () => {
         {
           "__typename": "Workspace",
           "id": "56bff15d207f41f9b20d",
-          "title": "Test Workspace 1", 
+          "title": "Test Workspace 1",
         },
       ],
     }
@@ -65,18 +65,12 @@ test('Should not return workspaces when user is not authenticated', async () => 
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Query.workspaces
     {
-      "message": "Not authorized to resolve Query.workspaces",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 8
-        }
+          "message": "USER_NOT_AUTHENTICATED",
+        },
       ],
-      "path": [
-        "workspaces"
-      ]
-    }]
+    }
   `);
 });

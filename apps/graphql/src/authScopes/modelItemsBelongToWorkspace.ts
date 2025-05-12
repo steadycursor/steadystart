@@ -1,4 +1,5 @@
 import { Context } from '../context';
+import { GraphQLError } from '../utils/GraphQLError';
 
 /**
  * IMPORTANT NOTES FOR CLAUDE:
@@ -27,7 +28,7 @@ const checkSingleModelItemsBelongToWorkspaceScope = async (ctx: Context, args: M
   }
 
   if (!ctx.workspace) {
-    return false;
+    throw new GraphQLError('VALID_WORKSPACE_NOT_FOUND_IN_HEADERS');
   }
 
   const uniqueIds = Array.from(new Set(ids));
@@ -37,15 +38,21 @@ const checkSingleModelItemsBelongToWorkspaceScope = async (ctx: Context, args: M
     .findMany({ where: { id: { in: uniqueIds }, workspaceId: ctx.workspace.id } })
     .then((data: any) => data.length === uniqueIds.length);
 
+  if (!result) {
+    throw new GraphQLError('MODEL_ITEMS_DONT_BELONG_TO_WORKSPACE');
+  }
+
   return result;
 };
 
-export const modelItemsBelongToWorkspaceScope = (ctx: Context) => async (args: ModelItemsBelongToWorkspaceScopeArgs): Promise<boolean> => {
-  if (!args || args.length === 0) {
-    return true;
-  }
+export const modelItemsBelongToWorkspaceScope =
+  (ctx: Context) =>
+  async (args: ModelItemsBelongToWorkspaceScopeArgs): Promise<boolean> => {
+    if (!args || args.length === 0) {
+      return true;
+    }
 
-  const results = await Promise.all(args.map((arg) => checkSingleModelItemsBelongToWorkspaceScope(ctx, arg)));
+    const results = await Promise.all(args.map((arg) => checkSingleModelItemsBelongToWorkspaceScope(ctx, arg)));
 
-  return results.every((result) => result === true);
-};
+    return results.every((result) => result === true);
+  };

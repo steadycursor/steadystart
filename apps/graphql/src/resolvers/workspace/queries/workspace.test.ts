@@ -37,19 +37,13 @@ test('Should not return workspace when user has no access to it', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Query.workspace
     {
-      "message": "Not authorized to resolve Query.workspace",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 17
-        }
+          "message": "NOT_AUTHORIZED",
+        },
       ],
-      "path": [
-        "workspace"
-      ]
-    }]
+    }
   `);
 });
 
@@ -64,18 +58,12 @@ test('Should not return workspace when user is not authenticated', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Query.workspace
     {
-      "message": "Not authorized to resolve Query.workspace",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 17
-        }
+          "message": "USER_NOT_AUTHENTICATED",
+        },
       ],
-      "path": [
-        "workspace"
-      ]
-    }]
+    }
   `);
 });

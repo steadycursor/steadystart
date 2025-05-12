@@ -24,7 +24,7 @@ export const createContext = async ({ request, test }: ContextProps) => {
 
   const prisma = test ? test.prisma : productionPrisma;
 
-  const user = await resolveUserFromContext({ request, prisma, test, clerk });
+  const user = await resolveUserFromContext({ request, prisma, test, clerk, secrets });
   const workspace = await resolveWorkspaceFromContext({ user, request, prisma, test });
 
   return {

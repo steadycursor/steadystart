@@ -3,6 +3,24 @@ import { graphql } from 'graphql';
 import { createContext } from '../context';
 import { createClient, QueryRequest, QueryResult, MutationRequest, MutationResult } from '../generated/genql';
 import { schema } from '../schema';
+import { handleGraphQLError } from '../utils/handleGraphQLError';
+
+// Typy pro chybové odpovědi
+export type ValidationErrorResponse = {
+  errors: Array<{
+    message: string;
+    validation?: {
+      field: string;
+      details: any;
+    };
+  }>;
+};
+
+export type ErrorResponse = {
+  errors: Array<{
+    message: string;
+  }>;
+};
 
 export type CreateClientWithContextArgs = {
   userId?: string;
@@ -53,13 +71,13 @@ export async function genqlQuery<Q extends QueryRequest>({
 
       return response as QueryResult<typeof source>;
     })
-    .catch((e) => {
-      if (logResponseToConsole) {
-        console.warn(e.message);
-      }
-
-      return (e as unknown) as QueryResult<typeof source>;
-    });
+    .catch(
+      (e) =>
+        handleGraphQLError({
+          error: e,
+          shouldLog: logResponseToConsole,
+        }) as never,
+    );
 }
 
 export async function genqlMutation<Q extends MutationRequest>({
@@ -78,11 +96,11 @@ export async function genqlMutation<Q extends MutationRequest>({
 
       return response as MutationResult<typeof source>;
     })
-    .catch((e) => {
-      if (logResponseToConsole) {
-        console.warn(e.message);
-      }
-
-      return (e as unknown) as MutationResult<typeof source>;
-    });
+    .catch(
+      (e) =>
+        handleGraphQLError({
+          error: e,
+          shouldLog: logResponseToConsole,
+        }) as never,
+    );
 }

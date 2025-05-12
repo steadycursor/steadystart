@@ -41,19 +41,13 @@ test('Should get not posts when no workspace', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Query.posts
     {
-      "message": "Not authorized to resolve Query.posts",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 8
-        }
+          "message": "VALID_WORKSPACE_NOT_FOUND_IN_HEADERS",
+        },
       ],
-      "path": [
-        "posts"
-      ]
-    }]
+    }
   `);
 });
 
@@ -67,18 +61,12 @@ test('Should get not posts when workspace, but no user', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Query.posts
     {
-      "message": "Not authorized to resolve Query.posts",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 8
-        }
+          "message": "USER_NOT_AUTHENTICATED",
+        },
       ],
-      "path": [
-        "posts"
-      ]
-    }]
+    }
   `);
 });

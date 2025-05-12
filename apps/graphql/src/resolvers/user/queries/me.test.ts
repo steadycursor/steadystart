@@ -37,18 +37,12 @@ test('Should not return user data when user is not authenticated', async () => {
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Query.me
     {
-      "message": "Not authorized to resolve Query.me",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 8
-        }
+          "message": "USER_NOT_AUTHENTICATED",
+        },
       ],
-      "path": [
-        "me"
-      ]
-    }]
+    }
   `);
 });

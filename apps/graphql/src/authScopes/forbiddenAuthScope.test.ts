@@ -1,20 +1,21 @@
 import { TestDatabaseOrchestrator, seededData } from '@steadystart/tester';
 import { builder } from '../builder';
+import { createContextForAuthScopeTest } from '../utils/createContextForAuthScopeTest';
 
 test('Should block access when set to true', async () => {
   const prisma = await new TestDatabaseOrchestrator().getTestDatabaseWithPrismaClient();
 
   const authScopeCheck = () =>
     builder.runAuthScopes(
-      {
+      createContextForAuthScopeTest({
         prisma,
         user: seededData.users[0],
         workspace: seededData.workspaces[0],
-      },
+      }),
       { forbidden: true },
     );
 
-  expect(authScopeCheck()).rejects.toThrowErrorMatchingInlineSnapshot(`"Unauthorized"`);
+  expect(authScopeCheck()).rejects.toThrowErrorMatchingInlineSnapshot(`"FORBIDDEN_ACTION"`);
 });
 
 test('Should allow access when set to false', async () => {
@@ -22,11 +23,11 @@ test('Should allow access when set to false', async () => {
 
   const authScopeCheck = async () =>
     builder.runAuthScopes(
-      {
+      createContextForAuthScopeTest({
         prisma,
         user: seededData.users[0],
         workspace: seededData.workspaces[0],
-      },
+      }),
       { forbidden: false },
     );
 

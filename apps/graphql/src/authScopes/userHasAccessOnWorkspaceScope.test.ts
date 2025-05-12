@@ -1,5 +1,6 @@
 import { TestDatabaseOrchestrator, seededData } from '@steadystart/tester';
 import { builder } from '../builder';
+import { createContextForAuthScopeTest } from '../utils/createContextForAuthScopeTest';
 
 test('Should work when user has access to workspace with true argument', async () => {
   const prisma = await new TestDatabaseOrchestrator().getTestDatabaseWithPrismaClient();
@@ -15,11 +16,11 @@ test('Should work when user has access to workspace with true argument', async (
 
   const authScopeCheck = () =>
     builder.runAuthScopes(
-      {
+      createContextForAuthScopeTest({
         prisma,
         user: seededData.users[0],
         workspace: seededData.workspaces[0],
-      },
+      }),
       { userHasAccessOnWorkspace: true },
     );
 
@@ -40,11 +41,11 @@ test('Should work when user has access to workspace with id argument', async () 
 
   const authScopeCheck = () =>
     builder.runAuthScopes(
-      {
+      createContextForAuthScopeTest({
         prisma,
         user: seededData.users[0],
         workspace: null,
-      },
+      }),
       { userHasAccessOnWorkspace: { id: seededData.workspaces[0].id } },
     );
 
@@ -56,15 +57,15 @@ test('Should not work when user is null', async () => {
 
   const authScopeCheck = () =>
     builder.runAuthScopes(
-      {
+      createContextForAuthScopeTest({
         prisma,
         user: null,
         workspace: seededData.workspaces[0],
-      },
+      }),
       { userHasAccessOnWorkspace: true },
     );
 
-  expect(authScopeCheck()).rejects.toThrowErrorMatchingInlineSnapshot(`"Unauthorized"`);
+  expect(authScopeCheck()).rejects.toThrowErrorMatchingInlineSnapshot(`"USER_NOT_FOUND"`);
 });
 
 test('Should not work when workspace is null with true argument', async () => {
@@ -72,15 +73,15 @@ test('Should not work when workspace is null with true argument', async () => {
 
   const authScopeCheck = () =>
     builder.runAuthScopes(
-      {
+      createContextForAuthScopeTest({
         prisma,
         user: seededData.users[0],
         workspace: null,
-      },
+      }),
       { userHasAccessOnWorkspace: true },
     );
 
-  expect(authScopeCheck()).rejects.toThrowErrorMatchingInlineSnapshot(`"Unauthorized"`);
+  expect(authScopeCheck()).rejects.toThrowErrorMatchingInlineSnapshot(`"VALID_WORKSPACE_NOT_FOUND_IN_HEADERS"`);
 });
 
 test('Should not work when membership does not exist', async () => {
@@ -90,13 +91,13 @@ test('Should not work when membership does not exist', async () => {
 
   const authScopeCheck = () =>
     builder.runAuthScopes(
-      {
+      createContextForAuthScopeTest({
         prisma,
         user: seededData.users[0],
         workspace: seededData.workspaces[0],
-      },
+      }),
       { userHasAccessOnWorkspace: true },
     );
 
-  expect(authScopeCheck()).rejects.toThrowErrorMatchingInlineSnapshot(`"Unauthorized"`);
+  expect(authScopeCheck()).rejects.toThrowErrorMatchingInlineSnapshot(`"USER_NOT_FOUND"`);
 });

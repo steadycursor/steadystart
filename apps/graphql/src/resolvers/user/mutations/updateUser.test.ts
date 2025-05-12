@@ -34,18 +34,12 @@ test('Should not update user locale when user is not authenticated', async () =>
   });
 
   expect(response).toMatchInlineSnapshot(`
-    [ClientError: Not authorized to resolve Mutation.updateUser
     {
-      "message": "Not authorized to resolve Mutation.updateUser",
-      "locations": [
+      "errors": [
         {
-          "line": 1,
-          "column": 24
-        }
+          "message": "USER_NOT_AUTHENTICATED",
+        },
       ],
-      "path": [
-        "updateUser"
-      ]
-    }]
+    }
   `);
 });
