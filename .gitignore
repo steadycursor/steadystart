@@ -12,3 +12,5 @@ tsconfig.tsbuildinfo
 
 # Digital Ocean App Plaform
 steadystart.yaml
+
+**/.claude/settings.local.json
