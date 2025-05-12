@@ -1,11 +1,7 @@
 {
-  "WorkspacesPage": {
-    "Page": {
-      "title": "Vítejte v Steady Start"
-    },
-    "sections": {
-      "workspaces": "Pracovní prostory",
-      "newWorkspace": "Vytvořit pracovní prostor"
+  "DataTable": {
+    "states": {
+      "noResults": "Žádné výsledky."
     }
   },
   "Page": {
@@ -31,6 +27,10 @@
   "SubmitButton": {
     "title": "Odeslat"
   },
+  "UnexpectedErrorAlert": {
+    "content": "Při načítání dat došlo k chybě. Může se jednat o dočasný problém, zkuste to prosím znovu za chvíli. Pokud problém přetrvává, neváhejte nás kontaktovat.",
+    "title": "Jejda! Narazili jsme na problém. Zkuste stránku obnovit nebo se vrátit později."
+  },
   "UpdateUserLocaleForm": {
     "Card": {
       "description": "Vyberte jazyk rozhraní aplikace. Volba zůstane zachována i po obnovení stránky nebo otevření odkazu s jiným jazykovým nastavením.",
@@ -40,6 +40,15 @@
   "useFormResponseHandler": {
     "defaultToastMessages": {
       "success": "Super. Povedlo se to."
+    }
+  },
+  "WorkspacesPage": {
+    "Page": {
+      "title": "Vítejte v Steady Start"
+    },
+    "sections": {
+      "newWorkspace": "Vytvořit pracovní prostor",
+      "workspaces": "Pracovní prostory"
     }
   }
 }

@@ -1,11 +1,7 @@
 {
-  "WorkspacesPage": {
-    "Page": {
-      "title": "Welcome to Steady Start"
-    },
-    "sections": {
-      "workspaces": "Workspaces",
-      "newWorkspace": "New Workspace"
+  "DataTable": {
+    "states": {
+      "noResults": "No results."
     }
   },
   "Page": {
@@ -13,10 +9,6 @@
       "Menu": "Menu"
     },
     "switchWorkspace": "Switch workspace"
-  },
-  "UnexpectedErrorAlert": {
-    "title": "Oops! We ran into a problem. Try reloading the page or coming back later.",
-    "content": "Something went wrong while loading the data. This might be a temporary issue, so please try again in a moment. If the problem persists, feel free to contact us for assistance."
   },
   "PostsPage": {
     "Page": {
@@ -35,6 +27,10 @@
   "SubmitButton": {
     "title": "Submit"
   },
+  "UnexpectedErrorAlert": {
+    "content": "Something went wrong while loading the data. This might be a temporary issue, so please try again in a moment. If the problem persists, feel free to contact us for assistance.",
+    "title": "Oops! We ran into a problem. Try reloading the page or coming back later."
+  },
   "UpdateUserLocaleForm": {
     "Card": {
       "description": "Select the language for your application interface. Your choice persists across page reloads and when opening links with different locale settings.",
@@ -44,6 +40,15 @@
   "useFormResponseHandler": {
     "defaultToastMessages": {
       "success": "Great! That did the trick."
+    }
+  },
+  "WorkspacesPage": {
+    "Page": {
+      "title": "Welcome to Steady Start"
+    },
+    "sections": {
+      "newWorkspace": "New Workspace",
+      "workspaces": "Workspaces"
     }
   }
 }

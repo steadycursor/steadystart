@@ -1,11 +1,11 @@
 {
-  "workspace": {
-    "singular": "Pracovní prostor"
-  },
   "post": {
     "plural": "Příspěvky"
   },
   "user": {
     "singular": "Uživatel"
+  },
+  "workspace": {
+    "singular": "Pracovní prostor"
   }
 }

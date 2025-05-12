@@ -1,11 +1,11 @@
 {
-  "workspace": {
-    "singular": "Workspace"
-  },
   "post": {
     "plural": "Posts"
   },
   "user": {
     "singular": "User"
+  },
+  "workspace": {
+    "singular": "Workspace"
   }
 }
