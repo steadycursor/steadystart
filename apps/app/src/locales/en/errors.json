@@ -1,4 +1,9 @@
 {
   "DEFAULT_ERROR": "Uh-oh! Something didn’t go as planned. Try again later.",
-  "NOT_AUTHORIZED": "Not authorized."
+  "FORBIDDEN_ACTION": "Forbidden action.",
+  "MODEL_ITEMS_DONT_BELONG_TO_WORKSPACE": "Model items don't belong to workspace.",
+  "NOT_AUTHORIZED": "Not authorized.",
+  "USER_NOT_AUTHENTICATED": "User not authenticated.",
+  "USER_NOT_FOUND": "User not found.",
+  "VALID_WORKSPACE_NOT_FOUND_IN_HEADERS": "Valid workspace not found in request headers."
 }

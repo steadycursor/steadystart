@@ -1,4 +1,9 @@
 {
   "DEFAULT_ERROR": "Sakra! Něco se nepovedlo. Zkuste to prosím znovu.",
-  "NOT_AUTHORIZED": "K této akci nemáte dostatečná oprávnění."
+  "FORBIDDEN_ACTION": "Zakázaná akce.",
+  "MODEL_ITEMS_DONT_BELONG_TO_WORKSPACE": "Položky modelu nepatří do tohoto pracovního prostoru.",
+  "NOT_AUTHORIZED": "K této akci nemáte dostatečná oprávnění.",
+  "USER_NOT_AUTHENTICATED": "Uživatel není přihlášen.",
+  "USER_NOT_FOUND": "Uživatel nebyl nalezen.",
+  "VALID_WORKSPACE_NOT_FOUND_IN_HEADERS": "Platný pracovní prostor nebyl nalezen v hlavičkách požadavku."
 }
