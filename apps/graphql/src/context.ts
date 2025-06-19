@@ -16,6 +16,7 @@ export type ContextProps = {
 };
 
 export const createContext = async ({ request, test }: ContextProps) => {
+  const prisma = test ? test.prisma : productionPrisma;
   const secrets = parseSecrets();
 
   const clerk = createClerkClient({
@@ -32,6 +33,7 @@ export const createContext = async ({ request, test }: ContextProps) => {
     workspace,
     secrets,
     prisma,
+    isTest: !!test
   };
 };
 
