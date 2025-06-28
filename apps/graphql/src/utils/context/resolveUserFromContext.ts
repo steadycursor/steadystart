@@ -1,13 +1,14 @@
 import { ClerkClient } from '@clerk/backend';
-import { PrismaClient, User } from '@steadystart/prisma';
+import { User } from '@steadystart/prisma';
 import { Secrets } from '@steadystart/secrets';
 import { match } from 'ts-pattern';
 import { findOrCreateUser } from './findOrCreateUser';
 import { getClerkSessionData } from './getClerkSessionData';
 import { ContextProps } from '../../context';
+import { PaginatedPrisma } from '../../prisma';
 
 type ResolveUserFromContextArgs = ContextProps & {
-  prisma: PrismaClient;
+  prisma: PaginatedPrisma;
   clerk: ClerkClient;
   secrets: Secrets;
 };

@@ -1,9 +1,9 @@
-import { PrismaClient } from '@steadystart/prisma';
+import { PaginatedPrisma } from '../../prisma';
 
 type FindOrCreateUserArgs = {
   clerkUserId: string;
   emailAddress: string;
-  prisma: PrismaClient;
+  prisma: PaginatedPrisma;
 };
 export const findOrCreateUser = async ({ clerkUserId, emailAddress, prisma }: FindOrCreateUserArgs) => {
   const user = await prisma.user.findFirst({ where: { clerkId: clerkUserId } });

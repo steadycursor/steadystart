@@ -3,6 +3,7 @@ import DataloaderPlugin from '@pothos/plugin-dataloader';
 import ScopeAuthPlugin from '@pothos/plugin-scope-auth';
 import SimpleObjectsPlugin from '@pothos/plugin-simple-objects';
 import ZodPlugin from '@pothos/plugin-zod';
+// import PaginationPlugin from './pagination/plugin';
 import { accessPolicyAuthScope, AccessPolicyAuthScopeArgs } from './authScopes/accessPolicyAuthScope';
 import { forbiddenAuthScope, ForbiddenAuthScopeArgs } from './authScopes/forbiddenAuthScope';
 import { modelItemsBelongToWorkspaceScope, ModelItemsBelongToWorkspaceScopeArgs } from './authScopes/modelItemsBelongToWorkspace';
