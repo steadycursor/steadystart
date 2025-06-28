@@ -1,4 +1,3 @@
-import { PrismaClient } from '@steadystart/prisma';
 import * as path from 'path';
 import { v1, v4 } from 'uuid';
 import { exec } from '../utils/exec';
@@ -51,7 +50,7 @@ export class TestDatabaseOrchestrator {
     return this.getConnectionString();
   }
 
-  public async getTestDatabaseWithPrismaClient(): Promise<PrismaClient> {
+  public async getTestDatabaseWithPrismaClient(): Promise<PaginatedPrisma> {
     // Check if the docker container exists
     const { stdout } = await exec(`docker ps -a --filter name=${this.serviceName} --format '{{.Names}}'`);
 
