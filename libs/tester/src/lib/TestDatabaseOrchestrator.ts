@@ -1,3 +1,4 @@
+import { createPrismaClient, PrismaClient } from '@steadystart/prisma';
 import * as path from 'path';
 import { v1, v4 } from 'uuid';
 import { exec } from '../utils/exec';
@@ -50,7 +51,7 @@ export class TestDatabaseOrchestrator {
     return this.getConnectionString();
   }
 
-  public async getTestDatabaseWithPrismaClient(): Promise<PaginatedPrisma> {
+  public async getTestDatabaseWithPrismaClient(): Promise<PrismaClient> {
     // Check if the docker container exists
     const { stdout } = await exec(`docker ps -a --filter name=${this.serviceName} --format '{{.Names}}'`);
 
@@ -76,7 +77,7 @@ export class TestDatabaseOrchestrator {
     await this.loadDatabaseDump();
 
     const databaseUrl = this.getConnectionString();
-    const prisma = new PrismaClient({ datasources: { db: { url: databaseUrl } } });
+    const prisma = createPrismaClient({ datasources: { db: { url: databaseUrl } } });
 
     return prisma;
   }
@@ -106,7 +107,7 @@ export class TestDatabaseOrchestrator {
   public async waitForDatabase(): Promise<void> {
     const baseConnection = `postgresql://${this.user}:${this.password}@${this.host}:${this.port}`;
 
-    const client = new PrismaClient({
+    const client = createPrismaClient({
       datasources: {
         db: {
           url: baseConnection,

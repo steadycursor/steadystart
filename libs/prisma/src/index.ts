@@ -19,8 +19,8 @@ export type PaginationResult<R> = {
   totalSize: number;
 };
 
-export const createPrismaClient = () =>
-  new OriginalPrismaClient().$extends({
+export const createPrismaClient = (prismaClientOptions: Prisma.PrismaClientOptions) =>
+  new OriginalPrismaClient(prismaClientOptions).$extends({
     model: {
       $allModels: {
         paginate<T, A extends Prisma.Args<T, 'findMany'>, R = Prisma.Result<T, A, 'findMany'>>(
