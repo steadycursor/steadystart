@@ -2,10 +2,10 @@ import { User, Workspace } from '@steadystart/prisma';
 import { match } from 'ts-pattern';
 import { findAndValidateWorkspaceFromRequestHeaders } from './findAndValidateWorkspaceFromRequestHeaders';
 import { ContextProps } from '../../context';
-import { PaginatedPrisma } from '../../prisma';
+import { PrismaClient } from '../../prisma';
 
 type ResolveWorkspaceFromContextArgs = ContextProps & {
-  prisma: PaginatedPrisma;
+  prisma: PrismaClient;
   user: User | null;
 };
 

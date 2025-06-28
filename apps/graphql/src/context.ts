@@ -1,6 +1,6 @@
 import { createClerkClient } from '@clerk/backend';
 import { parseSecrets } from '@steadystart/secrets';
-import { PaginatedPrisma, prisma as productionPrisma } from './prisma';
+import { PrismaClient, prisma as productionPrisma } from './prisma';
 import { Request } from './types/Request';
 import { resolveUserFromContext } from './utils/context/resolveUserFromContext';
 import { resolveWorkspaceFromContext } from './utils/context/resolveWorkspaceFromContext';
@@ -8,7 +8,7 @@ import { resolveWorkspaceFromContext } from './utils/context/resolveWorkspaceFro
 export type ContextProps = {
   request: Request | undefined;
   test?: {
-    prisma: PaginatedPrisma;
+    prisma: PrismaClient;
     userId: string | undefined;
     workspaceId: string | undefined;
   };
