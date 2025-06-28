@@ -1,39 +1,38 @@
-// import './types';
-// import './schemaBuilder';
+import './types';
+import './schemaBuilder';
 
-// import { paginate } from '@fleek-platform/prisma';
-// import SchemaBuilder, { BasePlugin, SchemaTypes } from '@pothos/core';
-// import { GraphQLFieldResolver } from 'graphql';
+import SchemaBuilder, { BasePlugin, SchemaTypes } from '@pothos/core';
+import { PaginationArgs, PaginationResult } from '@steadystart/prisma';
+import { GraphQLFieldResolver } from 'graphql';
 
-// const pluginName = 'inputGroup' as const;
+const pluginName = 'pagination' as const;
 
-// // eslint-disable-next-line import/no-default-export
-// export default pluginName;
+function isPaginationResult(result: unknown): result is (args: PaginationArgs) => Promise<PaginationResult<unknown>> {
+  return typeof result === 'function';
+}
 
-// export class PothosWithInputPlugin<Types extends SchemaTypes> extends BasePlugin<Types> {
-//   wrapResolve(resolver: GraphQLFieldResolver<unknown, Types['Context'], object, Promise<ReturnType<typeof paginate> | string>>): GraphQLFieldResolver<
-//     unknown,
-//     Types['Context'],
-//     {
-//       filter?: { sortField: string; sortOrder: string; take: number; page?: number };
-//     }
-//   > {
-//     return async (parent, args, context, info) => {
-//       const result = await resolver(parent, args, context, info);
+// eslint-disable-next-line import/no-default-export
+export default class PaginationPlugin<Types extends SchemaTypes> extends BasePlugin<Types> {
+  wrapResolve(resolver: GraphQLFieldResolver<unknown, Types['Context'], object, Promise<unknown>>): GraphQLFieldResolver<
+    unknown,
+    Types['Context'],
+    {
+      filter?: { size: number; page?: number };
+    }
+  > {
+    return async (parent, args, context, info) => {
+      const result = await resolver(parent, args, context, info);
 
-//       if (typeof result === 'object' && result !== null && 'withPages' in result && typeof result.withPages === 'function') {
-//         const [data, paginationMetadata] = await result.withPages({
-//           limit: args.filter?.take ?? 100,
-//           page: args.filter?.page ?? 1,
-//           includePageCount: true,
-//         });
+      if (isPaginationResult(result)) {
+        return result({
+          size: args.filter?.size ?? 100,
+          page: args.filter?.page ?? 1,
+        });
+      }
 
-//         return { data, ...paginationMetadata };
-//       }
+      return result;
+    };
+  }
+}
 
-//       return result;
-//     };
-//   }
-// }
-
-// SchemaBuilder.registerPlugin(pluginName, PothosWithInputPlugin);
+SchemaBuilder.registerPlugin(pluginName, PaginationPlugin);
