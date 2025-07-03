@@ -1,4 +1,4 @@
-import './types';
+import './global-types';
 import './schemaBuilder';
 
 import SchemaBuilder, { BasePlugin, SchemaTypes } from '@pothos/core';

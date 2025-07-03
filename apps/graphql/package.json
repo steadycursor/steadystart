@@ -38,22 +38,23 @@
     "graphql-yoga": "^5.6.2",
     "ts-pattern": "^5.6.2",
     "type-fest": "^4.35.0",
+    "upper-case-first": "^3.0.0",
     "zod": "3.22.4"
   },
   "devDependencies": {
-    "@genql/runtime": "2.6.0",
     "@eslint/eslintrc": "^3.3.0",
     "@genql/cli": "2.6.0",
+    "@genql/runtime": "2.6.0",
     "@jest/types": "^29.6.3",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.14",
     "cross-env": "^7.0.3",
+    "dotenv-cli": "^8.0.0",
     "eslint": "^9.1.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.4",
     "ts-jest": "^29.3.1",
-    "dotenv-cli": "^8.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   }
