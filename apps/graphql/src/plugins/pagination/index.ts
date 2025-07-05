@@ -11,8 +11,7 @@ function isPaginationResult(result: unknown): result is (args: PaginationArgs) =
   return typeof result === 'function';
 }
 
-// eslint-disable-next-line import/no-default-export
-export default class PaginationPlugin<Types extends SchemaTypes> extends BasePlugin<Types> {
+export class PaginationPlugin<Types extends SchemaTypes> extends BasePlugin<Types> {
   wrapResolve(resolver: GraphQLFieldResolver<unknown, Types['Context'], object, Promise<unknown>>): GraphQLFieldResolver<
     unknown,
     Types['Context'],
@@ -36,3 +35,6 @@ export default class PaginationPlugin<Types extends SchemaTypes> extends BasePlu
 }
 
 SchemaBuilder.registerPlugin(pluginName, PaginationPlugin);
+
+// eslint-disable-next-line import/no-default-export
+export default pluginName;

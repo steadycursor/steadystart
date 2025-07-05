@@ -14,29 +14,36 @@ export type PaginationResult<R> = {
   page: number;
   /** A requested number of rows on each page */
   size: number;
-  rows: R;
+  rows: R[];
   /** A total number of rows that match all `where` conditions. It equals to a table size if no `where` conditions are specified. */
   totalSize: number;
 };
+
+type PrismaPaginationFnBrandedType = { __type: 'PrismaPaginationFn' };
+
+export type PrismaPaginationFn<TResult> = (paginationArgs: PaginationArgs) => Promise<PaginationResult<TResult>> & PrismaPaginationFnBrandedType;
+
+type PrismaPaginationFnInternal<
+  TModel,
+  TArgs = Prisma.Args<TModel, 'findMany'>,
+  TResult = Prisma.Result<TModel, TArgs, 'findMany'>,
+> = PrismaPaginationFn<TResult>;
 
 export const createPrismaClient = (prismaClientOptions: Prisma.PrismaClientOptions) =>
   new OriginalPrismaClient(prismaClientOptions).$extends({
     model: {
       $allModels: {
-        paginate<T, A extends Prisma.Args<T, 'findMany'>, R = Prisma.Result<T, A, 'findMany'>>(
-          this: T,
-          args: A,
-        ): (paginationArgs: PaginationArgs) => Promise<PaginationResult<R>> {
+        paginate<T, A = Prisma.Args<T, 'findMany'>>(this: T, args: A): PrismaPaginationFnInternal<T> {
           const context: any = Prisma.getExtensionContext(this);
 
-          return async ({ page, size }: PaginationArgs) => {
+          return (async ({ page, size }: PaginationArgs) => {
             const take = Math.max(0, size);
             const skip = (1 - Math.max(1, page)) * size;
 
             const [rows, totalSize] = await context.$transaction([context.findMany({ ...args, take, skip }), context.count(args)]);
 
             return { page, size, rows, totalSize };
-          };
+          }) as PrismaPaginationFnInternal<T>;
         },
       },
     },

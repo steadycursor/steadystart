@@ -1,4 +1,4 @@
-import { ArgBuilder, OutputType, SchemaTypes, TypeParam } from '@pothos/core';
+import { SchemaTypes } from '@pothos/core';
 
 export type GetOrCreatePaginationInputTypeRefArgs = {
   builder: PothosSchemaTypes.SchemaBuilder<SchemaTypes>;
@@ -14,7 +14,7 @@ export const getOrCreatePaginationInputTypeRef = ({ builder, name }: GetOrCreate
 
   return builder.inputType(name, {
     fields: (t) => ({
-      take: t.int(),
+      size: t.int({ required: false }),
       page: t.int({ required: false }),
     }),
   });

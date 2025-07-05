@@ -2,19 +2,17 @@ import { builder } from '../../../builder';
 import { Workspace } from '../../../schema/Workspace';
 
 builder.queryField('workspaces', (t) =>
-  t.field({
+  t.paginatedField({
     type: [Workspace],
     authScopes: {
       accessPolicy: 'authenticated',
     },
     resolve: async (_parent, _args, ctx) => {
-      const workspaces = await ctx.prisma.workspace.findMany({
+      return ctx.prisma.workspace.paginate({
         where: {
           memberships: { some: { userId: ctx.user!.id } },
         },
       });
-
-      return workspaces;
     },
   }),
 );
