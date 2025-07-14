@@ -9,13 +9,11 @@ builder.queryField('posts', (t) =>
       userHasAccessOnWorkspace: true,
     },
     resolve: async (_parent, _args, ctx) => {
-      const posts = await ctx.prisma.post.paginate({
+      return ctx.prisma.post.findMany({
         where: {
           workspaceId: ctx.workspace!.id,
         },
-      })({ size: 1, page: 1 });
-
-      return posts.rows;
+      });
     },
   }),
 );

@@ -2,11 +2,13 @@ import { Prisma, PrismaClient as OriginalPrismaClient } from '../generated';
 
 export * from '../generated';
 
-export type PaginationArgs = {
+export type PaginationArgs<C> = {
   /** An index of page you want to get starting at 1. */
   page: number;
   /** A number of rows on each page. */
   size: number;
+  /** Optional `cursor` object where key must be an unique, sequential column. */
+  cursor?: C;
 };
 
 export type PaginationResult<R> = {
@@ -21,32 +23,44 @@ export type PaginationResult<R> = {
 
 type PrismaPaginationFnBrandedType = { __type: 'PrismaPaginationFn' };
 
-export type PrismaPaginationFn<TResult> = (paginationArgs: PaginationArgs) => Promise<PaginationResult<TResult>> & PrismaPaginationFnBrandedType;
+export type PrismaPaginationFn<TCursor, TResult> = (
+  paginationArgs: PaginationArgs<TCursor>,
+) => Promise<PaginationResult<TResult>> & PrismaPaginationFnBrandedType;
 
 type PrismaPaginationFnInternal<
   TModel,
   TArgs = Prisma.Args<TModel, 'findMany'>,
   TResult = Prisma.Result<TModel, TArgs, 'findMany'>,
-> = PrismaPaginationFn<TResult>;
+> = PrismaPaginationFn<Prisma.Args<TModel, 'findMany'>['cursor'], TResult>;
 
-export const createPrismaClient = (prismaClientOptions: Prisma.PrismaClientOptions) =>
-  new OriginalPrismaClient(prismaClientOptions).$extends({
-    model: {
-      $allModels: {
-        paginate<T, A = Prisma.Args<T, 'findMany'>>(this: T, args: A): PrismaPaginationFnInternal<T> {
-          const context: any = Prisma.getExtensionContext(this);
+export const createPrismaClient = (prismaClientOptions: Prisma.PrismaClientOptions) => {
+  const paginationExtension = Prisma.defineExtension((prisma) =>
+    prisma.$extends({
+      model: {
+        $allModels: {
+          paginate<T, A = Omit<Prisma.Args<T, 'findMany'>, 'take' | 'skip' | 'cursor'>>(this: T, args: A): PrismaPaginationFnInternal<T> {
+            const context: any = Prisma.getExtensionContext(this);
 
-          return (async ({ page, size }: PaginationArgs) => {
-            const take = Math.max(0, size);
-            const skip = (1 - Math.max(1, page)) * size;
+            return (async ({ page, size, cursor }: PaginationArgs<Prisma.Args<T, 'findMany'>['cursor']>) => {
+              const take = Math.max(0, size);
+              let skip = (1 - Math.max(1, page)) * size;
 
-            const [rows, totalSize] = await context.$transaction([context.findMany({ ...args, take, skip }), context.count(args)]);
+              // We skip cursor itself that is the first returned row
+              if (cursor) {
+                skip += 1;
+              }
 
-            return { page, size, rows, totalSize };
-          }) as PrismaPaginationFnInternal<T>;
+              const [rows, totalSize] = await prisma.$transaction([context.findMany({ ...args, take, skip, cursor }), context.count(args)]);
+
+              return { page, size, rows, totalSize };
+            }) as PrismaPaginationFnInternal<T>;
+          },
         },
       },
-    },
-  });
+    }),
+  );
+
+  return new OriginalPrismaClient(prismaClientOptions).$extends(paginationExtension);
+};
 
 export type PrismaClient = ReturnType<typeof createPrismaClient>;

@@ -11,6 +11,14 @@ import {
 import { PrismaPaginationFn } from '@steadystart/prisma';
 import { GraphQLResolveInfo } from 'graphql';
 
+export type PaginationPluginOptions = {
+  defaultPageSize?: number;
+};
+
+export type PaginationFieldOptions = {
+  defaultPageSize?: number;
+};
+
 export interface ObjectFieldOptions<
   Types extends SchemaTypes,
   ParentShape,
@@ -34,7 +42,7 @@ type Resolver<Parent, Args, Context, Type> = (
   context: Context,
   info: GraphQLResolveInfo,
 ) => [Type] extends [readonly (infer Item)[] | null | undefined]
-  ? MaybePromise<PrismaPaginationFn<Item[]>>
+  ? MaybePromise<PrismaPaginationFn<any, Item[]>>
   : { __error: 'Pagination needs to be enable for lists only.' };
 
 interface InferredFieldOptions<

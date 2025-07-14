@@ -6,16 +6,14 @@ export type GetOrCreatePaginationInputTypeRefArgs = {
 };
 
 export const getOrCreatePaginationInputTypeRef = ({ builder, name }: GetOrCreatePaginationInputTypeRefArgs) => {
-  const originalRef = builder.configStore.getInputTypeRef(name);
-
-  if (typeof originalRef !== 'string') {
-    return originalRef;
+  try {
+    return builder.configStore.getInputTypeRef(name);
+  } catch {
+    return builder.inputType(name, {
+      fields: (t) => ({
+        size: t.int({ required: false }),
+        page: t.int({ required: false }),
+      }),
+    });
   }
-
-  return builder.inputType(name, {
-    fields: (t) => ({
-      size: t.int({ required: false }),
-      page: t.int({ required: false }),
-    }),
-  });
 };

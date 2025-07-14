@@ -1,18 +1,21 @@
 import './global-types';
 import './schemaBuilder';
 
-import SchemaBuilder, { BasePlugin, SchemaTypes } from '@pothos/core';
-import { PaginationArgs, PaginationResult } from '@steadystart/prisma';
+import SchemaBuilder, { BasePlugin, PothosOutputFieldConfig, SchemaTypes } from '@pothos/core';
+import { PaginationArgs, PaginationResult, PrismaPaginationFn } from '@steadystart/prisma';
 import { GraphQLFieldResolver } from 'graphql';
 
 const pluginName = 'pagination' as const;
 
-function isPaginationResult(result: unknown): result is (args: PaginationArgs) => Promise<PaginationResult<unknown>> {
+function isPaginationResult(result: unknown): result is (args: PaginationArgs<Record<string, unknown>>) => Promise<PaginationResult<unknown>> {
   return typeof result === 'function';
 }
 
 export class PaginationPlugin<Types extends SchemaTypes> extends BasePlugin<Types> {
-  wrapResolve(resolver: GraphQLFieldResolver<unknown, Types['Context'], object, Promise<unknown>>): GraphQLFieldResolver<
+  wrapResolve(
+    resolver: GraphQLFieldResolver<unknown, Types['Context'], object, Promise<PrismaPaginationFn<unknown, unknown>>>,
+    fieldConfig: PothosOutputFieldConfig<Types>,
+  ): GraphQLFieldResolver<
     unknown,
     Types['Context'],
     {
@@ -24,8 +27,9 @@ export class PaginationPlugin<Types extends SchemaTypes> extends BasePlugin<Type
 
       if (isPaginationResult(result)) {
         return result({
-          size: args.filter?.size ?? 100,
+          size: args.filter?.size ?? this.builder.options.pagination?.defaultPageSize ?? fieldConfig.pothosOptions.pagination?.defaultPageSize ?? 100,
           page: args.filter?.page ?? 1,
+          cursor: undefined,
         });
       }
 

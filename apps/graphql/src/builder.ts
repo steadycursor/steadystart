@@ -35,6 +35,7 @@ export const builder = new SchemaBuilder<{
   defaultFieldNullability: false,
   defaultInputFieldRequiredness: true,
   plugins: [ZodPlugin, ScopeAuthPlugin, SimpleObjectsPlugin, DataloaderPlugin, PaginationPlugin],
+  pagination: { defaultPageSize: 100 },
   scopeAuth: {
     defaultStrategy: 'all',
     authScopes: async (ctx) => {

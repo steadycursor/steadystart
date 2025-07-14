@@ -7,6 +7,7 @@ builder.queryField('workspaces', (t) =>
     authScopes: {
       accessPolicy: 'authenticated',
     },
+    pagination: { defaultPageSize: 20 },
     resolve: async (_parent, _args, ctx) => {
       return ctx.prisma.workspace.paginate({
         where: {
