@@ -1,4 +1,4 @@
-import { PrismaClient } from '@steadystart/prisma';
+import { createPrismaClient } from '@steadystart/prisma';
 import * as path from 'path';
 import { seedFullDatabase } from '../lib/seed/seedFullDatabase';
 import { TestDatabaseOrchestrator } from '../lib/TestDatabaseOrchestrator';
@@ -13,10 +13,10 @@ import { exec } from '../utils/exec';
   const prismaBinary = path.join(__dirname, '..', '..', '..', '..', 'libs', 'prisma', 'node_modules', '.bin', 'prisma');
 
   await exec(
-    `pnpm cross-env DATABASE_URL="${databaseUrl}" DATABASE_DIRECT_URL="${databaseUrl}" ${prismaBinary} db push --accept-data-loss --schema ./../../libs/prisma/dist/schema.prisma`,
+    `pnpm cross-env DATABASE_URL="${databaseUrl}" DATABASE_DIRECT_URL="${databaseUrl}" ${prismaBinary} db push --accept-data-loss --schema ./../../libs/prisma/generated/schema.prisma`,
   );
 
-  const client = new PrismaClient({ datasources: { db: { url: databaseUrl } } });
+  const client = createPrismaClient({ datasources: { db: { url: databaseUrl } } });
 
   await seedFullDatabase({ prisma: client });
 

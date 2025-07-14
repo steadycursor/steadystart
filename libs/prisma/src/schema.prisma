@@ -6,6 +6,6 @@ datasource db {
 
 generator client {
   provider        = "prisma-client-js"
-  output          = "../dist"
+  output          = "../generated"
   previewFeatures = ["prismaSchemaFolder"]
 }

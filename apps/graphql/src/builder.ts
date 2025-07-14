@@ -8,6 +8,7 @@ import { forbiddenAuthScope, ForbiddenAuthScopeArgs } from './authScopes/forbidd
 import { modelItemsBelongToWorkspaceScope, ModelItemsBelongToWorkspaceScopeArgs } from './authScopes/modelItemsBelongToWorkspace';
 import { userHasAccessOnWorkspaceScope, UserHasAccessOnWorkspaceScopeArgs } from './authScopes/userHasAccessOnWorkspaceScope';
 import { Context } from './context';
+import PaginationPlugin from './plugins/pagination';
 import { Date } from './schema/Date';
 import { DateTime } from './schema/DateTime';
 import { ID } from './schema/ID';
@@ -33,7 +34,8 @@ export const builder = new SchemaBuilder<{
 }>({
   defaultFieldNullability: false,
   defaultInputFieldRequiredness: true,
-  plugins: [ZodPlugin, ScopeAuthPlugin, SimpleObjectsPlugin, DataloaderPlugin],
+  plugins: [ZodPlugin, ScopeAuthPlugin, SimpleObjectsPlugin, DataloaderPlugin, PaginationPlugin],
+  pagination: { defaultPageSize: 100 },
   scopeAuth: {
     defaultStrategy: 'all',
     authScopes: async (ctx) => {

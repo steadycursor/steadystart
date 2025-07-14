@@ -1,5 +1,5 @@
-import { PrismaClient } from '@steadystart/prisma';
 import { Context } from '../context';
+import { PrismaClient } from '../prisma';
 
 type CreateContextForAuthScopeTestArgs = {
   user: Context['user'];

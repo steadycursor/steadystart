@@ -1,7 +1,8 @@
-import { PrismaClient, User, Workspace } from '@steadystart/prisma';
+import { User, Workspace } from '@steadystart/prisma';
 import { match } from 'ts-pattern';
 import { findAndValidateWorkspaceFromRequestHeaders } from './findAndValidateWorkspaceFromRequestHeaders';
 import { ContextProps } from '../../context';
+import { PrismaClient } from '../../prisma';
 
 type ResolveWorkspaceFromContextArgs = ContextProps & {
   prisma: PrismaClient;

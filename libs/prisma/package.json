@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "pnpm prisma generate",
+    "generate": "pnpm prisma generate",
+    "build": "pnpm generate && tsc ./src/index.ts --declaration --outDir ./dist",
     "watch": "tsc --build --watch --preserveWatchOutput --incremental",
     "migrate:new": "env-cmd -f ../../.env -- pnpm prisma migrate dev --create-only --skip-generate",
     "migrate:up": "env-cmd -f ../../.env -- pnpm prisma migrate dev --skip-generate",

@@ -4,6 +4,7 @@ import { createContext } from '../context';
 import { createClient, QueryRequest, QueryResult, MutationRequest, MutationResult } from '../generated/genql';
 import { schema } from '../schema';
 import { handleGraphQLError } from '../utils/handleGraphQLError';
+
 export type CreateClientWithContextArgs = {
   userId?: string;
   workspaceId?: string;
