@@ -1,7 +1,6 @@
 import { createClerkClient } from '@clerk/backend';
-import { PrismaClient } from '@steadystart/prisma';
 import { parseSecrets } from '@steadystart/secrets';
-import { prisma as productionPrisma } from './prisma';
+import { PrismaClient, prisma as productionPrisma } from './prisma';
 import { Request } from './types/Request';
 import { resolveUserFromContext } from './utils/context/resolveUserFromContext';
 import { resolveWorkspaceFromContext } from './utils/context/resolveWorkspaceFromContext';
